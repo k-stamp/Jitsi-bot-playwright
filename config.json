@@ -1,0 +1,15 @@
+{
+  "url": "https://kvnstp-jitsi.online/testconf",
+  "numberofbots": 2,
+  "headless": false,
+  "delayBetweenBots": 5000,
+  "userandomnames": true,
+  "customname": "TestBot",
+  "haspassword": false,
+  "password": "meetingpasswort",
+  "autoclose": false,
+  "runtime": 300000,
+  "debug": true,
+  "enableAudio": true,
+  "enableVideo": true
+}

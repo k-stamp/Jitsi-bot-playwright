@@ -1,0 +1,22 @@
+{
+  "name": "conference-bots",
+  "version": "1.0.0",
+  "description": "Automatisierte Bots für Videokonferenzen mit Playwright",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "bots",
+    "videoconference"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "unique-names-generator": "^4.7.1"
+  }
+}
