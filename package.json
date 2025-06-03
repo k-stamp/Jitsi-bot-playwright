@@ -5,18 +5,26 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cucumber-js",
+    "test:debug": "cucumber-js --tags @debug",
+    "test:scenario": "cucumber-js features/jitsi-conference.feature"
   },
   "keywords": [
     "playwright",
     "automation",
     "bots",
-    "videoconference"
+    "videoconference",
+    "cucumber",
+    "bdd"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "playwright": "^1.40.0",
     "unique-names-generator": "^4.7.1"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.0",
+    "@cucumber/pretty-formatter": "^1.0.0"
   }
 }
