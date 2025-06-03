@@ -7,6 +7,7 @@ Ein automatisiertes Tool zur Erstellung mehrerer Bot-Teilnehmer in Jitsi Meet Vi
 - **Mehrere automatisierte Browser-Sitzungen**: Erstellt beliebig viele Bot-Teilnehmer
 - **Realistische Audio/Video-Streams**: Verwendet echte Medien-Dateien für authentische Simulation
 - **Automatischer Konferenz-Beitritt**: Tritt automatisch Jitsi Meet Konferenzen bei
+- **Automatisches Verlassen**: Bots können nach einer konfigurierbaren Zeit automatisch die Konferenz verlassen
 - **Flexible Namensgebung**: Zufällige oder benutzerdefinierte Bot-Namen
 - **Passwort-Unterstützung**: Funktioniert mit passwortgeschützten Räumen
 - **Debug-Modus**: Ausführliche Protokollierung für Fehlerbehebung
@@ -58,7 +59,11 @@ Alle Einstellungen befinden sich in der `config.json` Datei. Hier ein Beispiel:
   "messageInterval": 10000,
   "autoclose": false,
   "runtime": 300000,
-  "recordSessions": false
+  "autoLeaveAfter": 180000,
+  "recordSessions": false,
+  "debug": true,
+  "enableAudio": true,
+  "enableVideo": true
 }
 ```
 
@@ -80,7 +85,28 @@ Alle Einstellungen befinden sich in der `config.json` Datei. Hier ein Beispiel:
 | messageInterval | Intervall zwischen Nachrichten (ms) | 5000 |
 | autoclose | Automatisch nach einer bestimmten Zeit beenden | false |
 | runtime | Laufzeit in Millisekunden, wenn autoclose true ist | 60000 |
+| autoLeaveAfter | Zeit in ms, nach der Bots automatisch die Konferenz verlassen | - (deaktiviert) |
 | recordSessions | Browser-Sitzungen aufzeichnen | false |
+| debug | Debug-Modus aktivieren | false |
+| enableAudio | Audio für Bots aktivieren | true |
+| enableVideo | Video für Bots aktivieren | true |
+
+### Automatisches Verlassen der Konferenz
+
+Mit der neuen `autoLeaveAfter` Option können Sie festlegen, nach welcher Zeit die Bots automatisch die Konferenz verlassen sollen:
+
+- **Aktivieren**: Setzen Sie `autoLeaveAfter` auf die gewünschte Zeit in Millisekunden
+- **Deaktivieren**: Setzen Sie `autoLeaveAfter` auf `0` oder entfernen Sie die Option
+- **Beispiele**:
+  - `180000` = 3 Minuten
+  - `300000` = 5 Minuten
+  - `600000` = 10 Minuten
+
+**Funktionsweise:**
+1. Jeder Bot startet einen Timer nach dem Beitritt zur Konferenz
+2. Nach der konfigurierten Zeit klickt der Bot automatisch auf "Konferenz verlassen"
+3. Der Bot bestätigt das Verlassen und schließt seine Browser-Sitzung
+4. Robuste Fehlerbehandlung mit Fallback-Mechanismen für verschiedene UI-Zustände
 
 ## Verwendung
 
@@ -95,6 +121,7 @@ Alle Einstellungen befinden sich in der `config.json` Datei. Hier ein Beispiel:
 - Dieses Tool ist nur für Tests und legitime Zwecke gedacht
 - Bitte überlaste keine Dienste mit zu vielen Bots
 - Die Selektoren im Code sind für Jitsi Meet optimiert, können aber für andere Plattformen angepasst werden
+- Das automatische Verlassen funktioniert nur mit der Standard-Jitsi-Oberfläche
 
 ## Fehlersuche
 
@@ -103,3 +130,11 @@ Falls die Bots nicht wie erwartet funktionieren:
 1. Überprüfe, ob die Selektoren für deine Konferenzplattform korrekt sind
 2. Überprüfe die Browser-Konsole auf Fehler
 3. Versuche, die Verzögerungen zwischen den Aktionen (`delayBetweenBots`) zu erhöhen
+4. Aktiviere den Debug-Modus (`"debug": true`) für detaillierte Logs
+5. Bei Problemen mit dem automatischen Verlassen: Überprüfe die Browser-Konsole auf UI-Änderungen
+
+### Häufige Probleme beim automatischen Verlassen
+
+- **"Button nicht gefunden"**: Die Jitsi-Oberfläche hat sich möglicherweise geändert
+- **"Button nicht klickbar"**: Das Modal braucht mehr Zeit zum Laden - erhöhe die Wartezeiten im Code
+- **Bots verlassen nicht**: Überprüfe, ob `autoLeaveAfter` korrekt konfiguriert ist und größer als 0

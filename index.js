@@ -112,8 +112,117 @@ function debug(message) {
       // Kurz warten, damit alles lädt
       await page.waitForTimeout(3000);
 
+      // Automatisches Verlassen nach konfigurierter Zeit
+      if (config.autoLeaveAfter && config.autoLeaveAfter > 0) {
+        console.log(`Bot ${index + 1} (${botName}): Wird die Konferenz in ${config.autoLeaveAfter}ms verlassen`);
+        
+        setTimeout(async () => {
+          try {
+            await leaveConference(page, botName, index + 1);
+          } catch (err) {
+            console.error(`Bot ${index + 1} (${botName}): Fehler beim Verlassen der Konferenz: ${err.message}`);
+          }
+        }, config.autoLeaveAfter);
+      }
+
     } catch (err) {
       console.error(`Bot ${index + 1} (${botName}): Fehler: ${err.message}`);
+    }
+  }
+
+  // Funktion zum Verlassen der Konferenz
+  async function leaveConference(page, botName, botIndex) {
+    try {
+      debug(`Bot ${botIndex} (${botName}): Versuche Konferenz zu verlassen...`);
+      
+      // Ersten Button klicken (Hangup-Button in der Toolbar)
+      const hangupButton = '#new-toolbox > div > div > div > div:nth-child(10) > div > div';
+      await page.waitForSelector(hangupButton, { timeout: 5000 });
+      await page.click(hangupButton);
+      debug(`Bot ${botIndex} (${botName}): Hangup-Button geklickt`);
+      
+      // Länger warten, bis das Modal vollständig geladen ist
+      await page.waitForTimeout(2000);
+      
+      // Warten bis der Bestätigungs-Button sichtbar und klickbar ist
+      const confirmButton = 'body > div:nth-child(4) > div:nth-child(2) > div > div > div:nth-child(2) > div > button.css-5yedmr-button-secondary-medium-fullWidth';
+      await page.waitForSelector(confirmButton, { timeout: 10000 });
+      
+      // Zusätzlich warten, bis der Button wirklich klickbar ist
+      await page.waitForFunction(
+        (selector) => {
+          const button = document.querySelector(selector);
+          return button && !button.disabled && button.offsetParent !== null;
+        },
+        confirmButton,
+        { timeout: 5000 }
+      );
+      
+      debug(`Bot ${botIndex} (${botName}): Bestätigungs-Button ist bereit`);
+      
+      // Noch eine kurze Pause vor dem Klick
+      await page.waitForTimeout(500);
+      
+      await page.click(confirmButton);
+      debug(`Bot ${botIndex} (${botName}): Bestätigungs-Button geklickt`);
+      
+      console.log(`Bot ${botIndex} (${botName}): Hat die Konferenz erfolgreich verlassen`);
+      
+      // Kurz warten bevor die Seite geschlossen wird
+      await page.waitForTimeout(1000);
+      await page.close();
+      
+    } catch (err) {
+      console.error(`Bot ${botIndex} (${botName}): Fehler beim Verlassen: ${err.message}`);
+      
+      // Fallback: Versuche alternative Selektoren
+      try {
+        debug(`Bot ${botIndex} (${botName}): Versuche alternative Selektoren...`);
+        
+        // Alternative: Suche nach aria-label
+        const hangupByAriaLabel = '[aria-label="Konferenz verlassen"]';
+        const hangupElements = await page.$$(hangupByAriaLabel);
+        
+        if (hangupElements.length > 0) {
+          await hangupElements[0].click();
+          debug(`Bot ${botIndex} (${botName}): Alternative Hangup-Button geklickt`);
+          
+          // Länger warten für das Modal
+          await page.waitForTimeout(3000);
+          
+          // Suche nach dem Bestätigungs-Button mit aria-label
+          const confirmElements = await page.$$('button[aria-label="Konferenz verlassen"]');
+          if (confirmElements.length > 1) {
+            // Warten bis der Button klickbar ist
+            await page.waitForFunction(
+              (element) => {
+                return element && !element.disabled && element.offsetParent !== null;
+              },
+              confirmElements[1],
+              { timeout: 5000 }
+            );
+            
+            await page.waitForTimeout(500);
+            await confirmElements[1].click();
+            debug(`Bot ${botIndex} (${botName}): Alternative Bestätigungs-Button geklickt`);
+          }
+          
+          console.log(`Bot ${botIndex} (${botName}): Hat die Konferenz mit alternativen Selektoren verlassen`);
+          await page.waitForTimeout(1000);
+          await page.close();
+        } else {
+          throw new Error('Keine Hangup-Buttons gefunden');
+        }
+        
+      } catch (fallbackErr) {
+        console.error(`Bot ${botIndex} (${botName}): Auch Fallback-Methode fehlgeschlagen: ${fallbackErr.message}`);
+        // Seite trotzdem schließen
+        try {
+          await page.close();
+        } catch (closeErr) {
+          debug(`Bot ${botIndex} (${botName}): Fehler beim Schließen der Seite: ${closeErr.message}`);
+        }
+      }
     }
   }
 
