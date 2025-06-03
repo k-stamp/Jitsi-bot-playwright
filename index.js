@@ -32,56 +32,64 @@ function debug(message) {
     console.log('- Plattform:', process.platform);
     console.log('- Architektur:', process.arch);
   }
-  
-  // Absolute Pfade zu den Medien-Dateien
-  const videoFile = path.resolve(path.join(__dirname, 'media', 'bot1', 'bot1.y4m'));
-  const audioFile = path.resolve(path.join(__dirname, 'media', 'bot1', 'bot1.wav'));
-  
-  console.log(`Video-Datei: ${videoFile}`);
-  console.log(`Audio-Datei: ${audioFile}`);
-  
-  // Prüfe, ob die Dateien existieren
-  if (!fs.existsSync(videoFile)) {
-    console.error(`Video-Datei nicht gefunden: ${videoFile}`);
+
+  // Validierung: Prüfe ob genügend Bot-Konfigurationen vorhanden sind
+  if (!config.bots || config.bots.length < config.numberofbots) {
+    console.error(`Fehler: Es sind nur ${config.bots?.length || 0} Bot-Konfigurationen vorhanden, aber ${config.numberofbots} Bots angefordert.`);
     process.exit(1);
   }
-  
-  if (!fs.existsSync(audioFile)) {
-    console.error(`Audio-Datei nicht gefunden: ${audioFile}`);
-    process.exit(1);
-  }
-
-  // Launch-Optionen mit Video-File-Injection
-  const launchOptions = {
-    headless: config.headless === true,
-    args: [
-      '--auto-accept-camera-and-microphone-capture',
-      '--use-fake-device-for-media-stream',
-      `--use-file-for-fake-video-capture=${videoFile}`,
-      `--use-file-for-fake-audio-capture=${audioFile}`,
-      '--allow-file-access-from-files',
-      '--autoplay-policy=no-user-gesture-required',
-      '--disable-web-security'
-    ]
-  };
-
-  console.log('Chrome-Argumente:', launchOptions.args);
-
-  const browser = await chromium.launch(launchOptions);
-  const context = await browser.newContext({
-    viewport: { width: 1280, height: 720 },
-    permissions: ['camera', 'microphone']
-  });
-
-  await context.grantPermissions(['camera', 'microphone']);
 
   // Starte die Bots
   for (let i = 0; i < config.numberofbots; i++) {
-    await startUser(context, i);
+    const botConfig = config.bots[i];
+    await startUser(i, botConfig);
     await new Promise(resolve => setTimeout(resolve, config.delayBetweenBots || 5000));
   }
 
-  async function startUser(context, index) {
+  async function startUser(index, botConfig) {
+    // Absolute Pfade zu den Medien-Dateien für diesen Bot
+    const videoFile = path.resolve(path.join(__dirname, 'media', botConfig.mediaFolder, botConfig.videoFile));
+    const audioFile = path.resolve(path.join(__dirname, 'media', botConfig.mediaFolder, botConfig.audioFile));
+    
+    console.log(`Bot ${index + 1} (${botConfig.name}):`);
+    console.log(`- Video-Datei: ${videoFile}`);
+    console.log(`- Audio-Datei: ${audioFile}`);
+    
+    // Prüfe, ob die Dateien existieren
+    if (!fs.existsSync(videoFile)) {
+      console.error(`Video-Datei nicht gefunden: ${videoFile}`);
+      return; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
+    }
+    
+    if (!fs.existsSync(audioFile)) {
+      console.error(`Audio-Datei nicht gefunden: ${audioFile}`);
+      return; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
+    }
+
+    // Launch-Optionen mit Video-File-Injection für diesen Bot
+    const launchOptions = {
+      headless: config.headless === true,
+      args: [
+        '--auto-accept-camera-and-microphone-capture',
+        '--use-fake-device-for-media-stream',
+        `--use-file-for-fake-video-capture=${videoFile}`,
+        `--use-file-for-fake-audio-capture=${audioFile}`,
+        '--allow-file-access-from-files',
+        '--autoplay-policy=no-user-gesture-required',
+        '--disable-web-security'
+      ]
+    };
+
+    console.log(`Bot ${index + 1} Chrome-Argumente:`, launchOptions.args);
+
+    const browser = await chromium.launch(launchOptions);
+    const context = await browser.newContext({
+      viewport: { width: 1280, height: 720 },
+      permissions: ['camera', 'microphone']
+    });
+
+    await context.grantPermissions(['camera', 'microphone']);
+
     const randomName = uniqueNamesGenerator({ 
       dictionaries: [colors, adjectives, animals], 
       separator: "", 
@@ -89,7 +97,7 @@ function debug(message) {
       style: 'capital' 
     }) + NumberDictionary.generate({ min: 10, max: 9999 });
     
-    const botName = config.userandomnames ? randomName : config.customname;
+    const botName = config.userandomnames ? randomName : (botConfig.name || config.customname);
     const page = await context.newPage();
 
     console.log(`Bot ${index + 1} (${botName}): Starte...`);
@@ -118,7 +126,7 @@ function debug(message) {
         
         setTimeout(async () => {
           try {
-            await leaveConference(page, botName, index + 1);
+            await leaveConference(page, botName, index + 1, browser);
           } catch (err) {
             console.error(`Bot ${index + 1} (${botName}): Fehler beim Verlassen der Konferenz: ${err.message}`);
           }
@@ -127,11 +135,12 @@ function debug(message) {
 
     } catch (err) {
       console.error(`Bot ${index + 1} (${botName}): Fehler: ${err.message}`);
+      await browser.close();
     }
   }
 
   // Funktion zum Verlassen der Konferenz
-  async function leaveConference(page, botName, botIndex) {
+  async function leaveConference(page, botName, botIndex, browser) {
     try {
       debug(`Bot ${botIndex} (${botName}): Versuche Konferenz zu verlassen...`);
       
@@ -172,57 +181,12 @@ function debug(message) {
       await page.waitForTimeout(1000);
       await page.close();
       
+      // Browser schließen nach dem Verlassen
+      await browser.close();
+      
     } catch (err) {
       console.error(`Bot ${botIndex} (${botName}): Fehler beim Verlassen: ${err.message}`);
-      
-      // Fallback: Versuche alternative Selektoren
-      try {
-        debug(`Bot ${botIndex} (${botName}): Versuche alternative Selektoren...`);
-        
-        // Alternative: Suche nach aria-label
-        const hangupByAriaLabel = '[aria-label="Konferenz verlassen"]';
-        const hangupElements = await page.$$(hangupByAriaLabel);
-        
-        if (hangupElements.length > 0) {
-          await hangupElements[0].click();
-          debug(`Bot ${botIndex} (${botName}): Alternative Hangup-Button geklickt`);
-          
-          // Länger warten für das Modal
-          await page.waitForTimeout(3000);
-          
-          // Suche nach dem Bestätigungs-Button mit aria-label
-          const confirmElements = await page.$$('button[aria-label="Konferenz verlassen"]');
-          if (confirmElements.length > 1) {
-            // Warten bis der Button klickbar ist
-            await page.waitForFunction(
-              (element) => {
-                return element && !element.disabled && element.offsetParent !== null;
-              },
-              confirmElements[1],
-              { timeout: 5000 }
-            );
-            
-            await page.waitForTimeout(500);
-            await confirmElements[1].click();
-            debug(`Bot ${botIndex} (${botName}): Alternative Bestätigungs-Button geklickt`);
-          }
-          
-          console.log(`Bot ${botIndex} (${botName}): Hat die Konferenz mit alternativen Selektoren verlassen`);
-          await page.waitForTimeout(1000);
-          await page.close();
-        } else {
-          throw new Error('Keine Hangup-Buttons gefunden');
-        }
-        
-      } catch (fallbackErr) {
-        console.error(`Bot ${botIndex} (${botName}): Auch Fallback-Methode fehlgeschlagen: ${fallbackErr.message}`);
-        // Seite trotzdem schließen
-        try {
-          await page.close();
-        } catch (closeErr) {
-          debug(`Bot ${botIndex} (${botName}): Fehler beim Schließen der Seite: ${closeErr.message}`);
-        }
-      }
+      await browser.close();
     }
   }
 

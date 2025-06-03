@@ -1,16 +1,67 @@
 {
   "url": "https://kvnstp-jitsi.online/testconf",
-  "numberofbots": 2,
-  "headless": false,
-  "delayBetweenBots": 500,
+  "numberofbots": 7,
+  "headless": true,
+  "delayBetweenBots": 10,
   "userandomnames": true,
   "customname": "TestBot",
   "haspassword": false,
   "password": "meetingpasswort",
   "autoclose": false,
   "runtime": 300000,
-  "autoLeaveAfter": 15000,
+  "autoLeaveAfter": 10000,
   "debug": true,
   "enableAudio": true,
-  "enableVideo": true
+  "enableVideo": true,
+  "bots": [
+    {
+      "id": 1,
+      "name": "Bot1",
+      "mediaFolder": "bot1",
+      "videoFile": "bot1.y4m",
+      "audioFile": "bot1.wav"
+    },
+    {
+      "id": 2,
+      "name": "Bot2", 
+      "mediaFolder": "bot2",
+      "videoFile": "Tagesschau1.y4m",
+      "audioFile": "Tagesschau1.wav"
+    },
+    {
+      "id": 3,
+      "name": "Bot3",
+      "mediaFolder": "bot3", 
+      "videoFile": "Tagesschau2.y4m",
+      "audioFile": "Tagesschau2.wav"
+    },
+    {
+      "id": 4,
+      "name": "Bot4",
+      "mediaFolder": "bot4",
+      "videoFile": "Tagesschau3.y4m", 
+      "audioFile": "Tagesschau3.wav"
+    },
+    {
+      "id": 5,
+      "name": "Bot5",
+      "mediaFolder": "bot5",
+      "videoFile": "Tagesschau4.y4m",
+      "audioFile": "Tagesschau4.wav"
+    },
+    {
+      "id": 6,
+      "name": "Bot6",
+      "mediaFolder": "bot6",
+      "videoFile": "Tagesschau5.y4m",
+      "audioFile": "Tagesschau5.wav"
+    },
+    {
+      "id": 7,
+      "name": "Bot7",
+      "mediaFolder": "bot7",
+      "videoFile": "Tagesschau6.y4m",
+      "audioFile": "Tagesschau6.wav"
+    }
+  ]
 }
