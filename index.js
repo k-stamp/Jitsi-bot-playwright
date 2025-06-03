@@ -21,6 +21,19 @@ function debug(message) {
   }
 }
 
+// Funktion zum Warten bis zur nächsten vollen Minute
+function waitUntilNextFullMinute() {
+  const now = new Date();
+  const nextMinute = new Date(now);
+  nextMinute.setSeconds(0, 0);
+  nextMinute.setMinutes(nextMinute.getMinutes() + 1);
+  
+  const waitTime = nextMinute.getTime() - now.getTime();
+  console.log(`Warte ${Math.round(waitTime / 1000)} Sekunden bis zur nächsten vollen Minute (${nextMinute.toLocaleTimeString()})...`);
+  
+  return new Promise(resolve => setTimeout(resolve, waitTime));
+}
+
 // Hauptfunktion
 (async () => {
   console.log(`Starte ${config.numberofbots} Bots für die Konferenz: ${config.url}`);
@@ -39,14 +52,35 @@ function debug(message) {
     process.exit(1);
   }
 
-  // Starte die Bots
+  // NEUE LOGIK: Alle Bots parallel starten
+  console.log('Starte alle Bots gleichzeitig...');
+  
+  // Array für alle Bot-Promises
+  const botPromises = [];
+  const browsers = [];
+  
+  // Starte alle Bots parallel (ohne await)
   for (let i = 0; i < config.numberofbots; i++) {
     const botConfig = config.bots[i];
-    await startUser(i, botConfig);
-    await new Promise(resolve => setTimeout(resolve, config.delayBetweenBots || 5000));
+    const botPromise = startUser(i, botConfig, browsers);
+    botPromises.push(botPromise);
   }
+  
+  // Warte, bis alle Bots der Konferenz beigetreten sind
+  console.log('Warte darauf, dass alle Bots der Konferenz beitreten...');
+  const botResults = await Promise.all(botPromises);
+  
+  console.log('Alle Bots sind der Konferenz beigetreten!');
+  
+  // Warte bis zur nächsten vollen Minute
+  await waitUntilNextFullMinute();
+  
+  console.log('Synchroner Start von Audio und Video für alle Bots!');
+  
+  // Hier könnten Sie zusätzliche Synchronisationslogik hinzufügen,
+  // falls Sie spezielle Audio/Video-Steuerung benötigen
 
-  async function startUser(index, botConfig) {
+  async function startUser(index, botConfig, browsersArray) {
     // Absolute Pfade zu den Medien-Dateien für diesen Bot
     const videoFile = path.resolve(path.join(__dirname, 'media', botConfig.mediaFolder, botConfig.videoFile));
     const audioFile = path.resolve(path.join(__dirname, 'media', botConfig.mediaFolder, botConfig.audioFile));
@@ -58,12 +92,12 @@ function debug(message) {
     // Prüfe, ob die Dateien existieren
     if (!fs.existsSync(videoFile)) {
       console.error(`Video-Datei nicht gefunden: ${videoFile}`);
-      return; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
+      return null; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
     }
     
     if (!fs.existsSync(audioFile)) {
       console.error(`Audio-Datei nicht gefunden: ${audioFile}`);
-      return; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
+      return null; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
     }
 
     // Launch-Optionen mit Video-File-Injection für diesen Bot
@@ -83,6 +117,8 @@ function debug(message) {
     console.log(`Bot ${index + 1} Chrome-Argumente:`, launchOptions.args);
 
     const browser = await chromium.launch(launchOptions);
+    browsersArray.push(browser); // Browser zur Liste hinzufügen für späteres Cleanup
+    
     const context = await browser.newContext({
       viewport: { width: 1280, height: 720 },
       permissions: ['camera', 'microphone']
@@ -133,9 +169,12 @@ function debug(message) {
         }, config.autoLeaveAfter);
       }
 
+      return { page, browser, botName, index: index + 1 };
+
     } catch (err) {
       console.error(`Bot ${index + 1} (${botName}): Fehler: ${err.message}`);
       await browser.close();
+      return null;
     }
   }
 
@@ -197,7 +236,14 @@ function debug(message) {
     // Event-Handler für sauberes Beenden
     process.on('SIGINT', async () => {
       console.log('Beende alle Bots und schließe Browser...');
-      await browser.close();
+      // Schließe alle Browser
+      for (const browser of browsers) {
+        try {
+          await browser.close();
+        } catch (err) {
+          console.error('Fehler beim Schließen eines Browsers:', err.message);
+        }
+      }
       process.exit(0);
     });
     
@@ -207,7 +253,15 @@ function debug(message) {
     // Schließe Browser nach der konfigurierten Laufzeit
     console.log(`Bots laufen für ${config.runtime || 60000}ms und werden dann automatisch beendet.`);
     await new Promise(resolve => setTimeout(resolve, config.runtime || 60000));
-    await browser.close();
+    
+    // Schließe alle Browser
+    for (const browser of browsers) {
+      try {
+        await browser.close();
+      } catch (err) {
+        console.error('Fehler beim Schließen eines Browsers:', err.message);
+      }
+    }
     console.log('Alle Bots wurden beendet.');
   }
 })().catch(err => {
