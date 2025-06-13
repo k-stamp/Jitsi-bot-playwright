@@ -110,8 +110,10 @@ function waitUntilNextFullMinute() {
         `--use-file-for-fake-audio-capture=${audioFile}`,
         '--allow-file-access-from-files',
         '--autoplay-policy=no-user-gesture-required',
-        '--disable-web-security'
-      ]
+        '--disable-web-security',
+        '--ignore-certificate-errors'
+      ],
+      ignoreHTTPSErrors: true
     };
 
     console.log(`Bot ${index + 1} Chrome-Argumente:`, launchOptions.args);
@@ -121,7 +123,8 @@ function waitUntilNextFullMinute() {
     
     const context = await browser.newContext({
       viewport: { width: 1280, height: 720 },
-      permissions: ['camera', 'microphone']
+      permissions: ['camera', 'microphone'],
+      ignoreHTTPSErrors: true
     });
 
     await context.grantPermissions(['camera', 'microphone']);
