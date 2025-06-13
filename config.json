@@ -1,6 +1,6 @@
 {
-  "url": "https://kvnstp-jitsi.online/testconf",
-  "numberofbots": 7,
+  "url": "https://192.168.178.24:8080/testconf",
+  "numberofbots": 2,
   "headless": true,
   "delayBetweenBots": 10,
   "userandomnames": true,
