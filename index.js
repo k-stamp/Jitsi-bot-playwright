@@ -1,5 +1,4 @@
 const { chromium } = require('playwright');
-const { uniqueNamesGenerator, adjectives, colors, animals, NumberDictionary } = require('unique-names-generator');
 const fs = require('fs');
 const path = require('path');
 
@@ -157,14 +156,7 @@ function waitUntilNextFullMinute() {
       await context.grantPermissions(['camera']);
     }
 
-    const randomName = uniqueNamesGenerator({ 
-      dictionaries: [colors, adjectives, animals], 
-      separator: "", 
-      length: 2, 
-      style: 'capital' 
-    }) + NumberDictionary.generate({ min: 10, max: 9999 });
-    
-    const botName = config.userandomnames ? randomName : (botConfig.name || config.customname);
+    const botName = botConfig.name || config.customname;
     const page = await context.newPage();
 
     // Für Bots ohne Audio: Audio-Context überschreiben um Störgeräusche zu vermeiden

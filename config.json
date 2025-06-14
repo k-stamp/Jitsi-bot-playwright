@@ -1,10 +1,8 @@
 {
-  "url": "https://192.168.178.24:8080/raum1",
-  "numberofbots": 4,
+  "url": "https://192.168.178.24:8080/hallo2",
+  "numberofbots": 12,
   "headless": true,
-  "delayBetweenBots": 1000,
-  "userandomnames": true,
-  "customname": "TestBot",
+  "delayBetweenBots": 100,
   "haspassword": false,
   "password": "meetingpasswort",
   "autoclose": false,
