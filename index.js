@@ -52,25 +52,25 @@ function waitUntilNextFullMinute() {
     process.exit(1);
   }
 
-  // NEUE LOGIK: Alle Bots parallel starten
-  console.log('Starte alle Bots gleichzeitig...');
+  // NEUE LOGIK: Bots sequenziell mit Verzögerung starten
+  console.log(`Starte Bots mit ${config.delayBetweenBots}ms Abstand zwischen den Bots...`);
   
-  // Array für alle Bot-Promises
-  const botPromises = [];
   const browsers = [];
   
-  // Starte alle Bots parallel (ohne await)
+  // Starte Bots nacheinander mit Verzögerung
   for (let i = 0; i < config.numberofbots; i++) {
     const botConfig = config.bots[i];
-    const botPromise = startUser(i, botConfig, browsers);
-    botPromises.push(botPromise);
+    
+    if (i > 0) {
+      console.log(`Warte ${config.delayBetweenBots}ms vor dem Start von Bot ${i + 1}...`);
+      await new Promise(resolve => setTimeout(resolve, config.delayBetweenBots));
+    }
+    
+    console.log(`Starte Bot ${i + 1} (${botConfig.name})...`);
+    await startUser(i, botConfig, browsers);
   }
   
-  // Warte, bis alle Bots der Konferenz beigetreten sind
-  console.log('Warte darauf, dass alle Bots der Konferenz beitreten...');
-  const botResults = await Promise.all(botPromises);
-  
-  console.log('Alle Bots sind der Konferenz beigetreten!');
+  console.log('Alle Bots sind gestartet!');
   
   // Warte bis zur nächsten vollen Minute
   await waitUntilNextFullMinute();

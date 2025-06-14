@@ -1,5 +1,5 @@
 {
-  "url": "https://192.168.178.24:8080/test3",
+  "url": "https://192.168.178.24:8080/raum1",
   "numberofbots": 4,
   "headless": true,
   "delayBetweenBots": 1000,
@@ -9,7 +9,7 @@
   "password": "meetingpasswort",
   "autoclose": false,
   "runtime": 200000,
-  "autoLeaveAfter": 10000,
+  "autoLeaveAfter": 20000,
   "debug": true,
   "enableVideo": true,
   "bots": [
