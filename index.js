@@ -87,47 +87,75 @@ function waitUntilNextFullMinute() {
     
     console.log(`Bot ${index + 1} (${botConfig.name}):`);
     console.log(`- Video-Datei: ${videoFile}`);
-    console.log(`- Audio-Datei: ${audioFile}`);
+    if (botConfig.enableAudio) {
+      console.log(`- Audio-Datei: ${audioFile}`);
+    }
+    console.log(`- Audio aktiviert: ${botConfig.enableAudio || false}`);
     
-    // Prüfe, ob die Dateien existieren
+    // Prüfe, ob die Video-Datei existiert
     if (!fs.existsSync(videoFile)) {
       console.error(`Video-Datei nicht gefunden: ${videoFile}`);
-      return null; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
+      return null;
     }
     
-    if (!fs.existsSync(audioFile)) {
+    // Prüfe Audio-Datei nur, wenn Audio für diesen Bot aktiviert ist
+    if (botConfig.enableAudio && !fs.existsSync(audioFile)) {
       console.error(`Audio-Datei nicht gefunden: ${audioFile}`);
-      return null; // Überspringe diesen Bot, aber stoppe nicht das gesamte Programm
+      return null;
     }
 
-    // Launch-Optionen mit Video-File-Injection für diesen Bot
+    // Launch-Optionen - unterschiedliche Konfiguration je nach Audio-Status
+    const baseArgs = [
+      '--allow-file-access-from-files',
+      '--autoplay-policy=no-user-gesture-required',
+      '--disable-web-security',
+      '--ignore-certificate-errors'
+    ];
+
     const launchOptions = {
       headless: config.headless === true,
-      args: [
+      args: [...baseArgs],
+      ignoreHTTPSErrors: true
+    };
+
+    // Nur wenn Audio aktiviert ist, füge Audio-spezifische Argumente hinzu
+    if (botConfig.enableAudio) {
+      launchOptions.args.push(
         '--auto-accept-camera-and-microphone-capture',
         '--use-fake-device-for-media-stream',
         `--use-file-for-fake-video-capture=${videoFile}`,
-        `--use-file-for-fake-audio-capture=${audioFile}`,
-        '--allow-file-access-from-files',
-        '--autoplay-policy=no-user-gesture-required',
-        '--disable-web-security',
-        '--ignore-certificate-errors'
-      ],
-      ignoreHTTPSErrors: true
-    };
+        `--use-file-for-fake-audio-capture=${audioFile}`
+      );
+    } else {
+      // Für Bots ohne Audio: Mikrofon komplett deaktivieren
+      launchOptions.args.push(
+        '--auto-accept-camera-and-microphone-capture',
+        '--use-fake-device-for-media-stream',
+        `--use-file-for-fake-video-capture=${videoFile}`,
+        '--disable-features=VizDisplayCompositor',
+        '--mute-audio'
+      );
+    }
 
     console.log(`Bot ${index + 1} Chrome-Argumente:`, launchOptions.args);
 
     const browser = await chromium.launch(launchOptions);
-    browsersArray.push(browser); // Browser zur Liste hinzufügen für späteres Cleanup
+    browsersArray.push(browser);
+    
+    // Unterschiedliche Berechtigungen je nach Audio-Status
+    const permissions = botConfig.enableAudio ? ['camera', 'microphone'] : ['camera'];
     
     const context = await browser.newContext({
       viewport: { width: 1280, height: 720 },
-      permissions: ['camera', 'microphone'],
+      permissions: permissions,
       ignoreHTTPSErrors: true
     });
 
-    await context.grantPermissions(['camera', 'microphone']);
+    if (botConfig.enableAudio) {
+      await context.grantPermissions(['camera', 'microphone']);
+    } else {
+      await context.grantPermissions(['camera']);
+    }
 
     const randomName = uniqueNamesGenerator({ 
       dictionaries: [colors, adjectives, animals], 
@@ -138,6 +166,40 @@ function waitUntilNextFullMinute() {
     
     const botName = config.userandomnames ? randomName : (botConfig.name || config.customname);
     const page = await context.newPage();
+
+    // Für Bots ohne Audio: Audio-Context überschreiben um Störgeräusche zu vermeiden
+    if (!botConfig.enableAudio) {
+      await page.addInitScript(() => {
+        // Überschreibe getUserMedia um kein Audio zu liefern
+        const originalGetUserMedia = navigator.mediaDevices.getUserMedia;
+        navigator.mediaDevices.getUserMedia = async function(constraints) {
+          if (constraints && constraints.audio) {
+            // Entferne Audio-Constraint
+            const newConstraints = { ...constraints };
+            delete newConstraints.audio;
+            return originalGetUserMedia.call(navigator.mediaDevices, newConstraints);
+          }
+          return originalGetUserMedia.call(navigator.mediaDevices, constraints);
+        };
+        
+        // Überschreibe AudioContext um keine Audio-Verarbeitung zu haben
+        window.AudioContext = class {
+          constructor() {
+            return {
+              createMediaStreamDestination: () => ({ stream: new MediaStream() }),
+              createOscillator: () => ({ 
+                connect: () => {}, 
+                start: () => {},
+                frequency: { setValueAtTime: () => {} }
+              }),
+              currentTime: 0
+            };
+          }
+        };
+        
+        console.log('Audio komplett deaktiviert für diesen Bot');
+      });
+    }
 
     console.log(`Bot ${index + 1} (${botName}): Starte...`);
 
