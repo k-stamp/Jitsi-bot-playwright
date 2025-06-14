@@ -1,66 +1,102 @@
 {
-  "url": "https://192.168.178.24:8080/testconf",
-  "numberofbots": 2,
+  "url": "https://192.168.178.24:8080/test1",
+  "numberofbots": 12,
   "headless": true,
-  "delayBetweenBots": 10,
+  "delayBetweenBots": 1000,
   "userandomnames": true,
   "customname": "TestBot",
   "haspassword": false,
   "password": "meetingpasswort",
   "autoclose": false,
-  "runtime": 300000,
+  "runtime": 200000,
   "autoLeaveAfter": 10000,
   "debug": true,
-  "enableAudio": true,
+  "enableAudio": false,
   "enableVideo": true,
   "bots": [
     {
       "id": 1,
       "name": "Bot1",
       "mediaFolder": "bot1",
-      "videoFile": "bot1.y4m",
+      "videoFile": "bot1pic.y4m",
       "audioFile": "bot1.wav"
     },
     {
       "id": 2,
       "name": "Bot2", 
       "mediaFolder": "bot2",
-      "videoFile": "Tagesschau1.y4m",
+      "videoFile": "bot2pic.y4m",
       "audioFile": "Tagesschau1.wav"
     },
     {
       "id": 3,
       "name": "Bot3",
       "mediaFolder": "bot3", 
-      "videoFile": "Tagesschau2.y4m",
+      "videoFile": "bot3pic.y4m",
       "audioFile": "Tagesschau2.wav"
     },
     {
       "id": 4,
       "name": "Bot4",
       "mediaFolder": "bot4",
-      "videoFile": "Tagesschau3.y4m", 
+      "videoFile": "bot4pic.y4m", 
       "audioFile": "Tagesschau3.wav"
     },
     {
       "id": 5,
       "name": "Bot5",
       "mediaFolder": "bot5",
-      "videoFile": "Tagesschau4.y4m",
+      "videoFile": "bot5pic.y4m",
       "audioFile": "Tagesschau4.wav"
     },
     {
       "id": 6,
       "name": "Bot6",
       "mediaFolder": "bot6",
-      "videoFile": "Tagesschau5.y4m",
+      "videoFile": "bot6pic.y4m",
       "audioFile": "Tagesschau5.wav"
     },
     {
       "id": 7,
       "name": "Bot7",
       "mediaFolder": "bot7",
-      "videoFile": "Tagesschau6.y4m",
+      "videoFile": "bot7pic.y4m",
+      "audioFile": "Tagesschau6.wav"
+    }
+    ,
+    {
+      "id": 8,
+      "name": "Bot8",
+      "mediaFolder": "bot8",
+      "videoFile": "bot8pic.y4m",
+      "audioFile": "Tagesschau6.wav"
+    },
+    {
+      "id": 9,
+      "name": "Bot9",
+      "mediaFolder": "bot9",
+      "videoFile": "bot9pic.y4m",
+      "audioFile": "Tagesschau6.wav"
+    },
+    {
+      "id": 10,
+      "name": "Bot10",
+      "mediaFolder": "bot10",
+      "videoFile": "bot10pic.y4m",
+      "audioFile": "Tagesschau6.wav"
+    },
+    {
+      "id": 11,
+      "name": "Bot11",
+      "mediaFolder": "bot11",
+      "videoFile": "bot11pic.y4m",
+      "audioFile": "Tagesschau6.wav"
+    },
+    {
+      "id": 12,
+      "name": "Bot12",
+      "mediaFolder": "bot12",
+      "videoFile": "bot12pic.y4m",
       "audioFile": "Tagesschau6.wav"
     }
   ]
