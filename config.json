@@ -1,6 +1,6 @@
 {
-  "url": "https://192.168.178.24:8080/test1",
-  "numberofbots": 12,
+  "url": "https://192.168.178.24:8080/test3",
+  "numberofbots": 4,
   "headless": true,
   "delayBetweenBots": 1000,
   "userandomnames": true,
@@ -11,7 +11,6 @@
   "runtime": 200000,
   "autoLeaveAfter": 10000,
   "debug": true,
-  "enableAudio": false,
   "enableVideo": true,
   "bots": [
     {
@@ -19,85 +18,96 @@
       "name": "Bot1",
       "mediaFolder": "bot1",
       "videoFile": "bot1pic.y4m",
-      "audioFile": "bot1.wav"
+      "audioFile": "bot1.wav",
+      "enableAudio": true
     },
     {
       "id": 2,
       "name": "Bot2", 
       "mediaFolder": "bot2",
       "videoFile": "bot2pic.y4m",
-      "audioFile": "Tagesschau1.wav"
+      "audioFile": "Tagesschau1.wav",
+      "enableAudio": false
     },
     {
       "id": 3,
       "name": "Bot3",
       "mediaFolder": "bot3", 
       "videoFile": "bot3pic.y4m",
-      "audioFile": "Tagesschau2.wav"
+      "audioFile": "Tagesschau2.wav",
+      "enableAudio": true
     },
     {
       "id": 4,
       "name": "Bot4",
       "mediaFolder": "bot4",
       "videoFile": "bot4pic.y4m", 
-      "audioFile": "Tagesschau3.wav"
+      "audioFile": "Tagesschau3.wav",
+      "enableAudio": false
     },
     {
       "id": 5,
       "name": "Bot5",
       "mediaFolder": "bot5",
       "videoFile": "bot5pic.y4m",
-      "audioFile": "Tagesschau4.wav"
+      "audioFile": "Tagesschau4.wav",
+      "enableAudio": false
     },
     {
       "id": 6,
       "name": "Bot6",
       "mediaFolder": "bot6",
       "videoFile": "bot6pic.y4m",
-      "audioFile": "Tagesschau5.wav"
+      "audioFile": "Tagesschau5.wav",
+      "enableAudio": false
     },
     {
       "id": 7,
       "name": "Bot7",
       "mediaFolder": "bot7",
       "videoFile": "bot7pic.y4m",
-      "audioFile": "Tagesschau6.wav"
-    }
-    ,
+      "audioFile": "Tagesschau6.wav",
+      "enableAudio": false
+    },
     {
       "id": 8,
       "name": "Bot8",
       "mediaFolder": "bot8",
       "videoFile": "bot8pic.y4m",
-      "audioFile": "Tagesschau6.wav"
+      "audioFile": "Tagesschau6.wav",
+      "enableAudio": false
     },
     {
       "id": 9,
       "name": "Bot9",
       "mediaFolder": "bot9",
       "videoFile": "bot9pic.y4m",
-      "audioFile": "Tagesschau6.wav"
+      "audioFile": "Tagesschau6.wav",
+      "enableAudio": true
     },
     {
       "id": 10,
       "name": "Bot10",
       "mediaFolder": "bot10",
       "videoFile": "bot10pic.y4m",
-      "audioFile": "Tagesschau6.wav"
+      "audioFile": "Tagesschau6.wav",
+      "enableAudio": false
     },
     {
       "id": 11,
       "name": "Bot11",
       "mediaFolder": "bot11",
       "videoFile": "bot11pic.y4m",
-      "audioFile": "Tagesschau6.wav"
+      "audioFile": "Tagesschau6.wav",
+      "enableAudio": false
     },
     {
       "id": 12,
       "name": "Bot12",
       "mediaFolder": "bot12",
       "videoFile": "bot12pic.y4m",
-      "audioFile": "Tagesschau6.wav"
+      "audioFile": "Tagesschau6.wav",
+      "enableAudio": false
     }
   ]
 }
