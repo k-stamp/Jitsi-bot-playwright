@@ -1,8 +1,8 @@
 {
-  "url": "https://192.168.178.24:8080/2",
-  "numberofbots": 4,
+  "url": "https://192.168.178.24:8080/12",
+  "numberofbots": 8,
   "headless": true,
-  "delayBetweenBots": 1000,
+  "delayBetweenBots": 10000,
   "haspassword": false,
   "password": "meetingpasswort",
   "autoclose": false,
@@ -25,7 +25,7 @@
       "mediaFolder": "bot2",
       "videoFile": "bot2pic.y4m",
       "audioFile": "Tagesschau1.wav",
-      "enableAudio": true
+      "enableAudio": false
     },
     {
       "id": 3,
@@ -49,7 +49,7 @@
       "mediaFolder": "bot5",
       "videoFile": "bot5pic.y4m",
       "audioFile": "Tagesschau4.wav",
-      "enableAudio": false
+      "enableAudio": true
     },
     {
       "id": 6,

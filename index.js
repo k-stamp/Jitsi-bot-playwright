@@ -44,8 +44,8 @@ function logWithTimestamp(message) {
     process.exit(1);
   }
 
-  // OPTIMIERTE LOGIK: Bots in Batches mit gestaffeltem Start
-  console.log(`Starte Bots in Batches mit ${config.delayBetweenBots}ms Abstand zwischen den Bots...`);
+  // ZURÜCK ZUR PARALLELEN LOGIK - aber mit kontrolliertem Join-Zeitpunkt
+  console.log(`Starte ${config.numberofbots} Bots parallel mit gestaffeltem Join basierend auf Bot-ID...`);
 
   const browsers = [];
   const batchSize = 4; // Maximal 4 Bots gleichzeitig starten
@@ -58,6 +58,7 @@ function logWithTimestamp(message) {
   }
 
   console.log(`Starte ${config.numberofbots} Bots in ${batches.length} Batches (${batchSize} Bots pro Batch)`);
+  console.log(`Jeder Bot wird basierend auf seiner ID gestaffelt joinen: Bot-ID * 500ms`);
 
   // Verarbeite jeden Batch
   for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
@@ -275,9 +276,19 @@ function logWithTimestamp(message) {
       await page.waitForSelector(nameField, { timeout: 15000 }); // 15 Sekunden
       await page.fill(nameField, botName);
       
-      // Meeting beitreten
+      // Meeting beitreten - HIER IMPLEMENTIEREN WIR DIE VERZÖGERUNG
       const joinButton = 'div[data-testid="prejoin.joinMeeting"]';
       await page.waitForSelector(joinButton, { timeout: 10000 });
+      
+      // NEUE LOGIK: Bot wartet basierend auf seiner ID vor dem Klick auf Join
+      const joinDelay = (botConfig.id - 1) * 500; // Bot 1 = 0ms, Bot 2 = 500ms, Bot 3 = 1000ms, etc.
+      
+      if (joinDelay > 0) {
+        console.log(`Bot ${index + 1} (${botName}): Wartet ${joinDelay}ms vor dem Beitritt (basierend auf ID ${botConfig.id})...`);
+        await page.waitForTimeout(joinDelay);
+      }
+      
+      console.log(`Bot ${index + 1} (${botName}): Klickt jetzt auf Join-Button...`);
       await page.click(joinButton);
       console.log(`Bot ${index + 1} (${botName}): Meeting beigetreten`);
 
