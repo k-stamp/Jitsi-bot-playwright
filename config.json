@@ -1,17 +1,15 @@
 {
-  "url": "https://192.168.178.24:8080/test3",
-  "numberofbots": 4,
+  "url": "https://192.168.178.24:8080/12",
+  "numberofbots": 8,
   "headless": true,
-  "delayBetweenBots": 1000,
-  "userandomnames": true,
-  "customname": "TestBot",
+  "delayBetweenBots": 10000,
   "haspassword": false,
   "password": "meetingpasswort",
   "autoclose": false,
-  "runtime": 200000,
-  "autoLeaveAfter": 10000,
+  "runtime": 50000,
+  "autoLeaveAfter": 50000,
   "debug": true,
-  "enableVideo": true,
+  "enableVideo": false,
   "bots": [
     {
       "id": 1,
@@ -35,7 +33,7 @@
       "mediaFolder": "bot3", 
       "videoFile": "bot3pic.y4m",
       "audioFile": "Tagesschau2.wav",
-      "enableAudio": true
+      "enableAudio": false
     },
     {
       "id": 4,
@@ -51,7 +49,7 @@
       "mediaFolder": "bot5",
       "videoFile": "bot5pic.y4m",
       "audioFile": "Tagesschau4.wav",
-      "enableAudio": false
+      "enableAudio": true
     },
     {
       "id": 6,

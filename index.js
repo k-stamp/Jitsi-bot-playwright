@@ -1,5 +1,4 @@
 const { chromium } = require('playwright');
-const { uniqueNamesGenerator, adjectives, colors, animals, NumberDictionary } = require('unique-names-generator');
 const fs = require('fs');
 const path = require('path');
 
@@ -21,17 +20,10 @@ function debug(message) {
   }
 }
 
-// Funktion zum Warten bis zur nächsten vollen Minute
-function waitUntilNextFullMinute() {
-  const now = new Date();
-  const nextMinute = new Date(now);
-  nextMinute.setSeconds(0, 0);
-  nextMinute.setMinutes(nextMinute.getMinutes() + 1);
-  
-  const waitTime = nextMinute.getTime() - now.getTime();
-  console.log(`Warte ${Math.round(waitTime / 1000)} Sekunden bis zur nächsten vollen Minute (${nextMinute.toLocaleTimeString()})...`);
-  
-  return new Promise(resolve => setTimeout(resolve, waitTime));
+// Neue Hilfsfunktion für Zeitstempel-Logging
+function logWithTimestamp(message) {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] ${message}`);
 }
 
 // Hauptfunktion
@@ -52,28 +44,63 @@ function waitUntilNextFullMinute() {
     process.exit(1);
   }
 
-  // NEUE LOGIK: Alle Bots parallel starten
-  console.log('Starte alle Bots gleichzeitig...');
-  
-  // Array für alle Bot-Promises
-  const botPromises = [];
+  // ZURÜCK ZUR PARALLELEN LOGIK - aber mit kontrolliertem Join-Zeitpunkt
+  console.log(`Starte ${config.numberofbots} Bots parallel mit gestaffeltem Join basierend auf Bot-ID...`);
+
   const browsers = [];
-  
-  // Starte alle Bots parallel (ohne await)
-  for (let i = 0; i < config.numberofbots; i++) {
-    const botConfig = config.bots[i];
-    const botPromise = startUser(i, botConfig, browsers);
-    botPromises.push(botPromise);
+  const batchSize = 4; // Maximal 4 Bots gleichzeitig starten
+  const batchDelay = 2000; // 2 Sekunden zwischen Batches
+
+  // Teile Bots in Batches auf
+  const batches = [];
+  for (let i = 0; i < config.numberofbots; i += batchSize) {
+    batches.push(config.bots.slice(i, i + batchSize));
   }
-  
-  // Warte, bis alle Bots der Konferenz beigetreten sind
-  console.log('Warte darauf, dass alle Bots der Konferenz beitreten...');
-  const botResults = await Promise.all(botPromises);
-  
-  console.log('Alle Bots sind der Konferenz beigetreten!');
-  
-  // Warte bis zur nächsten vollen Minute
-  await waitUntilNextFullMinute();
+
+  console.log(`Starte ${config.numberofbots} Bots in ${batches.length} Batches (${batchSize} Bots pro Batch)`);
+  console.log(`Jeder Bot wird basierend auf seiner ID gestaffelt joinen: Bot-ID * 500ms`);
+
+  // Verarbeite jeden Batch
+  for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+    const batch = batches[batchIndex];
+    
+    if (batchIndex > 0) {
+      console.log(`Warte ${batchDelay}ms vor dem nächsten Batch...`);
+      await new Promise(resolve => setTimeout(resolve, batchDelay));
+    }
+    
+    console.log(`Starte Batch ${batchIndex + 1}/${batches.length} mit ${batch.length} Bots...`);
+    
+    // Starte Bots in diesem Batch parallel mit gestaffelter Verzögerung
+    const batchPromises = batch.map((botConfig, batchBotIndex) => {
+      const globalBotIndex = batchIndex * batchSize + batchBotIndex;
+      
+      return new Promise(async (resolve) => {
+        // Gestaffelte Verzögerung innerhalb des Batches
+        const delay = batchBotIndex * config.delayBetweenBots;
+        
+        if (delay > 0) {
+          console.log(`Bot ${globalBotIndex + 1} wartet ${delay}ms vor dem Start...`);
+          await new Promise(resolveDelay => setTimeout(resolveDelay, delay));
+        }
+        
+        console.log(`Starte Bot ${globalBotIndex + 1} (${botConfig.name})...`);
+        try {
+          const result = await startUser(globalBotIndex, botConfig, browsers);
+          resolve(result);
+        } catch (error) {
+          console.error(`Bot ${globalBotIndex + 1} Fehler:`, error.message);
+          resolve(null);
+        }
+      });
+    });
+    
+    // Warte auf alle Bots in diesem Batch
+    const batchResults = await Promise.all(batchPromises);
+    console.log(`Batch ${batchIndex + 1} abgeschlossen. Erfolgreiche Bots: ${batchResults.filter(r => r !== null).length}/${batch.length}`);
+  }
+
+  console.log('Alle Bots sind gestartet!');
   
   console.log('Synchroner Start von Audio und Video für alle Bots!');
   
@@ -122,16 +149,28 @@ function waitUntilNextFullMinute() {
     if (botConfig.enableAudio) {
       launchOptions.args.push(
         '--auto-accept-camera-and-microphone-capture',
-        '--use-fake-device-for-media-stream',
-        `--use-file-for-fake-video-capture=${videoFile}`,
-        `--use-file-for-fake-audio-capture=${audioFile}`
+        '--use-fake-device-for-media-stream'
       );
+      
+      // Video nur hinzufügen, wenn global aktiviert
+      if (config.enableVideo) {
+        launchOptions.args.push(`--use-file-for-fake-video-capture=${videoFile}`);
+      }
+      
+      launchOptions.args.push(`--use-file-for-fake-audio-capture=${audioFile}`);
     } else {
       // Für Bots ohne Audio: Mikrofon komplett deaktivieren
       launchOptions.args.push(
         '--auto-accept-camera-and-microphone-capture',
-        '--use-fake-device-for-media-stream',
-        `--use-file-for-fake-video-capture=${videoFile}`,
+        '--use-fake-device-for-media-stream'
+      );
+      
+      // Video nur hinzufügen, wenn global aktiviert
+      if (config.enableVideo) {
+        launchOptions.args.push(`--use-file-for-fake-video-capture=${videoFile}`);
+      }
+      
+      launchOptions.args.push(
         '--disable-features=VizDisplayCompositor',
         '--mute-audio'
       );
@@ -142,8 +181,14 @@ function waitUntilNextFullMinute() {
     const browser = await chromium.launch(launchOptions);
     browsersArray.push(browser);
     
-    // Unterschiedliche Berechtigungen je nach Audio-Status
-    const permissions = botConfig.enableAudio ? ['camera', 'microphone'] : ['camera'];
+    // Unterschiedliche Berechtigungen je nach Audio-Status und Video-Status
+    const permissions = [];
+    if (config.enableVideo) {
+      permissions.push('camera');
+    }
+    // WICHTIG: Auch für Bots ohne Audio die Mikrofonberechtigung geben
+    // um Jitsi nicht zu verwirren
+    permissions.push('microphone');
     
     const context = await browser.newContext({
       viewport: { width: 1280, height: 720 },
@@ -151,93 +196,139 @@ function waitUntilNextFullMinute() {
       ignoreHTTPSErrors: true
     });
 
-    if (botConfig.enableAudio) {
-      await context.grantPermissions(['camera', 'microphone']);
-    } else {
-      await context.grantPermissions(['camera']);
+    if (permissions.length > 0) {
+      await context.grantPermissions(permissions);
     }
 
-    const randomName = uniqueNamesGenerator({ 
-      dictionaries: [colors, adjectives, animals], 
-      separator: "", 
-      length: 2, 
-      style: 'capital' 
-    }) + NumberDictionary.generate({ min: 10, max: 9999 });
-    
-    const botName = config.userandomnames ? randomName : (botConfig.name || config.customname);
+    const botName = botConfig.name || config.customname;
     const page = await context.newPage();
 
-    // Für Bots ohne Audio: Audio-Context überschreiben um Störgeräusche zu vermeiden
+    // Für Bots ohne Audio: Bessere Audio-Deaktivierung
     if (!botConfig.enableAudio) {
       await page.addInitScript(() => {
-        // Überschreibe getUserMedia um kein Audio zu liefern
+        // Überschreibe getUserMedia um einen stummen Audio-Stream zu liefern
         const originalGetUserMedia = navigator.mediaDevices.getUserMedia;
         navigator.mediaDevices.getUserMedia = async function(constraints) {
-          if (constraints && constraints.audio) {
-            // Entferne Audio-Constraint
-            const newConstraints = { ...constraints };
-            delete newConstraints.audio;
-            return originalGetUserMedia.call(navigator.mediaDevices, newConstraints);
+          try {
+            if (constraints && constraints.audio) {
+              // Erstelle einen stummen Audio-Stream statt Audio zu entfernen
+              const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+              const oscillator = audioContext.createOscillator();
+              const gainNode = audioContext.createGain();
+              const destination = audioContext.createMediaStreamDestination();
+              
+              // Setze Lautstärke auf 0 (stumm)
+              gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+              
+              oscillator.connect(gainNode);
+              gainNode.connect(destination);
+              oscillator.start();
+              
+              // Wenn auch Video angefordert wird, kombiniere die Streams
+              if (constraints.video) {
+                const videoStream = await originalGetUserMedia.call(
+                  navigator.mediaDevices, 
+                  { video: constraints.video }
+                );
+                
+                const combinedStream = new MediaStream();
+                // Füge stummen Audio-Track hinzu
+                destination.stream.getAudioTracks().forEach(track => {
+                  combinedStream.addTrack(track);
+                });
+                // Füge Video-Tracks hinzu
+                videoStream.getVideoTracks().forEach(track => {
+                  combinedStream.addTrack(track);
+                });
+                
+                return combinedStream;
+              }
+              
+              return destination.stream;
+            }
+            
+            // Für alle anderen Fälle die Original-Funktion verwenden
+            return originalGetUserMedia.call(navigator.mediaDevices, constraints);
+          } catch (error) {
+            console.error('Fehler bei der Audio-Deaktivierung:', error);
+            // Fallback: Original-Funktion verwenden
+            return originalGetUserMedia.call(navigator.mediaDevices, constraints);
           }
-          return originalGetUserMedia.call(navigator.mediaDevices, constraints);
         };
         
-        // Überschreibe AudioContext um keine Audio-Verarbeitung zu haben
-        window.AudioContext = class {
-          constructor() {
-            return {
-              createMediaStreamDestination: () => ({ stream: new MediaStream() }),
-              createOscillator: () => ({ 
-                connect: () => {}, 
-                start: () => {},
-                frequency: { setValueAtTime: () => {} }
-              }),
-              currentTime: 0
-            };
-          }
-        };
-        
-        console.log('Audio komplett deaktiviert für diesen Bot');
+        console.log('Stummer Audio-Stream für Bot ohne Audio erstellt');
       });
     }
 
     console.log(`Bot ${index + 1} (${botName}): Starte...`);
 
     try {
-      // Direkt zur Jitsi-URL navigieren
-      await page.goto(config.url);
+      // Direkt zur Jitsi-URL navigieren mit längerem Timeout
+      console.log(`Bot ${index + 1} (${botName}): Navigiere zur Konferenz...`);
+      await page.goto(config.url, { 
+        timeout: 60000, // 60 Sekunden statt 30
+        waitUntil: 'domcontentloaded' // Warte nur auf DOM, nicht auf alle Ressourcen
+      });
       console.log(`Bot ${index + 1} (${botName}): Zur Konferenz navigiert`);
 
-      // Warte auf Name-Eingabefeld
+      // Warte auf Name-Eingabefeld mit längerem Timeout
       const nameField = 'div.premeeting-screen input';
-      await page.waitForSelector(nameField, { timeout: 10000 });
+      await page.waitForSelector(nameField, { timeout: 15000 }); // 15 Sekunden
       await page.fill(nameField, botName);
       
-      // Meeting beitreten
+      // Meeting beitreten - HIER IMPLEMENTIEREN WIR DIE VERZÖGERUNG
       const joinButton = 'div[data-testid="prejoin.joinMeeting"]';
+      await page.waitForSelector(joinButton, { timeout: 10000 });
+      
+      // NEUE LOGIK: Bot wartet basierend auf seiner ID vor dem Klick auf Join
+      const joinDelay = (botConfig.id - 1) * 500; // Bot 1 = 0ms, Bot 2 = 500ms, Bot 3 = 1000ms, etc.
+      
+      if (joinDelay > 0) {
+        console.log(`Bot ${index + 1} (${botName}): Wartet ${joinDelay}ms vor dem Beitritt (basierend auf ID ${botConfig.id})...`);
+        await page.waitForTimeout(joinDelay);
+      }
+      
+      console.log(`Bot ${index + 1} (${botName}): Klickt jetzt auf Join-Button...`);
       await page.click(joinButton);
       console.log(`Bot ${index + 1} (${botName}): Meeting beigetreten`);
 
-      // Kurz warten, damit alles lädt
-      await page.waitForTimeout(3000);
+      // Warte bis Bot wirklich in der Konferenz ist
+      await page.waitForTimeout(2000);
 
       // Automatisches Verlassen nach konfigurierter Zeit
       if (config.autoLeaveAfter && config.autoLeaveAfter > 0) {
-        console.log(`Bot ${index + 1} (${botName}): Wird die Konferenz in ${config.autoLeaveAfter}ms verlassen`);
+        logWithTimestamp(`Bot ${index + 1} (${botName}): Wird die Konferenz in ${config.autoLeaveAfter}ms verlassen`);
         
         setTimeout(async () => {
           try {
+            logWithTimestamp(`Bot ${index + 1} (${botName}): Startet automatisches Verlassen der Konferenz nach ${config.autoLeaveAfter}ms`);
             await leaveConference(page, botName, index + 1, browser);
           } catch (err) {
-            console.error(`Bot ${index + 1} (${botName}): Fehler beim Verlassen der Konferenz: ${err.message}`);
+            logWithTimestamp(`Bot ${index + 1} (${botName}): Fehler beim automatischen Verlassen der Konferenz: ${err.message}`);
           }
         }, config.autoLeaveAfter);
       }
+
+      // Event-Listener für unerwartetes Schließen der Seite hinzufügen
+      page.on('close', () => {
+        logWithTimestamp(`Bot ${index + 1} (${botName}): Seite wurde unerwartet geschlossen`);
+      });
+
+      // Event-Listener für Browser-Disconnect
+      browser.on('disconnected', () => {
+        logWithTimestamp(`Bot ${index + 1} (${botName}): Browser wurde getrennt`);
+      });
 
       return { page, browser, botName, index: index + 1 };
 
     } catch (err) {
       console.error(`Bot ${index + 1} (${botName}): Fehler: ${err.message}`);
+      
+      // Detailliertere Fehlerbehandlung
+      if (err.message.includes('Timeout')) {
+        console.error(`Bot ${index + 1}: Timeout-Fehler - möglicherweise Systemüberlastung`);
+      }
+      
       await browser.close();
       return null;
     }
@@ -246,11 +337,13 @@ function waitUntilNextFullMinute() {
   // Funktion zum Verlassen der Konferenz
   async function leaveConference(page, botName, botIndex, browser) {
     try {
+      logWithTimestamp(`Bot ${botIndex} (${botName}): VERLASSEN GESTARTET - Bot möchte die Konferenz verlassen`);
       debug(`Bot ${botIndex} (${botName}): Versuche Konferenz zu verlassen...`);
       
       // Ersten Button klicken (Hangup-Button in der Toolbar)
       const hangupButton = '#new-toolbox > div > div > div > div:nth-child(10) > div > div';
       await page.waitForSelector(hangupButton, { timeout: 5000 });
+      logWithTimestamp(`Bot ${botIndex} (${botName}): Hangup-Button gefunden, klicke jetzt...`);
       await page.click(hangupButton);
       debug(`Bot ${botIndex} (${botName}): Hangup-Button geklickt`);
       
@@ -272,6 +365,7 @@ function waitUntilNextFullMinute() {
       );
       
       debug(`Bot ${botIndex} (${botName}): Bestätigungs-Button ist bereit`);
+      logWithTimestamp(`Bot ${botIndex} (${botName}): Bestätigungs-Button bereit, bestätige Verlassen...`);
       
       // Noch eine kurze Pause vor dem Klick
       await page.waitForTimeout(500);
@@ -279,7 +373,7 @@ function waitUntilNextFullMinute() {
       await page.click(confirmButton);
       debug(`Bot ${botIndex} (${botName}): Bestätigungs-Button geklickt`);
       
-      console.log(`Bot ${botIndex} (${botName}): Hat die Konferenz erfolgreich verlassen`);
+      logWithTimestamp(`Bot ${botIndex} (${botName}): VERLASSEN ABGESCHLOSSEN - Hat die Konferenz erfolgreich verlassen`);
       
       // Kurz warten bevor die Seite geschlossen wird
       await page.waitForTimeout(1000);
@@ -287,8 +381,10 @@ function waitUntilNextFullMinute() {
       
       // Browser schließen nach dem Verlassen
       await browser.close();
+      logWithTimestamp(`Bot ${botIndex} (${botName}): Browser geschlossen`);
       
     } catch (err) {
+      logWithTimestamp(`Bot ${botIndex} (${botName}): FEHLER BEIM VERLASSEN: ${err.message}`);
       console.error(`Bot ${botIndex} (${botName}): Fehler beim Verlassen: ${err.message}`);
       await browser.close();
     }
