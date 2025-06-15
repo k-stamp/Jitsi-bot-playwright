@@ -1,5 +1,5 @@
 {
-  "url": "https://192.168.178.24:8080/lanz1",
+  "url": "https://192.168.178.24:8080/2",
   "numberofbots": 4,
   "headless": true,
   "delayBetweenBots": 1000,
@@ -33,7 +33,7 @@
       "mediaFolder": "bot3", 
       "videoFile": "bot3pic.y4m",
       "audioFile": "Tagesschau2.wav",
-      "enableAudio": true
+      "enableAudio": false
     },
     {
       "id": 4,

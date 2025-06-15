@@ -185,9 +185,9 @@ function logWithTimestamp(message) {
     if (config.enableVideo) {
       permissions.push('camera');
     }
-    if (botConfig.enableAudio) {
-      permissions.push('microphone');
-    }
+    // WICHTIG: Auch für Bots ohne Audio die Mikrofonberechtigung geben
+    // um Jitsi nicht zu verwirren
+    permissions.push('microphone');
     
     const context = await browser.newContext({
       viewport: { width: 1280, height: 720 },
@@ -202,37 +202,60 @@ function logWithTimestamp(message) {
     const botName = botConfig.name || config.customname;
     const page = await context.newPage();
 
-    // Für Bots ohne Audio: Audio-Context überschreiben um Störgeräusche zu vermeiden
+    // Für Bots ohne Audio: Bessere Audio-Deaktivierung
     if (!botConfig.enableAudio) {
       await page.addInitScript(() => {
-        // Überschreibe getUserMedia um kein Audio zu liefern
+        // Überschreibe getUserMedia um einen stummen Audio-Stream zu liefern
         const originalGetUserMedia = navigator.mediaDevices.getUserMedia;
         navigator.mediaDevices.getUserMedia = async function(constraints) {
-          if (constraints && constraints.audio) {
-            // Entferne Audio-Constraint
-            const newConstraints = { ...constraints };
-            delete newConstraints.audio;
-            return originalGetUserMedia.call(navigator.mediaDevices, newConstraints);
+          try {
+            if (constraints && constraints.audio) {
+              // Erstelle einen stummen Audio-Stream statt Audio zu entfernen
+              const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+              const oscillator = audioContext.createOscillator();
+              const gainNode = audioContext.createGain();
+              const destination = audioContext.createMediaStreamDestination();
+              
+              // Setze Lautstärke auf 0 (stumm)
+              gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+              
+              oscillator.connect(gainNode);
+              gainNode.connect(destination);
+              oscillator.start();
+              
+              // Wenn auch Video angefordert wird, kombiniere die Streams
+              if (constraints.video) {
+                const videoStream = await originalGetUserMedia.call(
+                  navigator.mediaDevices, 
+                  { video: constraints.video }
+                );
+                
+                const combinedStream = new MediaStream();
+                // Füge stummen Audio-Track hinzu
+                destination.stream.getAudioTracks().forEach(track => {
+                  combinedStream.addTrack(track);
+                });
+                // Füge Video-Tracks hinzu
+                videoStream.getVideoTracks().forEach(track => {
+                  combinedStream.addTrack(track);
+                });
+                
+                return combinedStream;
+              }
+              
+              return destination.stream;
+            }
+            
+            // Für alle anderen Fälle die Original-Funktion verwenden
+            return originalGetUserMedia.call(navigator.mediaDevices, constraints);
+          } catch (error) {
+            console.error('Fehler bei der Audio-Deaktivierung:', error);
+            // Fallback: Original-Funktion verwenden
+            return originalGetUserMedia.call(navigator.mediaDevices, constraints);
           }
-          return originalGetUserMedia.call(navigator.mediaDevices, constraints);
         };
         
-        // Überschreibe AudioContext um keine Audio-Verarbeitung zu haben
-        window.AudioContext = class {
-          constructor() {
-            return {
-              createMediaStreamDestination: () => ({ stream: new MediaStream() }),
-              createOscillator: () => ({ 
-                connect: () => {}, 
-                start: () => {},
-                frequency: { setValueAtTime: () => {} }
-              }),
-              currentTime: 0
-            };
-          }
-        };
-        
-        console.log('Audio komplett deaktiviert für diesen Bot');
+        console.log('Stummer Audio-Stream für Bot ohne Audio erstellt');
       });
     }
 
