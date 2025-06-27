@@ -1,8 +1,8 @@
 {
-  "url": "https://192.168.178.24:8080/12",
+  "url": "https://192.168.178.64:8080/test1",
   "numberofbots": 8,
   "headless": true,
-  "delayBetweenBots": 10000,
+  "delayBetweenBots": 100,
   "haspassword": false,
   "password": "meetingpasswort",
   "autoclose": false,
