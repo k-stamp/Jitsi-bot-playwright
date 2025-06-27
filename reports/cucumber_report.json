@@ -1,0 +1,59 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "jitsi-bot-tests;ein-bot-tritt-einer-konferenz-bei",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Ein Bot tritt einer Konferenz bei",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 176084
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "Bot 1 joint der Sitzung \"test4\" ohne Video",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:9"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 19609916708,
+              "error_message": "Error: Fehler beim Beitreten zur Sitzung für Bot1: page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('div[data-testid=\"toolbox.audioToggle\"]') to be visible\u001b[22m\n\n    at BotManager.joinRoom (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/bot-manager.js:231:13)\n    at async BotManager.joinBot (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/bot-manager.js:57:7)\n    at async JitsiBotWorld.joinBot (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/features/support/world.js:19:7)\n    at async JitsiBotWorld.<anonymous> (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/features/step_definitions/jitsi-bot-steps.js:10:3)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 361915
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@test1",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "jitsi-bot-tests",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Jitsi Bot-Tests",
+    "tags": [],
+    "uri": "features/Bot-Test.feature"
+  }
+]

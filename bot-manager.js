@@ -54,7 +54,7 @@ class BotManager {
       
       // Zur Sitzung joinen
       const url = `${this.baseUrl}/${roomName}`;
-      await this.joinRoom(botInstance, url, botConfig.name);
+      await this.joinRoom(botInstance, url, botConfig.name, withVideo);
 
       // Bot in Map speichern
       this.bots.set(botId, {
@@ -151,7 +151,7 @@ class BotManager {
   }
 
   // Bot zu Raum hinzufügen
-  async joinRoom(botInstance, url, botName) {
+  async joinRoom(botInstance, url, botName, withVideo) {
     const { page } = botInstance;
 
     try {
@@ -167,6 +167,31 @@ class BotManager {
       await page.waitForSelector(nameField, { timeout: 15000 });
       await page.fill(nameField, botName);
       this.debug(`Name "${botName}" wurde in das Feld eingegeben`);
+      
+      // NEUE LOGIK: Video in der UI deaktivieren, falls gewünscht
+      if (!withVideo) {
+        this.logWithTimestamp(`Video soll für Bot "${botName}" deaktiviert sein. Prüfe den Zustand der Kamera in der UI.`);
+        try {
+          // Robuster Selektor: findet den Button, egal ob an- oder ausgeschaltet, indem er nach dem Wort "Kamera" im Label sucht.
+          const cameraButtonSelector = 'div[role="button"][aria-label*="Kamera"]';
+          const cameraButton = await page.waitForSelector(cameraButtonSelector, { timeout: 5000 });
+          
+          // Prüfen, ob die Kamera aktiv ist. aria-pressed="false" bedeutet AN.
+          const isCameraActive = await cameraButton.getAttribute('aria-pressed');
+          
+          if (isCameraActive === 'false') {
+              this.logWithTimestamp(`Kamera für Bot "${botName}" ist aktiv. Deaktiviere sie jetzt.`);
+              await cameraButton.click();
+              this.debug(`Kamera für Bot "${botName}" wurde in der UI deaktiviert.`);
+          } else {
+              // aria-pressed ist 'true', die Kamera ist also bereits aus.
+              this.logWithTimestamp(`Kamera für Bot "${botName}" ist bereits wie gewünscht deaktiviert.`);
+          }
+        } catch (error) {
+          // Wenn wir nicht einmal einen Button mit "Kamera" im Label finden, stimmt etwas mit der Seite nicht.
+          this.logWithTimestamp(`[WARNUNG] Konnte den Kamera-Button für Bot "${botName}" nicht finden. Fährt ohne Video-Aktion fort.`);
+        }
+      }
       
       // Join-Button (Logik aus index.js) 
       const joinButton = 'div[data-testid="prejoin.joinMeeting"]';
