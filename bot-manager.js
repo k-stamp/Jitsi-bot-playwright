@@ -89,8 +89,24 @@ class BotManager {
       '--allow-file-access-from-files',
       '--autoplay-policy=no-user-gesture-required',
       '--disable-web-security',
-      '--ignore-certificate-errors'
+      '--ignore-certificate-errors',
+      '--disable-features=VizDisplayCompositor'
     ];
+
+    // Zusätzliche Argumente für bessere Headless-Kompatibilität
+    if (this.config.headless === true) {
+      baseArgs.push(
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
+        '--no-first-run',
+        '--no-sandbox',
+        '--no-zygote',
+        '--disable-background-timer-throttling',
+        '--disable-backgrounding-occluded-windows',
+        '--disable-renderer-backgrounding'
+      );
+    }
 
     const launchOptions = {
       headless: this.config.headless === true,
@@ -168,30 +184,18 @@ class BotManager {
       await page.fill(nameField, botName);
       this.debug(`Name "${botName}" wurde in das Feld eingegeben`);
       
+      // Warte etwas länger, damit die UI vollständig geladen ist (besonders wichtig im Headless-Modus)
+      await page.waitForTimeout(2000);
+      
       // NEUE LOGIK: Video in der UI deaktivieren, falls gewünscht
       if (!withVideo) {
         this.logWithTimestamp(`Video soll für Bot "${botName}" deaktiviert sein. Prüfe den Zustand der Kamera in der UI.`);
-        try {
-          // Robuster Selektor: findet den Button, egal ob an- oder ausgeschaltet, indem er nach dem Wort "Kamera" im Label sucht.
-          const cameraButtonSelector = 'div[role="button"][aria-label*="Kamera"]';
-          const cameraButton = await page.waitForSelector(cameraButtonSelector, { timeout: 5000 });
-          
-          // Prüfen, ob die Kamera aktiv ist. aria-pressed="false" bedeutet AN.
-          const isCameraActive = await cameraButton.getAttribute('aria-pressed');
-          
-          if (isCameraActive === 'false') {
-              this.logWithTimestamp(`Kamera für Bot "${botName}" ist aktiv. Deaktiviere sie jetzt.`);
-              await cameraButton.click();
-              this.debug(`Kamera für Bot "${botName}" wurde in der UI deaktiviert.`);
-          } else {
-              // aria-pressed ist 'true', die Kamera ist also bereits aus.
-              this.logWithTimestamp(`Kamera für Bot "${botName}" ist bereits wie gewünscht deaktiviert.`);
-          }
-        } catch (error) {
-          // Wenn wir nicht einmal einen Button mit "Kamera" im Label finden, stimmt etwas mit der Seite nicht.
-          this.logWithTimestamp(`[WARNUNG] Konnte den Kamera-Button für Bot "${botName}" nicht finden. Fährt ohne Video-Aktion fort.`);
-        }
+        await this.handleCameraButton(page, botName, false);
       }
+      
+      // NEUE LOGIK: Mikrofon in der UI immer deaktivieren
+      this.logWithTimestamp(`Prüfe den Zustand des Mikrofons für Bot "${botName}" in der UI.`);
+      await this.handleMicrophoneButton(page, botName, true);
       
       // Join-Button (Logik aus index.js) 
       const joinButton = 'div[data-testid="prejoin.joinMeeting"]';
@@ -202,26 +206,10 @@ class BotManager {
       await page.click(joinButton);
       
       // Stabile Wartezeit nach dem Klick (Logik aus index.js)
-      this.debug('Warte 3 Sekunden, bis der Beitritt abgeschlossen ist');
-      await page.waitForTimeout(3000);
+      this.debug('Warte 5 Sekunden, bis der Beitritt abgeschlossen ist und die UI geladen hat.');
+      await page.waitForTimeout(5000);
       
-      // KORRIGIERTE LOGIK: Explizit stummschalten, falls Mikrofon bei Beitritt aktiv ist
-      this.debug(`Prüfe Mikrofonstatus für Bot "${botName}" nach Beitritt`);
-      const micButtonSelector = 'div[data-testid="toolbox.audioToggle"]';
-      const micButton = await page.waitForSelector(micButtonSelector, { timeout: 10000 });
-      
-      // Laut Ihrer Analyse: 'aria-pressed="false"' bedeutet, das Mikrofon ist AN.
-      const isMicActive = await micButton.getAttribute('aria-pressed');
-      
-      if (isMicActive === 'false') {
-        this.logWithTimestamp(`Mikrofon für Bot "${botName}" ist bei Beitritt aktiv (aria-pressed="false"). Schalte es jetzt stumm.`);
-        await page.click(micButtonSelector);
-      } else {
-        // isMicActive ist 'true', also bereits stumm.
-        this.debug(`Mikrofon für Bot "${botName}" ist bereits wie gewünscht stumm (aria-pressed="true").`);
-      }
-
-      this.logWithTimestamp(`Bot ${botName} ist der Sitzung erfolgreich beigetreten und der Mikrofonstatus wurde sichergestellt.`);
+      this.logWithTimestamp(`Bot ${botName} ist der Sitzung erfolgreich beigetreten.`);
     } catch (error) {
       console.error(`[FEHLER] Bot ${botName} konnte nicht beitreten: ${error.message}`);
       // Screenshot bei Fehler für besseres Debugging
@@ -229,6 +217,150 @@ class BotManager {
       await page.screenshot({ path: screenshotPath });
       console.error(`[DEBUG] Screenshot wurde unter ${screenshotPath} gespeichert.`);
       throw new Error(`Fehler beim Beitreten zur Sitzung für ${botName}: ${error.message}`);
+    }
+  }
+
+  // Kamera-Button handhaben (robuste Methode für Headless-Modus)
+  async handleCameraButton(page, botName, shouldBeEnabled) {
+    const action = shouldBeEnabled ? 'aktivieren' : 'deaktivieren';
+    
+    try {
+      // Mehrere Selektoren probieren, um robuster zu sein
+      const cameraSelectors = [
+        'div[role="button"][aria-label*="Kamera"]',
+        'div[role="button"][aria-label*="Camera"]',
+        'button[aria-label*="Kamera"]',
+        'button[aria-label*="Camera"]',
+        '[data-testid*="camera"]',
+        '[data-testid*="video"]'
+      ];
+
+      let cameraButton = null;
+      
+      // Versuche verschiedene Selektoren
+      for (const selector of cameraSelectors) {
+        try {
+          cameraButton = await page.waitForSelector(selector, { timeout: 3000 });
+          if (cameraButton) {
+            this.debug(`Kamera-Button mit Selektor "${selector}" gefunden`);
+            break;
+          }
+        } catch (e) {
+          // Versuche nächsten Selektor
+          continue;
+        }
+      }
+
+      if (!cameraButton) {
+        this.logWithTimestamp(`[WARNUNG] Konnte keinen Kamera-Button für Bot "${botName}" finden. Fährt ohne Video-Aktion fort.`);
+        return;
+      }
+
+      // Warte kurz für UI-Stabilität im Headless-Modus
+      await page.waitForTimeout(500);
+
+      // Prüfen, ob bereits im gewünschten Zustand
+      const isPressed = await cameraButton.getAttribute('aria-pressed');
+      const isCurrentlyEnabled = isPressed === 'false'; // aria-pressed="false" bedeutet die Kamera ist AN
+
+      if (shouldBeEnabled && !isCurrentlyEnabled) {
+        this.logWithTimestamp(`Kamera für Bot "${botName}" ist aus. ${action}.`);
+        await cameraButton.click();
+        await page.waitForTimeout(500); // Warte nach Klick
+        this.debug(`Kamera für Bot "${botName}" wurde aktiviert.`);
+      } else if (!shouldBeEnabled && isCurrentlyEnabled) {
+        this.logWithTimestamp(`Kamera für Bot "${botName}" ist an. ${action}.`);
+        await cameraButton.click();
+        await page.waitForTimeout(500); // Warte nach Klick
+        this.debug(`Kamera für Bot "${botName}" wurde deaktiviert.`);
+      } else {
+        this.logWithTimestamp(`Kamera für Bot "${botName}" ist bereits wie gewünscht ${isCurrentlyEnabled ? 'aktiviert' : 'deaktiviert'}.`);
+      }
+    } catch (error) {
+      this.logWithTimestamp(`[WARNUNG] Fehler beim ${action} der Kamera für Bot "${botName}": ${error.message}`);
+    }
+  }
+
+  // Mikrofon-Button handhaben (robuste Methode für Headless-Modus)
+  async handleMicrophoneButton(page, botName, shouldBeMuted) {
+    const action = shouldBeMuted ? 'stummschalten' : 'Stummschaltung aufheben';
+    
+    try {
+      // Mehrere Selektoren probieren, um robuster zu sein
+      const micSelectors = [
+        'div[role="button"][aria-label*="Mikrofon"]',
+        'div[role="button"][aria-label*="Stummschaltung"]',
+        'div[role="button"][aria-label*="Microphone"]',
+        'div[role="button"][aria-label*="Mute"]',
+        'button[aria-label*="Mikrofon"]',
+        'button[aria-label*="Microphone"]',
+        '[data-testid*="audio"]',
+        '[data-testid*="mic"]'
+      ];
+
+      let micButton = null;
+      
+      // Versuche verschiedene Selektoren
+      for (const selector of micSelectors) {
+        try {
+          micButton = await page.waitForSelector(selector, { timeout: 3000 });
+          if (micButton) {
+            this.debug(`Mikrofon-Button mit Selektor "${selector}" gefunden`);
+            break;
+          }
+        } catch (e) {
+          // Versuche nächsten Selektor
+          continue;
+        }
+      }
+
+      if (!micButton) {
+        this.logWithTimestamp(`[WARNUNG] Konnte keinen Mikrofon-Button für Bot "${botName}" finden. Fährt fort.`);
+        return;
+      }
+
+      // Warte kurz für UI-Stabilität im Headless-Modus
+      await page.waitForTimeout(500);
+
+      // Prüfen, ob bereits im gewünschten Zustand
+      const isPressed = await micButton.getAttribute('aria-pressed');
+      const isCurrentlyMuted = isPressed === 'true'; // aria-pressed="true" bedeutet das Mikrofon ist STUMM
+
+      if (shouldBeMuted && !isCurrentlyMuted) {
+        this.logWithTimestamp(`Mikrofon für Bot "${botName}" ist an. ${action}.`);
+        await micButton.click();
+        await page.waitForTimeout(500); // Warte nach Klick
+        this.debug(`Mikrofon für Bot "${botName}" wurde stummgeschaltet.`);
+      } else if (!shouldBeMuted && isCurrentlyMuted) {
+        this.logWithTimestamp(`Mikrofon für Bot "${botName}" ist stumm. ${action}.`);
+        await micButton.click();
+        await page.waitForTimeout(500); // Warte nach Klick
+        this.debug(`Stummschaltung für Bot "${botName}" wurde aufgehoben.`);
+      } else {
+        this.logWithTimestamp(`Mikrofon für Bot "${botName}" ist bereits wie gewünscht ${isCurrentlyMuted ? 'stummgeschaltet' : 'aktiviert'}.`);
+      }
+    } catch (error) {
+      this.logWithTimestamp(`[WARNUNG] Fehler beim ${action} für Bot "${botName}": ${error.message}`);
+    }
+  }
+
+  // Mikrofon eines Bots stummschalten oder Stummschaltung aufheben
+  async setMuteForBot(botId, shouldBeMuted) {
+    const bot = this.bots.get(botId);
+    if (!bot) {
+      throw new Error(`Bot ${botId} nicht gefunden oder nicht aktiv.`);
+    }
+
+    const { page, config } = bot;
+    const action = shouldBeMuted ? 'stummschalten' : 'Stummschaltung aufheben';
+    this.logWithTimestamp(`Versuche, für Bot ${botId} die Aktion '${action}' auszuführen.`);
+
+    try {
+      await this.handleMicrophoneButton(page, config.name, shouldBeMuted);
+    } catch (error) {
+      const errorMessage = `Konnte den Mikrofon-Button für Bot ${botId} nicht umschalten: ${error.message}`;
+      console.error(`[FEHLER] ${errorMessage}`);
+      throw new Error(errorMessage);
     }
   }
 

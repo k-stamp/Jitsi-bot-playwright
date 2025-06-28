@@ -14,21 +14,86 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 176084
+              "duration": 133250
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 5,
-            "name": "Bot 1 joint der Sitzung \"test4\" ohne Video",
+            "name": "Bot 1 joint der Sitzung \"test1\" ohne Video",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:9"
             },
             "result": {
+              "status": "passed",
+              "duration": 18368060833
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "warte 5 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5001711666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "Bot 1 hebt die Stummschaltung auf",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+            },
+            "result": {
               "status": "failed",
-              "duration": 19609916708,
-              "error_message": "Error: Fehler beim Beitreten zur Sitzung für Bot1: page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('div[data-testid=\"toolbox.audioToggle\"]') to be visible\u001b[22m\n\n    at BotManager.joinRoom (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/bot-manager.js:231:13)\n    at async BotManager.joinBot (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/bot-manager.js:57:7)\n    at async JitsiBotWorld.joinBot (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/features/support/world.js:19:7)\n    at async JitsiBotWorld.<anonymous> (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/features/step_definitions/jitsi-bot-steps.js:10:3)"
+              "duration": 10002883290,
+              "error_message": "Error: Konnte den Mikrofon-Button für Bot 1 nicht umschalten: page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('div[role=\"button\"][aria-label*=\"Mikrofon\"], div[role=\"button\"][aria-label*=\"Stummschaltung\"]') to be visible\u001b[22m\n\n    at BotManager.setMuteForBot (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/bot-manager.js:274:13)\n    at async JitsiBotWorld.unmuteBot (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/features/support/world.js:120:5)\n    at async JitsiBotWorld.<anonymous> (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/features/step_definitions/jitsi-bot-steps.js:32:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "warte 10 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:35"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "Bot 1 schaltet sich stumm",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:27"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "warte 20 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:35"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -36,7 +101,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 361915
+              "duration": 37976833
             }
           }
         ],

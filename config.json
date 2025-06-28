@@ -1,7 +1,7 @@
 {
   "url": "https://192.168.178.64:8080/test4",
   "numberofbots": 8,
-  "headless": false,
+  "headless": true,
   "delayBetweenBots": 100,
   "haspassword": false,
   "password": "meetingpasswort",
@@ -16,7 +16,7 @@
       "name": "Bot1",
       "mediaFolder": "bot1",
       "videoFile": "bot1pic.y4m",
-      "audioFile": "bot1.wav",
+      "audioFile": "Alice.wav",
       "enableAudio": true
     },
     {

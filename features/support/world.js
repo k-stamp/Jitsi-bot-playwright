@@ -109,6 +109,16 @@ class JitsiBotWorld {
       console.error('✗ Fehler beim Schließen der Bots:', error.message);
     }
   }
+
+  // Bot stummschalten
+  async muteBot(botId) {
+    await this.botManager.setMuteForBot(botId, true);
+  }
+
+  // Stummschaltung für Bot aufheben
+  async unmuteBot(botId) {
+    await this.botManager.setMuteForBot(botId, false);
+  }
 }
 
 // World Constructor setzen

@@ -24,6 +24,14 @@ When('Bots {string} Audio abspielen', async function(botsString) {
   await this.startAudioForBots(botIds);
 });
 
+When('Bot {int} schaltet sich stumm', async function(botId) {
+  await this.muteBot(botId);
+});
+
+When('Bot {int} hebt die Stummschaltung auf', async function(botId) {
+  await this.unmuteBot(botId);
+});
+
 When('warte {int} Sekunden', async function(seconds) {
   await this.wait(seconds);
 });
