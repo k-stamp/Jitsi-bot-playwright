@@ -1,0 +1,97 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "jitsi-bot-tests;ein-bot-tritt-einer-konferenz-bei-ohne-audio-und-video",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Ein Bot tritt einer Konferenz bei ohne Audio und Video",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 434250
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "Bot 1 joint der Sitzung \"h5\" ohne Video",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14132340791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "warte 10 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10000178874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "Bot 1 Taste M betätigt",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:63"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 757829290
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "warte 20 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20000918374
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 74427374
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@test1",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "jitsi-bot-tests",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Jitsi Bot-Tests",
+    "tags": [],
+    "uri": "features/Bot-Test.feature"
+  }
+]

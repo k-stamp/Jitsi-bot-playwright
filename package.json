@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "cucumber-js",
-    "test:debug": "cucumber-js --format @cucumber/pretty-formatter"
+    "test:debug": "cucumber-js --format @cucumber/pretty-formatter",
+    "test:step-by-step": "DEBUG_STEP_BY_STEP=true cucumber-js --format @cucumber/pretty-formatter"
   },
   "keywords": [
     "playwright",

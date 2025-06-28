@@ -187,6 +187,16 @@ class BotManager {
       // Warte etwas länger, damit die UI vollständig geladen ist (besonders wichtig im Headless-Modus)
       await page.waitForTimeout(2000);
       
+      // Warte explizit auf das neue Toolbox-Element
+      try {
+        this.debug(`Warte auf neues Toolbox-Element für Bot "${botName}"`);
+        await page.waitForSelector('#new-toolbox', { timeout: 5000 });
+        this.debug(`Neues Toolbox-Element gefunden für Bot "${botName}"`);
+        await page.waitForTimeout(1000); // Zusätzliche Zeit für vollständige Initialisierung
+      } catch (error) {
+        this.debug(`Neues Toolbox-Element nicht gefunden, verwende Fallback-Selektoren für Bot "${botName}"`);
+      }
+      
       // NEUE LOGIK: Video in der UI deaktivieren, falls gewünscht
       if (!withVideo) {
         this.logWithTimestamp(`Video soll für Bot "${botName}" deaktiviert sein. Prüfe den Zustand der Kamera in der UI.`);
@@ -227,12 +237,19 @@ class BotManager {
     try {
       // Mehrere Selektoren probieren, um robuster zu sein
       const cameraSelectors = [
+        // NEUE Jitsi UI - new-toolbox Container (höchste Priorität)
+        '#new-toolbox > div > div > div > div.video-preview.css-wq06k3-container > div > div > div.toolbox-button',
+        '#new-toolbox .video-preview .toolbox-button',
+        '#new-toolbox .toolbox-button[aria-label*="Kamera"]',
+        '#new-toolbox .toolbox-button[aria-label*="stoppen"]',
+        '#new-toolbox .toolbox-button[aria-label*="Camera"]',
+        '#new-toolbox .toolbox-button[aria-label*="stop"]',
         // Premeeting-Screen Selektoren
         'div[role="button"][aria-label*="Kamera"]',
         'div[role="button"][aria-label*="Camera"]',
         'button[aria-label*="Kamera"]',
         'button[aria-label*="Camera"]',
-        // Hauptkonferenz-UI Selektoren
+        // Hauptkonferenz-UI Selektoren (Legacy)
         '[data-testid="toolbox.videoToggle"]',
         '[data-testid="toolbox.video"]',
         '[data-testid="toolbar.video"]',
@@ -310,13 +327,13 @@ class BotManager {
     const action = shouldBeMuted ? 'stummschalten' : 'Stummschaltung aufheben';
     
     try {
-      // NEUE STRATEGIE: Zuerst Tastaturkürzel versuchen (ist zuverlässiger in der Hauptkonferenz)
+      // NEUE STRATEGIE: Prüfe zuerst, ob wir auf der Premeeting-Seite oder in der Hauptkonferenz sind
       
-      // Für Hauptkonferenz: Verwende direkt Tastaturkürzel
-      const url = await page.url();
-      const isInMainConference = !url.includes('prejoin') && url.includes('://');
+      // Prüfe, ob wir noch auf der Premeeting-Seite sind
+      const isOnPremeetingScreen = await page.$('div.premeeting-screen') !== null;
       
-      if (isInMainConference) {
+      // Für Hauptkonferenz: Verwende direkt Tastaturkürzel (nur wenn nicht auf Premeeting-Seite)
+      if (!isOnPremeetingScreen) {
         this.logWithTimestamp(`Bot "${botName}" ist in Hauptkonferenz, verwende Tastaturkürzel für ${action}`);
         try {
           // Aktiviere zunächst die Seite
@@ -332,10 +349,19 @@ class BotManager {
         } catch (keyboardError) {
           this.debug(`Tastaturkürzel fehlgeschlagen: ${keyboardError.message}, versuche Button-Suche`);
         }
+      } else {
+        this.debug(`Bot "${botName}" ist noch auf der Premeeting-Seite, verwende Button-Suche`);
       }
       
       // Fallback: Button-Suche (primär für Premeeting-Screen)
       const micSelectors = [
+        // NEUE Jitsi UI - new-toolbox Container (höchste Priorität)
+        '#new-toolbox > div > div > div > div.css-12sf7ri-container.audio-preview > div > div > div.toolbox-button',
+        '#new-toolbox .audio-preview .toolbox-button',
+        '#new-toolbox .toolbox-button[aria-label*="Mikrofon"]',
+        '#new-toolbox .toolbox-button[aria-label*="deaktivieren"]',
+        '#new-toolbox .toolbox-button[aria-label*="Microphone"]',
+        '#new-toolbox .toolbox-button[aria-label*="Mute"]',
         // Premeeting-Screen Selektoren (höhere Priorität)
         'div[role="button"][aria-label*="Mikrofon"]',
         'div[role="button"][aria-label*="Mute"]',
@@ -343,7 +369,7 @@ class BotManager {
         'div[role="button"][aria-label*="Microphone"]',
         'button[aria-label*="Mikrofon"]',
         'button[aria-label*="Microphone"]',
-        // Schnelle Hauptkonferenz-UI Selektoren
+        // Schnelle Hauptkonferenz-UI Selektoren (Legacy)
         '[data-testid="toolbox.audioToggle"]',
         '.toolbox-button[aria-label*="Mute"]',
         '#audioToggle'
@@ -352,7 +378,7 @@ class BotManager {
       let micButton = null;
       
       // Kurze Toolbox-Aktivierung nur für Hauptkonferenz
-      if (isInMainConference) {
+      if (!isOnPremeetingScreen) {
         try {
           await page.mouse.move(640, 600);
           await page.waitForTimeout(500);
@@ -364,7 +390,7 @@ class BotManager {
       // Versuche Selektoren mit kurzen Timeouts
       for (const selector of micSelectors) {
         try {
-          const timeout = isInMainConference ? 1500 : 2000; // Kürzere Timeouts für Hauptkonferenz
+          const timeout = !isOnPremeetingScreen ? 1500 : 2000; // Kürzere Timeouts für Hauptkonferenz
           micButton = await page.waitForSelector(selector, { timeout });
           if (micButton) {
             this.debug(`Mikrofon-Button mit Selektor "${selector}" gefunden`);
@@ -377,8 +403,8 @@ class BotManager {
       }
 
       if (!micButton) {
-        // Letzter Fallback: Tastaturkürzel (falls noch nicht versucht)
-        if (!isInMainConference) {
+        // Letzter Fallback: Tastaturkürzel (nur wenn nicht auf Premeeting-Seite)
+        if (!isOnPremeetingScreen) {
           this.logWithTimestamp(`Konnte keinen Mikrofon-Button finden, versuche Tastaturkürzel für Bot "${botName}"`);
           try {
             await page.keyboard.press('m');
@@ -444,6 +470,34 @@ class BotManager {
       await this.handleMicrophoneButton(page, config.name, shouldBeMuted, true);
     } catch (error) {
       const errorMessage = `Konnte den Mikrofon-Button für Bot ${botId} nicht umschalten: ${error.message}`;
+      console.error(`[FEHLER] ${errorMessage}`);
+      throw new Error(errorMessage);
+    }
+  }
+
+  // Taste M für einen Bot drücken
+  async pressMKeyForBot(botId) {
+    const bot = this.bots.get(botId);
+    if (!bot) {
+      throw new Error(`Bot ${botId} nicht gefunden oder nicht aktiv.`);
+    }
+
+    const { page, config } = bot;
+    this.logWithTimestamp(`Bot ${botId} (${config.name}) drückt Taste M`);
+
+    try {
+      // Aktiviere zunächst die Seite
+      await page.click('body');
+      await page.waitForTimeout(200);
+      
+      // Drücke die Taste M
+      await page.keyboard.press('m');
+      await page.waitForTimeout(500);
+      
+      this.debug(`Taste M wurde für Bot ${botId} (${config.name}) gedrückt`);
+      this.logWithTimestamp(`Taste M erfolgreich für Bot ${botId} gedrückt`);
+    } catch (error) {
+      const errorMessage = `Fehler beim Drücken der Taste M für Bot ${botId}: ${error.message}`;
       console.error(`[FEHLER] ${errorMessage}`);
       throw new Error(errorMessage);
     }

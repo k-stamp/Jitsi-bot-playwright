@@ -119,6 +119,18 @@ class JitsiBotWorld {
   async unmuteBot(botId) {
     await this.botManager.setMuteForBot(botId, false);
   }
+
+  // Taste M für Bot drücken
+  async pressMKey(botId) {
+    try {
+      await this.botManager.pressMKeyForBot(botId);
+      console.log(`✓ Bot ${botId} hat Taste M gedrückt`);
+    } catch (error) {
+      console.error(`✗ Fehler beim Drücken der Taste M für Bot ${botId}:`, error.message);
+      this.testResults.errors.push(`Bot ${botId} Taste M: ${error.message}`);
+      throw error;
+    }
+  }
 }
 
 // World Constructor setzen
