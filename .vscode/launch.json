@@ -34,11 +34,59 @@
       ]
     },
     {
-      "name": "Debug Specific Test (@test2)",
+      "name": "Debug Specific Test (@test-audio4)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
-      "args": ["--tags", "@test2", "--format", "@cucumber/pretty-formatter"],
+      "args": ["--tags", "@test-audio4", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug Specific Test (@test-audio8)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
+      "args": ["--tags", "@test-audio8", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug Specific Test (@test-cp-4)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
+      "args": ["--tags", "@test-cp-4", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug Specific Test (@test-cp-8)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
+      "args": ["--tags", "@test-cp-8", "--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "env": {

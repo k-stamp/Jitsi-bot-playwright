@@ -16,7 +16,7 @@
       "name": "APerson",
       "mediaFolder": "bot1",
       "videoFile": "bot1pic.y4m",
-      "audioFile": "Alice.wav",
+      "audioFile": "lokalTest.wav",
       "enableAudio": true
     },
     {
@@ -24,31 +24,31 @@
       "name": "BPerson", 
       "mediaFolder": "bot2",
       "videoFile": "bot2pic.y4m",
-      "audioFile": "Tagesschau1.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     },
     {
       "id": 3,
       "name": "CPerson",
       "mediaFolder": "bot3", 
       "videoFile": "bot3pic.y4m",
-      "audioFile": "Tagesschau2.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     },
     {
       "id": 4,
       "name": "DPerson",
       "mediaFolder": "bot4",
       "videoFile": "bot4pic.y4m", 
-      "audioFile": "Tagesschau3.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     },
     {
       "id": 5,
       "name": "EPerson",
       "mediaFolder": "bot5",
       "videoFile": "bot5pic.y4m",
-      "audioFile": "Tagesschau4.wav",
+      "audioFile": "lokalTest.wav",
       "enableAudio": true
     },
     {
@@ -56,31 +56,31 @@
       "name": "FPerson",
       "mediaFolder": "bot6",
       "videoFile": "bot6pic.y4m",
-      "audioFile": "Tagesschau5.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     },
     {
       "id": 7,
       "name": "GPerson",
       "mediaFolder": "bot7",
       "videoFile": "bot7pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     },
     {
       "id": 8,
       "name": "HPerson",
       "mediaFolder": "bot8",
       "videoFile": "bot8pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     },
     {
       "id": 9,
       "name": "Bot9",
       "mediaFolder": "bot9",
       "videoFile": "bot9pic.y4m",
-      "audioFile": "Tagesschau6.wav",
+      "audioFile": "lokalTest.wav",
       "enableAudio": true
     },
     {
@@ -88,7 +88,7 @@
       "name": "Bot10",
       "mediaFolder": "bot10",
       "videoFile": "bot10pic.y4m",
-      "audioFile": "Tagesschau6.wav",
+      "audioFile": "lokalTest.wav",
       "enableAudio": false
     },
     {
@@ -96,16 +96,16 @@
       "name": "Bot11",
       "mediaFolder": "bot11",
       "videoFile": "bot11pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     },
     {
       "id": 12,
       "name": "Bot12",
       "mediaFolder": "bot12",
       "videoFile": "bot12pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "lokalTest.wav",
+      "enableAudio": true
     }
   ]
 }

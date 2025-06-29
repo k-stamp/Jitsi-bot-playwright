@@ -17,49 +17,109 @@ Feature: Jitsi Bot-Tests
 
   @test-join8
   Scenario: Ein Bot joint
-    Given Bot 1 joint der Sitzung "hallo5" ohne Video
-    Given Bot 2 joint der Sitzung "hallo5" ohne Video
-    Given Bot 3 joint der Sitzung "hallo5" ohne Video
-    Given Bot 4 joint der Sitzung "hallo5" ohne Video
-    Given Bot 5 joint der Sitzung "hallo5" ohne Video
-    Given Bot 6 joint der Sitzung "hallo5" ohne Video
-    Given Bot 7 joint der Sitzung "hallo5" ohne Video
-    Given Bot 8 joint der Sitzung "hallo5" ohne Video
+    Given Bot 1 joint der Sitzung "debug1" ohne Video
+    Given Bot 2 joint der Sitzung "debug1" ohne Video
+    Given Bot 3 joint der Sitzung "debug1" ohne Video
+    Given Bot 4 joint der Sitzung "debug1" ohne Video
+    Given Bot 5 joint der Sitzung "debug1" ohne Video
+    Given Bot 6 joint der Sitzung "debug1" ohne Video
+    Given Bot 7 joint der Sitzung "debug1" ohne Video
+    Given Bot 8 joint der Sitzung "debug1" ohne Video
     When warte 20 Sekunden
   
-  
-  Scenario: Ein Bot tritt einer Konferenz bei ohne Audio und Video
-    Given Bot 1 joint der Sitzung "h6" ohne Video
-    When warte 10 Sekunden
+  @test-audio1
+  Scenario: Ein Bot mit Testaudio
+    Given Bot 1 joint der Sitzung "debug1" ohne Video
     When Bot 1 Taste M betätigt
     When warte 20 Sekunden
 
-  
-  Scenario: Vier Bots tritt einer Konferenz bei ohne Audio und Video
-    Given Bot 1 joint der Sitzung "debug" ohne Video
-    Given Bot 3 joint der Sitzung "debug" ohne Video
-    Given Bot 4 joint der Sitzung "debug" ohne Video
-    Given Bot 2 joint der Sitzung "debug" ohne Video
+  @test-audio4
+  Scenario: 4er Lokalisation
+    Given Bot 1 joint der Sitzung "debug2" ohne Video
+    Given Bot 2 joint der Sitzung "debug2" ohne Video
+    Given Bot 3 joint der Sitzung "debug2" ohne Video
+    Given Bot 4 joint der Sitzung "debug2" ohne Video
+    When Bot 1 Taste M betätigt
+    When Bot 1 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 4 Taste M betätigt
+    When Bot 4 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 2 Taste M betätigt
     When Bot 1 Taste M betätigt
     When Bot 1 Taste M betätigt
     When warte 10 Sekunden
 
 
-  
-  Scenario: Ein Bot tritt einer Konferenz bei
-    Given Bot 1 joint der Sitzung "h2" ohne Video
-    When warte 5 Sekunden
-    When Bot 1 hebt die Stummschaltung auf
+  @test-audio8
+  Scenario: 8er Lokalisation
+    Given Bot 1 joint der Sitzung "debug10" ohne Video
+    Given Bot 2 joint der Sitzung "debug10" ohne Video
+    Given Bot 3 joint der Sitzung "debug10" ohne Video
+    Given Bot 4 joint der Sitzung "debug10" ohne Video
+    Given Bot 5 joint der Sitzung "debug10" ohne Video
+    Given Bot 6 joint der Sitzung "debug10" ohne Video
+    Given Bot 7 joint der Sitzung "debug10" ohne Video
+    Given Bot 8 joint der Sitzung "debug10" ohne Video
+    When Bot 1 Taste M betätigt
+    When Bot 1 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 4 Taste M betätigt
+    When Bot 4 Taste M betätigt
+    When Bot 5 Taste M betätigt
+    When Bot 5 Taste M betätigt
+    When Bot 6 Taste M betätigt
+    When Bot 6 Taste M betätigt
+    When Bot 7 Taste M betätigt
+    When Bot 7 Taste M betätigt
+    When Bot 8 Taste M betätigt
+    When Bot 8 Taste M betätigt
+    When Bot 7 Taste M betätigt
+    When Bot 7 Taste M betätigt
+    When Bot 6 Taste M betätigt
+    When Bot 6 Taste M betätigt
+    When Bot 5 Taste M betätigt
+    When Bot 5 Taste M betätigt
+    When Bot 4 Taste M betätigt
+    When Bot 4 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 3 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 1 Taste M betätigt
+    When Bot 1 Taste M betätigt
     When warte 10 Sekunden
-    And Bot 1 schaltet sich stumm
+
+
+  @test-cp-4
+  Scenario: 4er Cocktailparty
+    Given Bot 1 joint der Sitzung "debug11" ohne Video
+    Given Bot 2 joint der Sitzung "debug11" ohne Video
+    Given Bot 3 joint der Sitzung "debug11" ohne Video
+    Given Bot 4 joint der Sitzung "debug11" ohne Video
+    When Bot 1 Taste M betätigt
+    When Bot 3 Taste M betätigt
     When warte 20 Sekunden
 
   
-  Scenario: Debug mit Inspector - Bot tritt bei und Inspector öffnet sich
-    Given Bot 1 joint der Sitzung "debug5" ohne Video
-    When warte 5 Sekunden
-    When Ich den Inspector öffne
+  @test-cp-8
+  Scenario: 8er Cocktailparty
+    Given Bot 1 joint der Sitzung "debug12" ohne Video
+    Given Bot 2 joint der Sitzung "debug12" ohne Video
+    Given Bot 3 joint der Sitzung "debug12" ohne Video
+    Given Bot 4 joint der Sitzung "debug12" ohne Video
+    Given Bot 5 joint der Sitzung "debug12" ohne Video
+    Given Bot 6 joint der Sitzung "debug12" ohne Video
+    Given Bot 7 joint der Sitzung "debug12" ohne Video
+    Given Bot 8 joint der Sitzung "debug12" ohne Video
     When Bot 1 Taste M betätigt
-    When Bot 1 Taste M betätigt
-    When warte 10 Sekunden
-
+    When Bot 8 Taste M betätigt
+    When warte 20 Sekunden
