@@ -13,7 +13,7 @@
   "bots": [
     {
       "id": 1,
-      "name": "Bot1",
+      "name": "APerson",
       "mediaFolder": "bot1",
       "videoFile": "bot1pic.y4m",
       "audioFile": "Alice.wav",
@@ -21,7 +21,7 @@
     },
     {
       "id": 2,
-      "name": "Bot2", 
+      "name": "BPerson", 
       "mediaFolder": "bot2",
       "videoFile": "bot2pic.y4m",
       "audioFile": "Tagesschau1.wav",
@@ -29,7 +29,7 @@
     },
     {
       "id": 3,
-      "name": "Bot3",
+      "name": "CPerson",
       "mediaFolder": "bot3", 
       "videoFile": "bot3pic.y4m",
       "audioFile": "Tagesschau2.wav",
@@ -37,7 +37,7 @@
     },
     {
       "id": 4,
-      "name": "Bot4",
+      "name": "DPerson",
       "mediaFolder": "bot4",
       "videoFile": "bot4pic.y4m", 
       "audioFile": "Tagesschau3.wav",
@@ -45,7 +45,7 @@
     },
     {
       "id": 5,
-      "name": "Bot5",
+      "name": "EPerson",
       "mediaFolder": "bot5",
       "videoFile": "bot5pic.y4m",
       "audioFile": "Tagesschau4.wav",
@@ -53,7 +53,7 @@
     },
     {
       "id": 6,
-      "name": "Bot6",
+      "name": "FPerson",
       "mediaFolder": "bot6",
       "videoFile": "bot6pic.y4m",
       "audioFile": "Tagesschau5.wav",
@@ -61,7 +61,7 @@
     },
     {
       "id": 7,
-      "name": "Bot7",
+      "name": "GPerson",
       "mediaFolder": "bot7",
       "videoFile": "bot7pic.y4m",
       "audioFile": "Tagesschau6.wav",
@@ -69,7 +69,7 @@
     },
     {
       "id": 8,
-      "name": "Bot8",
+      "name": "HPerson",
       "mediaFolder": "bot8",
       "videoFile": "bot8pic.y4m",
       "audioFile": "Tagesschau6.wav",

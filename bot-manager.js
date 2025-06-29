@@ -185,7 +185,7 @@ class BotManager {
       this.debug(`Name "${botName}" wurde in das Feld eingegeben`);
       
       // Warte etwas länger, damit die UI vollständig geladen ist (besonders wichtig im Headless-Modus)
-      await page.waitForTimeout(2000);
+      await page.waitForTimeout(1000);
       
       // Warte explizit auf das neue Toolbox-Element
       try {
@@ -216,8 +216,8 @@ class BotManager {
       await page.click(joinButton);
       
       // Stabile Wartezeit nach dem Klick (Logik aus index.js)
-      this.debug('Warte 5 Sekunden, bis der Beitritt abgeschlossen ist und die UI geladen hat.');
-      await page.waitForTimeout(5000);
+      this.debug('Warte 1 Sekunden, bis der Beitritt abgeschlossen ist und die UI geladen hat.');
+      await page.waitForTimeout(1000);
       
       this.logWithTimestamp(`Bot ${botName} ist der Sitzung erfolgreich beigetreten.`);
     } catch (error) {

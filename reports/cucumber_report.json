@@ -4,108 +4,134 @@
     "elements": [
       {
         "description": "",
-        "id": "jitsi-bot-tests;vier-bots-tritt-einer-konferenz-bei-ohne-audio-und-video",
+        "id": "jitsi-bot-tests;ein-bot-joint",
         "keyword": "Scenario",
-        "line": 11,
-        "name": "Vier Bots tritt einer Konferenz bei ohne Audio und Video",
+        "line": 19,
+        "name": "Ein Bot joint",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 307207
+              "duration": 235374
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
-            "name": "Bot 1 joint der Sitzung \"debug6\" ohne Video",
+            "line": 20,
+            "name": "Bot 1 joint der Sitzung \"hallo5\" ohne Video",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 14059302915
+              "duration": 10838862833
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 13,
-            "name": "Bot 3 joint der Sitzung \"debug6\" ohne Video",
+            "line": 21,
+            "name": "Bot 2 joint der Sitzung \"hallo5\" ohne Video",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 13695501290
+              "duration": 10517714917
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 14,
-            "name": "Bot 4 joint der Sitzung \"debug6\" ohne Video",
+            "line": 22,
+            "name": "Bot 3 joint der Sitzung \"hallo5\" ohne Video",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 13956858125
+              "duration": 10718700583
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 15,
-            "name": "Bot 2 joint der Sitzung \"debug6\" ohne Video",
+            "line": 23,
+            "name": "Bot 4 joint der Sitzung \"hallo5\" ohne Video",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 13927393790
+              "duration": 10826153916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "Bot 5 joint der Sitzung \"hallo5\" ohne Video",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10986609583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "Bot 6 joint der Sitzung \"hallo5\" ohne Video",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10894752250
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 26,
+            "name": "Bot 7 joint der Sitzung \"hallo5\" ohne Video",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11183022707
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 27,
+            "name": "Bot 8 joint der Sitzung \"hallo5\" ohne Video",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11274205707
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 16,
-            "name": "Bot 1 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:63"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 34162847583
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 17,
-            "name": "Bot 1 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:63"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 23133704667
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "warte 10 Sekunden",
+            "line": 28,
+            "name": "warte 20 Sekunden",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:68"
             },
             "result": {
               "status": "passed",
-              "duration": 10001201749
+              "duration": 20003819624
             }
           },
           {
@@ -113,14 +139,14 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 165678625
+              "duration": 345188791
             }
           }
         ],
         "tags": [
           {
-            "name": "@test2",
-            "line": 10
+            "name": "@test-join8",
+            "line": 18
           }
         ],
         "type": "scenario"

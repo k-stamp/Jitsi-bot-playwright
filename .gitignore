@@ -1,3 +1,11 @@
-/media
+# Ignoriere alles im media-Verzeichnis
+/media/**
+
+# Aber NICHT die Unterordner (damit Git sie behalten kann)
+/media/*/
+/media/**/
+
+# UND erlaube ausschließlich lokalTest.wav
+!/media/**/lokalTest.wav
 
 .DS_Store
