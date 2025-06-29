@@ -4,160 +4,225 @@
     "elements": [
       {
         "description": "",
-        "id": "jitsi-bot-tests;8er-cocktailparty",
+        "id": "jitsi-bot-tests;lasttest-9-bis-12-bots",
         "keyword": "Scenario",
-        "line": 114,
-        "name": "8er Cocktailparty",
+        "line": 158,
+        "name": "Lasttest 9 bis 12 Bots",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 328042
+              "duration": 116541
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 115,
-            "name": "Bot 1 joint der Sitzung \"debug12\" ohne Video",
+            "line": 159,
+            "name": "Bot 1 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 8663493209
+              "duration": 3447864541
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 116,
-            "name": "Bot 2 joint der Sitzung \"debug12\" ohne Video",
+            "line": 160,
+            "name": "Bot 2 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 8800912792
+              "duration": 3522947375
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 117,
-            "name": "Bot 3 joint der Sitzung \"debug12\" ohne Video",
+            "line": 161,
+            "name": "Bot 3 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 8694220083
+              "duration": 4544472124
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 118,
-            "name": "Bot 4 joint der Sitzung \"debug12\" ohne Video",
+            "line": 162,
+            "name": "Bot 4 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 8754886916
+              "duration": 5011340791
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 119,
-            "name": "Bot 5 joint der Sitzung \"debug12\" ohne Video",
+            "line": 163,
+            "name": "Bot 5 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 9082959333
+              "duration": 4276243749
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 120,
-            "name": "Bot 6 joint der Sitzung \"debug12\" ohne Video",
+            "line": 164,
+            "name": "Bot 6 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 9282245500
+              "duration": 4404373583
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 121,
-            "name": "Bot 7 joint der Sitzung \"debug12\" ohne Video",
+            "line": 165,
+            "name": "Bot 7 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 9179113958
+              "duration": 5707028167
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 122,
-            "name": "Bot 8 joint der Sitzung \"debug12\" ohne Video",
+            "line": 166,
+            "name": "Bot 8 macht einen Quick Beitritt zur Sitzung \"last12\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 9129588958
+              "duration": 4599111166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 167,
+            "name": "Bot 9 macht einen Quick Beitritt zur Sitzung \"last12\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5827314792
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 123,
-            "name": "Bot 1 Taste M betätigt",
+            "line": 168,
+            "name": "warte 60 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:63"
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 7198156541
+              "duration": 60012042458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 169,
+            "name": "Bot 10 macht einen Quick Beitritt zur Sitzung \"last12\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5843406500
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 124,
-            "name": "Bot 8 Taste M betätigt",
+            "line": 170,
+            "name": "warte 60 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:63"
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 8999579708
+              "duration": 60002332416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 171,
+            "name": "Bot 11 macht einen Quick Beitritt zur Sitzung \"last12\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6565932707
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 125,
-            "name": "warte 20 Sekunden",
+            "line": 172,
+            "name": "warte 60 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 20001820292
+              "duration": 60014926624
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 173,
+            "name": "Bot 12 macht einen Quick Beitritt zur Sitzung \"last12\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34694797458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 174,
+            "name": "warte 60 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60130840416
             }
           },
           {
@@ -165,14 +230,14 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 380555166
+              "duration": 426913541
             }
           }
         ],
         "tags": [
           {
-            "name": "@test-cp-8",
-            "line": 113
+            "name": "@test-last-12",
+            "line": 157
           }
         ],
         "type": "scenario"

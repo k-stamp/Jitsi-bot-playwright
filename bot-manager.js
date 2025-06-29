@@ -71,6 +71,38 @@ class BotManager {
     }
   }
 
+  // Bot schnell zur Sitzung hinzufügen (ohne Mikrofon/Video-Checks)
+  async quickJoinBot(botId, roomName) {
+    try {
+      const botConfig = this.config.bots.find(bot => bot.id === botId);
+      if (!botConfig) {
+        throw new Error(`Bot mit ID ${botId} nicht in Konfiguration gefunden`);
+      }
+
+      this.logWithTimestamp(`Bot ${botId} (${botConfig.name}) macht Quick Beitritt zu Raum "${roomName}"`);
+
+      // Erstelle Bot-Instanz (ohne Video für Quick Join)
+      const botInstance = await this.createBotInstance(botConfig, false);
+      
+      // Schneller Beitritt zur Sitzung
+      const url = `${this.baseUrl}/${roomName}`;
+      await this.quickJoinRoom(botInstance, url, botConfig.name);
+
+      // Bot in Map speichern
+      this.bots.set(botId, {
+        ...botInstance,
+        config: botConfig,
+        roomName: roomName
+      });
+
+      this.logWithTimestamp(`Bot ${botId} erfolgreich Quick Beitritt zu Raum "${roomName}" abgeschlossen`);
+      return true;
+    } catch (error) {
+      console.error(`Fehler beim Quick Beitritt von Bot ${botId}:`, error.message);
+      throw error;
+    }
+  }
+
   // Einzelnen Bot erstellen
   async createBotInstance(botConfig, withVideo) {
     const videoFile = path.resolve(path.join(__dirname, 'media', botConfig.mediaFolder, botConfig.videoFile));
@@ -227,6 +259,48 @@ class BotManager {
       await page.screenshot({ path: screenshotPath });
       console.error(`[DEBUG] Screenshot wurde unter ${screenshotPath} gespeichert.`);
       throw new Error(`Fehler beim Beitreten zur Sitzung für ${botName}: ${error.message}`);
+    }
+  }
+
+  // Bot schnell zu Raum hinzufügen (ohne Mikrofon/Video-Checks)
+  async quickJoinRoom(botInstance, url, botName) {
+    const { page } = botInstance;
+
+    try {
+      this.debug(`Navigiere zu: ${url}`);
+      await page.goto(url, { 
+        timeout: 60000,
+        waitUntil: 'domcontentloaded'
+      });
+      
+      // Warte auf Namensfeld
+      const nameField = 'div.premeeting-screen input';
+      this.debug(`Warte auf Namensfeld: ${nameField}`);
+      await page.waitForSelector(nameField, { timeout: 15000 });
+      await page.fill(nameField, botName);
+      this.debug(`Name "${botName}" wurde in das Feld eingegeben`);
+      
+      // Join-Button direkt klicken (ohne weitere Checks)
+      const joinButton = 'div[data-testid="prejoin.joinMeeting"]';
+      this.debug(`Warte auf Join-Button: ${joinButton}`);
+      await page.waitForSelector(joinButton, { timeout: 10000 });
+      
+      this.debug(`Klicke jetzt auf den Join-Button für Bot "${botName}" (Quick Join)`);
+      await page.click(joinButton);
+      
+      // Zeitstempel nach erfolgreichem Beitritt
+      const now = new Date();
+      const timeString = now.toTimeString().split(' ')[0]; // HH:MM:SS Format
+      console.log(`${timeString} - Bot ${botName} ist der Konferenz beigetreten`);
+      
+      this.logWithTimestamp(`Bot ${botName} hat Quick Join durchgeführt.`);
+    } catch (error) {
+      console.error(`[FEHLER] Bot ${botName} konnte Quick Join nicht durchführen: ${error.message}`);
+      // Screenshot bei Fehler für besseres Debugging
+      const screenshotPath = `reports/fehler-quick-beitritt-${botName}.png`;
+      await page.screenshot({ path: screenshotPath });
+      console.error(`[DEBUG] Screenshot wurde unter ${screenshotPath} gespeichert.`);
+      throw new Error(`Fehler beim Quick Join für ${botName}: ${error.message}`);
     }
   }
 

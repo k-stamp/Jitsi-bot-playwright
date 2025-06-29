@@ -1,8 +1,8 @@
 const { setWorldConstructor, Before, After, BeforeAll, AfterAll, setDefaultTimeout } = require('@cucumber/cucumber');
 const BotManager = require('../../bot-manager');
 
-// Timeout für alle Steps auf 60 Sekunden erhöhen
-setDefaultTimeout(60 * 1000);
+// Timeout für alle Steps auf 90 Sekunden erhöhen (muss höher sein als die längste Wartezeit)
+setDefaultTimeout(180 * 1000);
 
 class JitsiBotWorld {
   constructor() {
@@ -20,6 +20,18 @@ class JitsiBotWorld {
       console.log(`✓ Bot ${botId} erfolgreich Raum "${roomName}" beigetreten (Video: ${withVideo})`);
     } catch (error) {
       console.error(`✗ Fehler beim Beitreten von Bot ${botId}:`, error.message);
+      this.testResults.errors.push(`Bot ${botId}: ${error.message}`);
+      throw error;
+    }
+  }
+
+  // Bot schnell beitreten lassen (ohne Mikrofon/Video-Checks)
+  async quickJoinBot(botId, roomName) {
+    try {
+      await this.botManager.quickJoinBot(botId, roomName);
+      console.log(`✓ Bot ${botId} erfolgreich Quick Beitritt zu Raum "${roomName}"`);
+    } catch (error) {
+      console.error(`✗ Fehler beim Quick Beitritt von Bot ${botId}:`, error.message);
       this.testResults.errors.push(`Bot ${botId}: ${error.message}`);
       throw error;
     }

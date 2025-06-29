@@ -38,6 +38,11 @@ Given('Bot {int} joint der Sitzung {string} mit Video', async function(botId, ro
   await this.joinBot(botId, roomName, true);
 });
 
+Given('Bot {int} macht einen Quick Beitritt zur Sitzung {string}', async function(botId, roomName) {
+  await waitForUserInput(`Bot ${botId} macht einen Quick Beitritt zur Sitzung "${roomName}"`);
+  await this.quickJoinBot(botId, roomName);
+});
+
 // When Steps - Audio Aktionen
 When('Bot {int} Audio abspielt', async function(botId) {
   await waitForUserInput(`Bot ${botId} spielt Audio ab`);
