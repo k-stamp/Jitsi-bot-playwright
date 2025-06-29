@@ -624,6 +624,40 @@ class BotManager {
       return false;
     }
   }
+
+  // Debug-Breakpoint für VS Code setzen
+  async setDebugBreakpoint(message = 'Debug-Breakpoint erreicht') {
+    console.log(`🔍 ${message}`);
+    console.log('📋 Aktive Bots:', this.getActiveBots());
+    
+    // Debugger-Statement für VS Code
+    debugger;
+    
+    // Kurze Pause für Inspektion
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+
+  // Bot-Informationen für Debugging ausgeben
+  getBotDebugInfo(botId) {
+    const bot = this.bots.get(botId);
+    if (!bot) {
+      return { error: `Bot ${botId} nicht gefunden` };
+    }
+
+    return {
+      botId,
+      name: bot.config.name,
+      roomName: bot.roomName,
+      hasPage: !!bot.page,
+      url: bot.page?.url() || 'unbekannt'
+    };
+  }
+
+  // Alle Bot-Informationen für Debugging
+  getAllBotsDebugInfo() {
+    const activeBots = this.getActiveBots();
+    return activeBots.map(botId => this.getBotDebugInfo(botId));
+  }
 }
 
 module.exports = BotManager; 

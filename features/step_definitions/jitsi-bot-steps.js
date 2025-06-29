@@ -71,6 +71,11 @@ When('warte {int} Sekunden', async function(seconds) {
 });
 
 // Debug Steps
+When('Ich den Inspector öffne', async function() {
+  await waitForUserInput('Setze Debug-Breakpoint');
+  await this.setDebugBreakpoint('Inspector-Schritt erreicht');
+});
+
 When('zeige aktive Bots an', async function() {
   await waitForUserInput('Zeige aktive Bots an');
   const activeBots = this.getActiveBots();

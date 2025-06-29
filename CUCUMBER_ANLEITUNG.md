@@ -143,6 +143,82 @@ Stellen Sie sicher, dass Ihre Bots in der `config.json` korrekt konfiguriert sin
 - Bei Fehlern werden automatisch Debug-Informationen ausgegeben
 - Nutzen Sie `npm run test:debug` für ausführlichere Ausgaben
 
+## VS Code Debugging
+
+### Setup für Debugging in VS Code
+
+Das Projekt enthält vorkonfigurierte VS Code Launch-Konfigurationen für das Debugging:
+
+1. **"Debug Cucumber Tests"** - Debuggt alle Tests
+2. **"Debug Cucumber Tests - Step by Step"** - Debuggt mit Step-by-Step Modus
+3. **"Debug Specific Test (@test4)"** - Debuggt nur den Inspector-Test
+
+### Debugging verwenden
+
+#### 1. Breakpoints in Step-Definitionen setzen
+
+```javascript
+// In features/step_definitions/jitsi-bot-steps.js
+When('Bot {int} joint der Sitzung {string} ohne Video', async function(botId, roomName) {
+  debugger; // <-- Breakpoint hier setzen
+  await this.joinBot(botId, roomName, false);
+});
+```
+
+#### 2. Debug-Schritt im Feature verwenden
+
+```gherkin
+Szenario: Debug mit Breakpoint
+  Angenommen Bot 1 joint der Sitzung "debug-test" ohne Video
+  Wenn warte 5 Sekunden
+  Wenn Ich den Inspector öffne  # <-- Setzt automatisch debugger
+  Wenn warte 10 Sekunden
+```
+
+#### 3. VS Code Debugging starten
+
+1. **F5 drücken** oder zum Debug-Panel (Ctrl+Shift+D)
+2. **Debug-Konfiguration auswählen** (z.B. "Debug Specific Test (@test4)")
+3. **Start** klicken
+4. **Breakpoints werden automatisch angehalten**
+
+#### 4. Debugging-Features in VS Code
+
+- **Variables Panel**: Sehen Sie alle Variablen und Bot-Zustände
+- **Call Stack**: Verfolgen Sie den Aufrufstapel
+- **Debug Console**: Führen Sie Code-Schnipsel aus
+- **Step Over/Into/Out**: Navigieren Sie durch den Code
+
+#### 5. Bot-Informationen während Debugging
+
+Wenn Sie am "Ich den Inspector öffne" Schritt pausieren, können Sie im Debug Console ausführen:
+
+```javascript
+// Bot-Informationen abrufen
+this.botManager.getAllBotsDebugInfo()
+
+// Spezifischen Bot prüfen
+this.botManager.getBotDebugInfo(1)
+
+// Aktive Bots anzeigen
+this.getActiveBots()
+```
+
+### Debug-Workflow Empfehlung
+
+1. **Breakpoint setzen** in der Step-Definition oder Feature verwenden
+2. **VS Code Debugger starten** mit F5
+3. **Variables inspizieren** wenn pausiert
+4. **Step-by-Step durchgehen** mit F10/F11
+5. **Bot-Zustand prüfen** über Debug Console
+
+### Hinweise
+
+- ⚠️ Browser bleiben **headless** beim Debugging (keine Fenster)
+- 🔍 Nutzen Sie **Debug Console** für Bot-Inspektionen  
+- 📋 Alle Bot-Informationen sind über `this.botManager` verfügbar
+- ⏸️ Der "Inspector öffne" Schritt setzt automatisch `debugger`
+
 ## Tipps
 
 1. **Raumnamen**: Verwenden Sie eindeutige Raumnamen für verschiedene Szenarien

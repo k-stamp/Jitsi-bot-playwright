@@ -131,6 +131,22 @@ class JitsiBotWorld {
       throw error;
     }
   }
+
+  // Debug-Breakpoint setzen
+  async setDebugBreakpoint(message) {
+    try {
+      await this.botManager.setDebugBreakpoint(message);
+      
+      // Debug-Informationen ausgeben
+      const debugInfo = this.botManager.getAllBotsDebugInfo();
+      console.log('🔍 Bot Debug-Informationen:', JSON.stringify(debugInfo, null, 2));
+      
+    } catch (error) {
+      console.error(`✗ Fehler beim Debug-Breakpoint:`, error.message);
+      this.testResults.errors.push(`Debug: ${error.message}`);
+      throw error;
+    }
+  }
 }
 
 // World Constructor setzen
