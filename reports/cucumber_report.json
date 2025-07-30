@@ -4,82 +4,121 @@
     "elements": [
       {
         "description": "",
-        "id": "lasttest;ein-bot-joint",
+        "id": "lasttest;vier-bots-joint",
         "keyword": "Scenario",
-        "line": 4,
-        "name": "Ein Bot joint",
+        "line": 13,
+        "name": "Vier Bots joint",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 242166
+              "duration": 117708
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 5,
-            "name": "Bot 1 joint der Sitzung \"test1\" ohne Video",
+            "line": 14,
+            "name": "Bot 1 joint der Sitzung \"test3\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
+              "location": "features/step_definitions/jitsi-bot-steps.js:46"
             },
             "result": {
               "status": "passed",
-              "duration": 6415448333
+              "duration": 965505874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "Bot 2 joint der Sitzung \"test3\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 990546584
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "Bot 3 joint der Sitzung \"test3\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1160926165
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "Bot 4 joint der Sitzung \"test3\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1007826833
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 6,
-            "name": "warte 5 Sekunden",
+            "line": 18,
+            "name": "warte 20 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 5001881333
+              "duration": 20001432249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "ich den Text \"Lasttest-4 START\" mit Timestamp logge",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:107"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12113124
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 7,
-            "name": "ich den Text \"Mein Logtext START\" mit Timestamp logge",
+            "line": 20,
+            "name": "warte 60 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:102"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 28648207
+              "duration": 60001590916
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
-            "line": 8,
-            "name": "warte 5 Sekunden",
+            "keyword": "Then ",
+            "line": 21,
+            "name": "ich den Text \"Lasttest-4 ENDE\" mit Timestamp logge",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+              "location": "features/step_definitions/jitsi-bot-steps.js:107"
             },
             "result": {
               "status": "passed",
-              "duration": 5000699874
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 9,
-            "name": "ich den Text \"Mein Logtext ENDE\" mit Timestamp logge",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:102"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1023083
+              "duration": 1027709
             }
           },
           {
@@ -87,14 +126,14 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36071500
+              "duration": 83679624
             }
           }
         ],
         "tags": [
           {
-            "name": "@Lasttest-1",
-            "line": 3
+            "name": "@Lasttest-4",
+            "line": 12
           }
         ],
         "type": "scenario"
