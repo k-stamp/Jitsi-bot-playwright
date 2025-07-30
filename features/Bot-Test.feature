@@ -8,11 +8,11 @@ Feature: Jitsi Bot-Tests
 
   @test-join4
   Scenario: Vier Bots joint
-    Given Bot 1 joint der Sitzung "hallo2" ohne Video
-    Given Bot 2 joint der Sitzung "hallo2" ohne Video
-    Given Bot 3 joint der Sitzung "hallo2" ohne Video
-    Given Bot 4 joint der Sitzung "hallo2" ohne Video
-    When warte 20 Sekunden
+    Given Bot 1 joint der Sitzung "hrtf1" ohne Video
+    Given Bot 2 joint der Sitzung "hrtf1" ohne Video
+    Given Bot 3 joint der Sitzung "hrtf1" ohne Video
+    Given Bot 4 joint der Sitzung "hrtf1" ohne Video
+    When warte 60 Sekunden
 
 
   @test-join8
@@ -33,12 +33,27 @@ Feature: Jitsi Bot-Tests
     When Bot 1 Taste M betätigt
     When warte 20 Sekunden
 
+  @test-audio3
+  Scenario: 4er Lokalisation
+    Given Bot 1 joint der Sitzung "x10" ohne Video
+    Given Bot 2 joint der Sitzung "x10" ohne Video
+    When Bot 1 Taste M betätigt
+    When Bot 1 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 2 Taste M betätigt
+    When Bot 1 Taste M betätigt
+    When Bot 1 Taste M betätigt
+    When warte 10 Sekunden
+  
+  
   @test-audio4
   Scenario: 4er Lokalisation
-    Given Bot 1 joint der Sitzung "debug2" ohne Video
-    Given Bot 2 joint der Sitzung "debug2" ohne Video
-    Given Bot 3 joint der Sitzung "debug2" ohne Video
-    Given Bot 4 joint der Sitzung "debug2" ohne Video
+    Given Bot 1 joint der Sitzung "x11" ohne Video
+    Given Bot 2 joint der Sitzung "x11" ohne Video
+    Given Bot 3 joint der Sitzung "x11" ohne Video
+    Given Bot 4 joint der Sitzung "x11" ohne Video
     When Bot 1 Taste M betätigt
     When Bot 1 Taste M betätigt
     When Bot 2 Taste M betätigt
@@ -58,14 +73,14 @@ Feature: Jitsi Bot-Tests
 
   @test-audio8
   Scenario: 8er Lokalisation
-    Given Bot 1 joint der Sitzung "debug10" ohne Video
-    Given Bot 2 joint der Sitzung "debug10" ohne Video
-    Given Bot 3 joint der Sitzung "debug10" ohne Video
-    Given Bot 4 joint der Sitzung "debug10" ohne Video
-    Given Bot 5 joint der Sitzung "debug10" ohne Video
-    Given Bot 6 joint der Sitzung "debug10" ohne Video
-    Given Bot 7 joint der Sitzung "debug10" ohne Video
-    Given Bot 8 joint der Sitzung "debug10" ohne Video
+    Given Bot 1 joint der Sitzung "x5" ohne Video
+    Given Bot 2 joint der Sitzung "x5" ohne Video
+    Given Bot 3 joint der Sitzung "x5" ohne Video
+    Given Bot 4 joint der Sitzung "x5" ohne Video
+    Given Bot 5 joint der Sitzung "x5" ohne Video
+    Given Bot 6 joint der Sitzung "x5" ohne Video
+    Given Bot 7 joint der Sitzung "x5" ohne Video
+    Given Bot 8 joint der Sitzung "x5" ohne Video
     When Bot 1 Taste M betätigt
     When Bot 1 Taste M betätigt
     When Bot 2 Taste M betätigt

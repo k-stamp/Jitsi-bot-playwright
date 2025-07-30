@@ -1,7 +1,10 @@
-# Ignoriere alles im media-Ordner rekursiv
-/media/**
+# Alles im media-Ordner ignorieren
+/media/*
 
-# Erlaube nur lokalTest.wav-Dateien in Unterordnern
-!/media/**/lokalTest.wav
+# Ausnahme: Bot-Ordner und darin die Datei Lasttest.wav
+!/media/Bot*/Lasttest.wav
+
+# Den Ordner ausgangsmaterial weiterhin ignorieren
+/media/ausgangsmaterial/
 
 .DS_Store
