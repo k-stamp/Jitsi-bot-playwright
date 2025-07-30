@@ -4,265 +4,82 @@
     "elements": [
       {
         "description": "",
-        "id": "jitsi-bot-tests;4er-lokalisation",
+        "id": "lasttest;ein-bot-joint",
         "keyword": "Scenario",
-        "line": 52,
-        "name": "4er Lokalisation",
+        "line": 4,
+        "name": "Ein Bot joint",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 517291
+              "duration": 242166
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 53,
-            "name": "Bot 1 joint der Sitzung \"x11\" ohne Video",
+            "line": 5,
+            "name": "Bot 1 joint der Sitzung \"test1\" ohne Video",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 9023202542
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 54,
-            "name": "Bot 2 joint der Sitzung \"x11\" ohne Video",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 9144329041
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 55,
-            "name": "Bot 3 joint der Sitzung \"x11\" ohne Video",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 11073066584
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 56,
-            "name": "Bot 4 joint der Sitzung \"x11\" ohne Video",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:31"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 9959731833
+              "duration": 6415448333
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 57,
-            "name": "Bot 1 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 22555695249
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 58,
-            "name": "Bot 1 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 23052205333
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 59,
-            "name": "Bot 2 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1711044334
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 60,
-            "name": "Bot 2 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 7750969291
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 61,
-            "name": "Bot 3 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1629781750
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 62,
-            "name": "Bot 3 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 7253403957
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 63,
-            "name": "Bot 4 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 5081639250
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 64,
-            "name": "Bot 4 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "failed",
-              "duration": 977445639667,
-              "error_message": "Error: function timed out, ensure the promise resolves within 180000 milliseconds\n    at Timeout.<anonymous> (/Users/kevinstamp/Developer/Masterarbeit/Jitsi-bot-playwright/node_modules/@cucumber/cucumber/lib/time.js:54:20)\n    at listOnTimeout (node:internal/timers:608:17)\n    at process.processTimers (node:internal/timers:543:7)"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 65,
-            "name": "Bot 3 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 66,
-            "name": "Bot 3 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 67,
-            "name": "Bot 2 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 68,
-            "name": "Bot 2 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 69,
-            "name": "Bot 1 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 70,
-            "name": "Bot 1 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:68"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 71,
-            "name": "warte 10 Sekunden",
+            "line": 6,
+            "name": "warte 5 Sekunden",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 5001881333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "ich den Text \"Mein Logtext START\" mit Timestamp logge",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:102"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28648207
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "warte 5 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000699874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "ich den Text \"Mein Logtext ENDE\" mit Timestamp logge",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:102"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1023083
             }
           },
           {
@@ -270,24 +87,24 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 190377041
+              "duration": 36071500
             }
           }
         ],
         "tags": [
           {
-            "name": "@test-audio4",
-            "line": 51
+            "name": "@Lasttest-1",
+            "line": 3
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "jitsi-bot-tests",
+    "id": "lasttest",
     "line": 1,
     "keyword": "Feature",
-    "name": "Jitsi Bot-Tests",
+    "name": "Lasttest",
     "tags": [],
-    "uri": "features/Bot-Test.feature"
+    "uri": "features/Lasttest.feature"
   }
 ]

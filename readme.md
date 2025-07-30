@@ -116,6 +116,76 @@ Mit der neuen `autoLeaveAfter` Option können Sie festlegen, nach welcher Zeit d
    npm start
    ```
 
+## Testausführung
+
+Um die automatisierten Tests auszuführen, stehen dir folgende Kommandos zur Verfügung:
+
+### Alle Tests ausführen
+
+```bash
+npm test
+```
+Führt alle Cucumber-Tests im Projekt aus.
+
+---
+
+### Nur bestimmte Szenarien/Tags ausführen
+
+```bash
+npm test -- --tags @test-last-4
+```
+Führt nur Szenarien mit dem Tag `@test-last-4` aus.
+
+```bash
+npm test -- --tags "@test-last-4 or @test-last-8"
+```
+Führt Szenarien mit den Tags `@test-last-4` oder `@test-last-8` aus.
+
+```bash
+npm test -- --tags "not @test-last-4"
+```
+Führt alle Szenarien außer denen mit dem Tag `@test-last-4` aus.
+
+---
+
+### Nur eine bestimmte Feature-Datei testen
+
+```bash
+npm test -- features/Bot-Test.feature
+```
+Führt nur die Szenarien in der angegebenen Feature-Datei aus.
+
+---
+
+### Testbericht im JSON-Format erzeugen
+
+```bash
+npm test -- --format json:reports/cucumber_report.json
+```
+Speichert den Testbericht im JSON-Format.
+
+---
+
+### Tests im Debug-Modus ausführen
+
+```bash
+PWDEBUG=1 npm test
+```
+Startet die Tests im Playwright-Debug-Modus.
+
+---
+
+### Tests mit bestimmtem Browser ausführen
+
+```bash
+npm test -- --browser chromium
+```
+Führt die Tests explizit mit Chromium aus (sofern unterstützt).
+
+---
+
+**Hinweis:** Weitere Optionen und Kombinationen sind möglich, siehe [Cucumber.js Dokumentation](https://github.com/cucumber/cucumber-js/blob/main/docs/cli.md).
+
 ## Hinweise
 
 - Dieses Tool ist nur für Tests und legitime Zwecke gedacht
