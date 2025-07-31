@@ -90,7 +90,7 @@
       "mediaFolder": "bot10",
       "videoFile": "bot10pic.y4m",
       "audioFile": "Lasttest.wav",
-      "enableAudio": false
+      "enableAudio": true
     },
     {
       "id": 11,

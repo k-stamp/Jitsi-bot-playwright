@@ -4,121 +4,238 @@
     "elements": [
       {
         "description": "",
-        "id": "lasttest;vier-bots-joint",
+        "id": "lasttest;zwölf-bots-joint",
         "keyword": "Scenario",
-        "line": 13,
-        "name": "Vier Bots joint",
+        "line": 62,
+        "name": "Zwölf Bots joint",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 117708
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 14,
-            "name": "Bot 1 joint der Sitzung \"test3\"",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 965505874
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 15,
-            "name": "Bot 2 joint der Sitzung \"test3\"",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 990546584
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 16,
-            "name": "Bot 3 joint der Sitzung \"test3\"",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1160926165
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 17,
-            "name": "Bot 4 joint der Sitzung \"test3\"",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1007826833
+              "duration": 625199
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 18,
-            "name": "warte 20 Sekunden",
+            "line": 63,
+            "name": "warte 10 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 20001432249
+              "duration": 10015204200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 64,
+            "name": "Bot 1 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2941848500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 65,
+            "name": "Bot 2 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2222726999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 66,
+            "name": "Bot 3 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2239680499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 67,
+            "name": "Bot 4 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2500816499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 68,
+            "name": "Bot 5 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2747179900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 69,
+            "name": "Bot 6 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2931968499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 70,
+            "name": "Bot 7 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2982524099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 71,
+            "name": "Bot 8 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3792378099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 72,
+            "name": "Bot 9 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3657007499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 73,
+            "name": "Bot 10 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3447235800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 74,
+            "name": "Bot 11 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3801560400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 75,
+            "name": "Bot 12 joint der Sitzung \"Last-12\"",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4138743700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 76,
+            "name": "warte 10 Sekunden",
+            "match": {
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10008884299
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 19,
+            "line": 77,
             "name": "ich den Text \"Lasttest-4 START\" mit Timestamp logge",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:107"
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:107"
             },
             "result": {
               "status": "passed",
-              "duration": 12113124
+              "duration": 20003499
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 20,
+            "line": 78,
             "name": "warte 60 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 60001590916
+              "duration": 60010310399
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 21,
+            "line": 79,
             "name": "ich den Text \"Lasttest-4 ENDE\" mit Timestamp logge",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:107"
+              "location": "features\\step_definitions\\jitsi-bot-steps.js:107"
             },
             "result": {
               "status": "passed",
-              "duration": 1027709
+              "duration": 5194000
             }
           },
           {
@@ -126,14 +243,14 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 83679624
+              "duration": 5143808199
             }
           }
         ],
         "tags": [
           {
-            "name": "@Lasttest-4",
-            "line": 12
+            "name": "@Lasttest12",
+            "line": 61
           }
         ],
         "type": "scenario"
@@ -144,6 +261,6 @@
     "keyword": "Feature",
     "name": "Lasttest",
     "tags": [],
-    "uri": "features/Lasttest.feature"
+    "uri": "features\\Lasttest.feature"
   }
 ]

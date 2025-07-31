@@ -109,7 +109,7 @@ class BotManager {
     const audioFile = path.resolve(path.join(__dirname, 'media', botConfig.mediaFolder, botConfig.audioFile));
 
     // Prüfe, ob die Mediendateien existieren
-    if (!fs.existsSync(videoFile)) {
+    if (withVideo && !fs.existsSync(videoFile)) {
       throw new Error(`Video-Datei nicht gefunden: ${videoFile}`);
     }
     if (botConfig.enableAudio && !fs.existsSync(audioFile)) {
