@@ -5,18 +5,24 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cucumber-js",
+    "test:debug": "cucumber-js --format @cucumber/pretty-formatter",
+    "test:step-by-step": "DEBUG_STEP_BY_STEP=true cucumber-js --format @cucumber/pretty-formatter"
   },
   "keywords": [
     "playwright",
     "automation",
     "bots",
-    "videoconference"
+    "videoconference",
+    "cucumber",
+    "gherkin"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "playwright": "^1.40.0",
-    "unique-names-generator": "^4.7.1"
+    "unique-names-generator": "^4.7.1",
+    "@cucumber/cucumber": "^10.0.0",
+    "@cucumber/pretty-formatter": "^1.0.0"
   }
 }

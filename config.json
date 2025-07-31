@@ -1,8 +1,9 @@
 {
-  "url": "https://192.168.178.24:8080/12",
+  "url": "https://kvnstp-jitsi.online/test1",
+  "url_offline": "https://192.168.178.64:8080/test4",
   "numberofbots": 8,
   "headless": true,
-  "delayBetweenBots": 10000,
+  "delayBetweenBots": 100,
   "haspassword": false,
   "password": "meetingpasswort",
   "autoclose": false,
@@ -13,99 +14,99 @@
   "bots": [
     {
       "id": 1,
-      "name": "Bot1",
+      "name": "APerson",
       "mediaFolder": "bot1",
       "videoFile": "bot1pic.y4m",
-      "audioFile": "bot1.wav",
+      "audioFile": "Lasttest.wav",
       "enableAudio": true
     },
     {
       "id": 2,
-      "name": "Bot2", 
+      "name": "BPerson", 
       "mediaFolder": "bot2",
       "videoFile": "bot2pic.y4m",
-      "audioFile": "Tagesschau1.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 3,
-      "name": "Bot3",
+      "name": "CPerson",
       "mediaFolder": "bot3", 
       "videoFile": "bot3pic.y4m",
-      "audioFile": "Tagesschau2.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 4,
-      "name": "Bot4",
+      "name": "DPerson",
       "mediaFolder": "bot4",
       "videoFile": "bot4pic.y4m", 
-      "audioFile": "Tagesschau3.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 5,
-      "name": "Bot5",
+      "name": "EPerson",
       "mediaFolder": "bot5",
       "videoFile": "bot5pic.y4m",
-      "audioFile": "Tagesschau4.wav",
+      "audioFile": "Lasttest.wav",
       "enableAudio": true
     },
     {
       "id": 6,
-      "name": "Bot6",
+      "name": "FPerson",
       "mediaFolder": "bot6",
       "videoFile": "bot6pic.y4m",
-      "audioFile": "Tagesschau5.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 7,
-      "name": "Bot7",
+      "name": "GPerson",
       "mediaFolder": "bot7",
       "videoFile": "bot7pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 8,
-      "name": "Bot8",
+      "name": "HPerson",
       "mediaFolder": "bot8",
       "videoFile": "bot8pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 9,
-      "name": "Bot9",
+      "name": "IPerson",
       "mediaFolder": "bot9",
       "videoFile": "bot9pic.y4m",
-      "audioFile": "Tagesschau6.wav",
+      "audioFile": "Lasttest.wav",
       "enableAudio": true
     },
     {
       "id": 10,
-      "name": "Bot10",
+      "name": "JPerson",
       "mediaFolder": "bot10",
       "videoFile": "bot10pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 11,
-      "name": "Bot11",
+      "name": "KPerson",
       "mediaFolder": "bot11",
       "videoFile": "bot11pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     },
     {
       "id": 12,
-      "name": "Bot12",
+      "name": "LPerson",
       "mediaFolder": "bot12",
       "videoFile": "bot12pic.y4m",
-      "audioFile": "Tagesschau6.wav",
-      "enableAudio": false
+      "audioFile": "Lasttest.wav",
+      "enableAudio": true
     }
   ]
 }

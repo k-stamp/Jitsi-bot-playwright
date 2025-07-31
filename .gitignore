@@ -1,3 +1,19 @@
-/media
+# Alles im media-Ordner ignorieren
+/media/*
+
+# Ausnahme: Bot-Ordner selbst nicht ignorieren (damit die Struktur erhalten bleibt)
+!/media/Bot*/
+
+# Aber alles in den Bot-Ordnern ignorieren ...
+/media/Bot*/**
+
+# ... außer Lasttest.wav
+!/media/Bot*/Lasttest.wav
+
+# Den Ordner ausgangsmaterial weiterhin ignorieren
+/media/ausgangsmaterial/
 
 .DS_Store
+
+# Node.js dependencies
+node_modules/
