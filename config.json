@@ -1,6 +1,6 @@
 {
-  "url": "https://kvnstp-jitsi.online/test1",
-  "url_offline": "https://192.168.178.64:8080/test4",
+  "url_offline": "https://kvnstp-jitsi.online/test1",
+  "url": "https://192.168.178.64:8080/test4",
   "numberofbots": 8,
   "headless": true,
   "delayBetweenBots": 100,
@@ -106,6 +106,102 @@
       "mediaFolder": "bot12",
       "videoFile": "bot12pic.y4m",
       "audioFile": "Lasttest.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 13,
+      "name": "APerson",
+      "mediaFolder": "bot1",
+      "videoFile": "bot1pic.y4m",
+      "audioFile": "A.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 14,
+      "name": "BPerson",
+      "mediaFolder": "bot2",
+      "videoFile": "bot2pic.y4m",
+      "audioFile": "B.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 15,
+      "name": "CPerson",
+      "mediaFolder": "bot3",
+      "videoFile": "bot3pic.y4m",
+      "audioFile": "C.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 16,
+      "name": "DPerson",
+      "mediaFolder": "bot4",
+      "videoFile": "bot4pic.y4m",
+      "audioFile": "D.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 17,
+      "name": "EPerson",
+      "mediaFolder": "bot5",
+      "videoFile": "bot5pic.y4m",
+      "audioFile": "E.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 18,
+      "name": "FPerson",
+      "mediaFolder": "bot6",
+      "videoFile": "bot6pic.y4m",
+      "audioFile": "F.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 19,
+      "name": "GPerson",
+      "mediaFolder": "bot7",
+      "videoFile": "bot7pic.y4m",
+      "audioFile": "G.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 20,
+      "name": "HPerson",
+      "mediaFolder": "bot8",
+      "videoFile": "bot8pic.y4m",
+      "audioFile": "H.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 21,
+      "name": "IPerson",
+      "mediaFolder": "bot9",
+      "videoFile": "bot9pic.y4m",
+      "audioFile": "I.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 22,
+      "name": "JPerson",
+      "mediaFolder": "bot10",
+      "videoFile": "bot10pic.y4m",
+      "audioFile": "J.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 23,
+      "name": "KPerson",
+      "mediaFolder": "bot11",
+      "videoFile": "bot11pic.y4m",
+      "audioFile": "K.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 24,
+      "name": "LPerson",
+      "mediaFolder": "bot12",
+      "videoFile": "bot12pic.y4m",
+      "audioFile": "L.wav",
       "enableAudio": true
     }
   ]

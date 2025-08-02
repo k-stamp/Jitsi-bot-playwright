@@ -237,3 +237,144 @@ Feature: Jitsi Bot-Tests
     When warte 60 Sekunden
     Given Bot 20 macht einen Quick Beitritt zur Sitzung "last20"
     When warte 60 Sekunden
+
+
+  @debugbutton2
+  Scenario: Zwei Bots joint
+    Given Bot 1 joint der Sitzung "test5"
+    Given Bot 2 joint der Sitzung "test5"
+    When warte 30 Sekunden
+
+  @debugbutton4
+  Scenario: Vier Bots joint
+    Given Bot 1 joint der Sitzung "test7"
+    Given Bot 2 joint der Sitzung "test7"
+    Given Bot 3 joint der Sitzung "test7"
+    Given Bot 4 joint der Sitzung "test7"
+    When warte 30 Sekunden
+
+  @debugbutton8
+  Scenario: Acht Bots joint
+    Given Bot 1 joint der Sitzung "test4"
+    Given Bot 2 joint der Sitzung "test4"
+    Given Bot 3 joint der Sitzung "test4"
+    Given Bot 4 joint der Sitzung "test4"
+    Given Bot 5 joint der Sitzung "test4"
+    Given Bot 6 joint der Sitzung "test4"
+    Given Bot 7 joint der Sitzung "test4"
+    Given Bot 8 joint der Sitzung "test4"
+    When warte 30 Sekunden
+
+
+  @pannertest4
+  Scenario: Vier Bots joint
+    Given Bot 13 joint der Sitzung "mic1"
+    When warte 3 Sekunden
+    When Bot 13 Taste M betätigt
+    Given Bot 14 joint der Sitzung "mic1"
+    When warte 3 Sekunden
+    When Bot 14 Taste M betätigt
+    Given Bot 15 joint der Sitzung "mic1"
+    When warte 3 Sekunden
+    When Bot 15 Taste M betätigt
+    Given Bot 16 joint der Sitzung "mic1"
+    When warte 3 Sekunden
+    When Bot 16 Taste M betätigt
+
+    When warte 10 Sekunden
+    Then ich den Text "Lasttest-4 START" mit Timestamp logge
+
+    When Bot 13 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 13 Taste M betätigt
+
+    When warte 5 Sekunden
+    When Bot 13 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 13 Taste M betätigt
+
+    When Bot 14 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 14 Taste M betätigt
+
+    When Bot 15 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 15 Taste M betätigt
+
+    When Bot 16 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 16 Taste M betätigt
+
+    When warte 10 Sekunden
+
+
+@pannertest8
+  Scenario: Acht Bots joint
+    Given Bot 13 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 13 Taste M betätigt
+
+    Given Bot 14 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 14 Taste M betätigt
+
+    Given Bot 15 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 15 Taste M betätigt
+
+    Given Bot 16 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 16 Taste M betätigt
+
+    Given Bot 17 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 17 Taste M betätigt
+
+    Given Bot 18 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 18 Taste M betätigt
+
+    Given Bot 19 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 19 Taste M betätigt
+
+    Given Bot 20 joint der Sitzung "test23"
+    When warte 4 Sekunden
+    When Bot 20 Taste M betätigt
+
+    When warte 5 Sekunden
+    Then ich den Text "Lasttest-4 START" mit Timestamp logge
+
+    When Bot 13 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 13 Taste M betätigt
+
+    When Bot 17 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 17 Taste M betätigt
+
+    When Bot 14 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 14 Taste M betätigt
+
+    When Bot 18 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 18 Taste M betätigt
+
+    When Bot 15 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 15 Taste M betätigt
+
+    When Bot 19 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 19 Taste M betätigt
+
+    When Bot 16 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 16 Taste M betätigt
+
+    When Bot 20 Taste M betätigt
+    When warte 5 Sekunden
+    When Bot 20 Taste M betätigt
+
+    When warte 5 Sekunden
