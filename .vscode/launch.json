@@ -1,11 +1,12 @@
 {
   "version": "0.2.0",
   "configurations": [
+
     {
       "name": "Debug Cucumber Tests",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
       "args": ["--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
@@ -21,7 +22,7 @@
       "name": "Debug Cucumber Tests - Step by Step",
       "type": "node", 
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
       "args": ["--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
@@ -34,11 +35,11 @@
       ]
     },
     {
-      "name": "Debug Specific Test (@test-audio4)",
+      "name": "Debug Stereo 4 Bots (@l_stereo_4)",
       "type": "node",
       "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
-      "args": ["--tags", "@test-audio4", "--format", "@cucumber/pretty-formatter"],
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_stereo_4", "--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "env": {
@@ -50,11 +51,11 @@
       ]
     },
     {
-      "name": "Debug Specific Test (@test-audio8)",
+      "name": "Debug Stereo 8 Bots (@l_stereo_8)",
       "type": "node",
       "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
-      "args": ["--tags", "@test-audio8", "--format", "@cucumber/pretty-formatter"],
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_stereo_8", "--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "env": {
@@ -66,11 +67,11 @@
       ]
     },
     {
-      "name": "Debug Specific Test (@test-cp-4)",
+      "name": "Debug Stereo 12 Bots (@l_stereo_12)",
       "type": "node",
       "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
-      "args": ["--tags", "@test-cp-4", "--format", "@cucumber/pretty-formatter"],
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_stereo_12", "--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "env": {
@@ -82,11 +83,91 @@
       ]
     },
     {
-      "name": "Debug Specific Test (@test-cp-8)",
+      "name": "Debug Equalpower 4 Bots (@l_equalpower_4)",
       "type": "node",
       "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
-      "args": ["--tags", "@test-cp-8", "--format", "@cucumber/pretty-formatter"],
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_equalpower_4", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug Equalpower 8 Bots (@l_equalpower_8)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_equalpower_8", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug Equalpower 12 Bots (@l_equalpower_12)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_equalpower_12", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug HRTF 4 Bots (@l_hrtf_4)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_hrtf_4", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug HRTF 8 Bots (@l_hrtf_8)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_hrtf_8", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug HRTF 12 Bots (@l_hrtf_12)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_hrtf_12", "--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "env": {

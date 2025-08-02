@@ -2,39 +2,45 @@ Feature: Lokalisierung Stereo
 
 @l_stereo_4
   Scenario: Vier Bots joint
-    Given Bot 1 joint der Sitzung "raum1"
-    Given warte 3 Sekunden
+    Given Bot 1 joint der Sitzung "raum17"
+
+    Given Bot 2 joint der Sitzung "raum17"
+
+    Given Bot 3 joint der Sitzung "raum17"
+
+    Given Bot 4 joint der Sitzung "raum17"
+
+    Given warte 5 Sekunden
+
     Given Bot 1 Taste M betätigt
-
-    Given Bot 2 joint der Sitzung "raum1"
-    Given warte 3 Sekunden
     Given Bot 2 Taste M betätigt
-
-    Given Bot 3 joint der Sitzung "raum1"
-    Given warte 3 Sekunden
     Given Bot 3 Taste M betätigt
-
-    Given Bot 4 joint der Sitzung "raum1"
-    Given warte 3 Sekunden
     Given Bot 4 Taste M betätigt
 
+    When I pause
     ######################################
     # Reihenfolge C, A, D, B → 3, 1, 4, 2
 
     When Bot 3 Taste M betätigt
-    When warte 5 Sekunden
+    When warte 3 Sekunden
     When Bot 3 Taste M betätigt
 
+    When I pause
+
     When Bot 1 Taste M betätigt
-    When warte 5 Sekunden
+    When warte 3 Sekunden
     When Bot 1 Taste M betätigt
 
+    When I pause
+
     When Bot 4 Taste M betätigt
-    When warte 5 Sekunden
+    When warte 3 Sekunden
     When Bot 4 Taste M betätigt
+
+    When I pause
 
     When Bot 2 Taste M betätigt
-    When warte 5 Sekunden
+    When warte 3 Sekunden
     When Bot 2 Taste M betätigt
 
     When warte 10 Sekunden

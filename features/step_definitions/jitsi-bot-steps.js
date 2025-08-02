@@ -107,4 +107,8 @@ When('zeige aktive Bots an', async function() {
 When('ich den Text {string} mit Timestamp logge', async function(text) {
   const timestamp = new Date().toLocaleString('de-DE', { hour12: false });
   console.log(`[${timestamp}] ${text}`);
+});
+
+When('I pause', async function() {
+  console.log('######################## Pause ########################');
 }); 
