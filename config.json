@@ -17,7 +17,7 @@
       "name": "APerson",
       "mediaFolder": "bot1",
       "videoFile": "bot1pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -25,7 +25,7 @@
       "name": "BPerson", 
       "mediaFolder": "bot2",
       "videoFile": "bot2pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -33,7 +33,7 @@
       "name": "CPerson",
       "mediaFolder": "bot3", 
       "videoFile": "bot3pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -41,7 +41,7 @@
       "name": "DPerson",
       "mediaFolder": "bot4",
       "videoFile": "bot4pic.y4m", 
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -49,7 +49,7 @@
       "name": "EPerson",
       "mediaFolder": "bot5",
       "videoFile": "bot5pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -57,7 +57,7 @@
       "name": "FPerson",
       "mediaFolder": "bot6",
       "videoFile": "bot6pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -65,7 +65,7 @@
       "name": "GPerson",
       "mediaFolder": "bot7",
       "videoFile": "bot7pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -73,7 +73,7 @@
       "name": "HPerson",
       "mediaFolder": "bot8",
       "videoFile": "bot8pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -81,7 +81,7 @@
       "name": "IPerson",
       "mediaFolder": "bot9",
       "videoFile": "bot9pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -89,7 +89,7 @@
       "name": "JPerson",
       "mediaFolder": "bot10",
       "videoFile": "bot10pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -97,7 +97,7 @@
       "name": "KPerson",
       "mediaFolder": "bot11",
       "videoFile": "bot11pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
@@ -105,7 +105,7 @@
       "name": "LPerson",
       "mediaFolder": "bot12",
       "videoFile": "bot12pic.y4m",
-      "audioFile": "Lasttest.wav",
+      "audioFile": "Lokalisierungstest.wav",
       "enableAudio": true
     },
     {
