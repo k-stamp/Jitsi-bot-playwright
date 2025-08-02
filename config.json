@@ -78,7 +78,7 @@
     },
     {
       "id": 9,
-      "name": "Bot9",
+      "name": "IPerson",
       "mediaFolder": "bot9",
       "videoFile": "bot9pic.y4m",
       "audioFile": "Lasttest.wav",
@@ -86,7 +86,7 @@
     },
     {
       "id": 10,
-      "name": "Bot10",
+      "name": "JPerson",
       "mediaFolder": "bot10",
       "videoFile": "bot10pic.y4m",
       "audioFile": "Lasttest.wav",
@@ -94,7 +94,7 @@
     },
     {
       "id": 11,
-      "name": "Bot11",
+      "name": "KPerson",
       "mediaFolder": "bot11",
       "videoFile": "bot11pic.y4m",
       "audioFile": "Lasttest.wav",
@@ -102,7 +102,7 @@
     },
     {
       "id": 12,
-      "name": "Bot12",
+      "name": "LPerson",
       "mediaFolder": "bot12",
       "videoFile": "bot12pic.y4m",
       "audioFile": "Lasttest.wav",
