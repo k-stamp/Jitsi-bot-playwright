@@ -30,13 +30,13 @@ Feature: Lasttest
     When warte 60 Sekunden
     Then ich den Text "Mein Logtext ENDE" mit Timestamp logge
 
-  @Lasttest-4
+  @Lasttest4
   Scenario: Vier Bots joint
     When warte 10 Sekunden
-    Given Bot 1 joint der Sitzung "Last-4"
-    Given Bot 2 joint der Sitzung "Last-4"
-    Given Bot 3 joint der Sitzung "Last-4"
-    Given Bot 4 joint der Sitzung "Last-4"
+    Given Bot 1 joint der Sitzung "Last-4x"
+    Given Bot 2 joint der Sitzung "Last-4x"
+    Given Bot 3 joint der Sitzung "Last-4x"
+    Given Bot 4 joint der Sitzung "Last-4x"
     When warte 10 Sekunden
     Then ich den Text "Lasttest-4 START" mit Timestamp logge
     When warte 60 Sekunden
@@ -45,14 +45,14 @@ Feature: Lasttest
   @Lasttest8
   Scenario: Acht Bots joint
     When warte 10 Sekunden
-    Given Bot 1 joint der Sitzung "Last-8"
-    Given Bot 2 joint der Sitzung "Last-8"
-    Given Bot 3 joint der Sitzung "Last-8"
-    Given Bot 4 joint der Sitzung "Last-8"
-    Given Bot 5 joint der Sitzung "Last-8"
-    Given Bot 6 joint der Sitzung "Last-8"
-    Given Bot 7 joint der Sitzung "Last-8"
-    Given Bot 8 joint der Sitzung "Last-8"
+    Given Bot 1 joint der Sitzung "Last-8y"
+    Given Bot 2 joint der Sitzung "Last-8y"
+    Given Bot 3 joint der Sitzung "Last-8y"
+    Given Bot 4 joint der Sitzung "Last-8y"
+    Given Bot 5 joint der Sitzung "Last-8y"
+    Given Bot 6 joint der Sitzung "Last-8y"
+    Given Bot 7 joint der Sitzung "Last-8y"
+    Given Bot 8 joint der Sitzung "Last-8y"
     When warte 10 Sekunden
     Then ich den Text "Lasttest-4 START" mit Timestamp logge
     When warte 60 Sekunden

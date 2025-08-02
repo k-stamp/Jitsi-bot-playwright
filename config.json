@@ -1,6 +1,6 @@
 {
-  "url": "https://kvnstp-jitsi.online/test1",
-  "url_offline": "https://192.168.178.64:8080/test4",
+  "url_offline": "https://kvnstp-jitsi.online/test1",
+  "url": "https://192.168.178.64:8080/test4",
   "numberofbots": 8,
   "headless": true,
   "delayBetweenBots": 100,
