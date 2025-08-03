@@ -113,7 +113,7 @@
       "name": "APerson",
       "mediaFolder": "bot1",
       "videoFile": "bot1pic.y4m",
-      "audioFile": "A.wav",
+      "audioFile": "audi-a4-man.wav",
       "enableAudio": true
     },
     {
@@ -137,7 +137,7 @@
       "name": "DPerson",
       "mediaFolder": "bot4",
       "videoFile": "bot4pic.y4m",
-      "audioFile": "D.wav",
+      "audioFile": "bmw-3er-man.wav",
       "enableAudio": true
     },
     {
