@@ -21,8 +21,11 @@ Scenario: Vier Bots joint
   Given warte 5 Sekunden
 
   Given Bot 1 Taste M betätigt
+  Given warte 1 Sekunden
   Given Bot 2 Taste M betätigt
+  Given warte 1 Sekunden
   Given Bot 3 Taste M betätigt
+  Given warte 1 Sekunden
   Given Bot 4 Taste M betätigt
 
   When I pause

@@ -3,10 +3,10 @@ Feature: Lokalisierung Stereo
   @l_stereo_4
   Scenario: Vier Bots joint
     When I pause
-    Given Bot 1 navigiert zur Sitzung "raum10"
-    Given Bot 2 navigiert zur Sitzung "raum10"
-    Given Bot 3 navigiert zur Sitzung "raum10"
-    Given Bot 4 navigiert zur Sitzung "raum10"
+    Given Bot 1 navigiert zur Sitzung "raum111"
+    Given Bot 2 navigiert zur Sitzung "raum111"
+    Given Bot 3 navigiert zur Sitzung "raum111"
+    Given Bot 4 navigiert zur Sitzung "raum111"
 
     When I pause
 
@@ -60,14 +60,14 @@ Feature: Lokalisierung Stereo
   @l_stereo_8
   Scenario: Acht Bots joint
     When I pause
-    Given Bot 1 navigiert zur Sitzung "raum123"
-    Given Bot 2 navigiert zur Sitzung "raum123"
-    Given Bot 3 navigiert zur Sitzung "raum123"
-    Given Bot 4 navigiert zur Sitzung "raum123"
-    Given Bot 5 navigiert zur Sitzung "raum123"
-    Given Bot 6 navigiert zur Sitzung "raum123"
-    Given Bot 7 navigiert zur Sitzung "raum123"
-    Given Bot 8 navigiert zur Sitzung "raum123"
+    Given Bot 1 navigiert zur Sitzung "raum112"
+    Given Bot 2 navigiert zur Sitzung "raum112"
+    Given Bot 3 navigiert zur Sitzung "raum112"
+    Given Bot 4 navigiert zur Sitzung "raum112"
+    Given Bot 5 navigiert zur Sitzung "raum112"
+    Given Bot 6 navigiert zur Sitzung "raum112"
+    Given Bot 7 navigiert zur Sitzung "raum112"
+    Given Bot 8 navigiert zur Sitzung "raum112"
 
     When I pause
 
@@ -99,7 +99,6 @@ Feature: Lokalisierung Stereo
     Given Bot 8 Taste M betätigt
 
     When I pause
-
     ######################################
     # Reihenfolge E, B, H, C → 5, 2, 8, 3
 
@@ -132,18 +131,18 @@ Feature: Lokalisierung Stereo
   @l_stereo_12
   Scenario: Zwölf Bots joint
     When I pause
-    Given Bot 1 navigiert zur Sitzung "raum133"
-    Given Bot 2 navigiert zur Sitzung "raum133"
-    Given Bot 3 navigiert zur Sitzung "raum133"
-    Given Bot 4 navigiert zur Sitzung "raum133"
-    Given Bot 5 navigiert zur Sitzung "raum133"
-    Given Bot 6 navigiert zur Sitzung "raum133"
-    Given Bot 7 navigiert zur Sitzung "raum133"
-    Given Bot 8 navigiert zur Sitzung "raum133"
-    Given Bot 9 navigiert zur Sitzung "raum133"
-    Given Bot 10 navigiert zur Sitzung "raum133"
-    Given Bot 11 navigiert zur Sitzung "raum133"
-    Given Bot 12 navigiert zur Sitzung "raum133"
+    Given Bot 1 navigiert zur Sitzung "raum113"
+    Given Bot 2 navigiert zur Sitzung "raum113"
+    Given Bot 3 navigiert zur Sitzung "raum113"
+    Given Bot 4 navigiert zur Sitzung "raum113"
+    Given Bot 5 navigiert zur Sitzung "raum113"
+    Given Bot 6 navigiert zur Sitzung "raum113"
+    Given Bot 7 navigiert zur Sitzung "raum113"
+    Given Bot 8 navigiert zur Sitzung "raum113"
+    Given Bot 9 navigiert zur Sitzung "raum113"
+    Given Bot 10 navigiert zur Sitzung "raum113"
+    Given Bot 11 navigiert zur Sitzung "raum113"
+    Given Bot 12 navigiert zur Sitzung "raum113"
 
     When I pause
 
@@ -200,7 +199,6 @@ Feature: Lokalisierung Stereo
     Given warte 1 Sekunden
 
     When I pause
-
     ######################################
     # Reihenfolge G, C, J, A → 7, 3, 10, 1
 
