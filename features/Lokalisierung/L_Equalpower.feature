@@ -2,6 +2,7 @@ Feature: Lokalisierung Equalpower
 
   @l_equalpower_4
   Scenario: Vier Bots joint
+    When I pause
     Given Bot 1 joint der Sitzung "raum4"
     Given Bot 2 joint der Sitzung "raum4"
     Given Bot 3 joint der Sitzung "raum4"
@@ -41,14 +42,11 @@ Feature: Lokalisierung Equalpower
     When warte 3 Sekunden
     When Bot 3 Taste M betätigt
 
-    When warte 10 Sekunden
-
-
-
 
 
   @l_equalpower_8
   Scenario: Acht Bots joint
+    When I pause
     Given Bot 1 joint der Sitzung "raum5"
     Given Bot 2 joint der Sitzung "raum5"
     Given Bot 3 joint der Sitzung "raum5"
@@ -96,25 +94,23 @@ Feature: Lokalisierung Equalpower
     When warte 3 Sekunden
     When Bot 1 Taste M betätigt
 
-    When warte 10 Sekunden
-
-
 
 
   @l_equalpower_12
   Scenario: Zwölf Bots joint
-    Given Bot 1 joint der Sitzung "raum6"
-    Given Bot 2 joint der Sitzung "raum6"
-    Given Bot 3 joint der Sitzung "raum6"
-    Given Bot 4 joint der Sitzung "raum6"
-    Given Bot 5 joint der Sitzung "raum6"
-    Given Bot 6 joint der Sitzung "raum6"
-    Given Bot 7 joint der Sitzung "raum6"
-    Given Bot 8 joint der Sitzung "raum6"
-    Given Bot 9 joint der Sitzung "raum6"
-    Given Bot 10 joint der Sitzung "raum6"
-    Given Bot 11 joint der Sitzung "raum6"
-    Given Bot 12 joint der Sitzung "raum6"
+    When I pause
+    Given Bot 1 joint der Sitzung "raum60"
+    Given Bot 2 joint der Sitzung "raum60"
+    Given Bot 3 joint der Sitzung "raum60"
+    Given Bot 4 joint der Sitzung "raum60"
+    Given Bot 5 joint der Sitzung "raum60"
+    Given Bot 6 joint der Sitzung "raum60"
+    Given Bot 7 joint der Sitzung "raum60"
+    Given Bot 8 joint der Sitzung "raum60"
+    Given Bot 9 joint der Sitzung "raum60"
+    Given Bot 10 joint der Sitzung "raum60"
+    Given Bot 11 joint der Sitzung "raum60"
+    Given Bot 12 joint der Sitzung "raum60"
 
     Given warte 5 Sekunden
 
@@ -122,10 +118,12 @@ Feature: Lokalisierung Equalpower
     Given Bot 2 Taste M betätigt
     Given Bot 3 Taste M betätigt
     Given Bot 4 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 5 Taste M betätigt
     Given Bot 6 Taste M betätigt
     Given Bot 7 Taste M betätigt
     Given Bot 8 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 9 Taste M betätigt
     Given Bot 10 Taste M betätigt
     Given Bot 11 Taste M betätigt
@@ -157,8 +155,6 @@ Feature: Lokalisierung Equalpower
     When Bot 8 Taste M betätigt
     When warte 3 Sekunden
     When Bot 8 Taste M betätigt
-
-    When warte 10 Sekunden
 
 
 

@@ -560,19 +560,91 @@ class BotManager {
     this.logWithTimestamp(`Bot ${botId} (${config.name}) drückt Taste M`);
 
     try {
-      // Aktiviere zunächst die Seite
-      await page.click('body');
-      await page.waitForTimeout(200);
-      
-      // Drücke die Taste M
-      await page.keyboard.press('m');
+      // Prüfe zunächst, ob die Seite noch existiert und aktiv ist
+      if (page.isClosed()) {
+        throw new Error(`Seite für Bot ${botId} ist geschlossen`);
+      }
+
+      // Bringe die Seite in den Vordergrund
+      await page.bringToFront();
       await page.waitForTimeout(500);
+
+      // Mehrfache Fokussierung für bessere Zuverlässigkeit
+      try {
+        // Versuche zuerst den Fokus auf ein spezifisches Element zu setzen
+        const focusElements = [
+          'body',
+          '.toolbox-content-items',
+          '#new-toolbox',
+          '.conference'
+        ];
+
+        let focusSet = false;
+        for (const selector of focusElements) {
+          try {
+            const element = await page.$(selector);
+            if (element) {
+              await element.click();
+              await page.waitForTimeout(500);
+              focusSet = true;
+              this.debug(`Fokus für Bot ${botId} auf Element ${selector} gesetzt`);
+              break;
+            }
+          } catch (e) {
+            // Ignoriere Fehler und versuche das nächste Element
+            continue;
+          }
+        }
+
+        if (!focusSet) {
+          // Fallback: Klicke auf body
+          await page.click('body');
+          await page.waitForTimeout(500);
+        }
+
+        // Zusätzlicher Fokus-Check: Versuche zu prüfen, ob die Seite fokussiert ist
+        const isFocused = await page.evaluate(() => document.hasFocus());
+        this.debug(`Bot ${botId} Seiten-Fokus: ${isFocused}`);
+
+      } catch (focusError) {
+        this.debug(`Fokus-Fehler für Bot ${botId}: ${focusError.message}, fahre mit Tastatur-Eingabe fort`);
+      }
+
+      // Warte etwas länger für bessere Stabilität
+      await page.waitForTimeout(600);
+      
+      // Drücke die Taste M mit erweiterten Optionen
+      this.debug(`Bot ${botId}: Versuche Taste M zu drücken`);
+      await page.keyboard.press('m');
+      await page.waitForTimeout(1000);
+      
+      // Zusätzliche Verifikation: Versuche nochmal, falls der erste Versuch fehlgeschlagen sein könnte
+      try {
+        // Überprüfe, ob das Mikrofon-Toggle funktioniert hat, indem wir nach dem Mikrofon-Button suchen
+        const micButton = await page.$('[data-testid="toolbox.microphone"], [aria-label*="microphone"], [aria-label*="Mikrofon"], .toolbox-button[aria-label*="microphone"]');
+        if (micButton) {
+          const ariaPressed = await micButton.getAttribute('aria-pressed');
+          this.debug(`Bot ${botId}: Mikrofon-Button aria-pressed nach M-Taste: ${ariaPressed}`);
+        }
+      } catch (verificationError) {
+        this.debug(`Bot ${botId}: Verifikation des Mikrofon-Status fehlgeschlagen: ${verificationError.message}`);
+      }
       
       this.debug(`Taste M wurde für Bot ${botId} (${config.name}) gedrückt`);
       this.logWithTimestamp(`Taste M erfolgreich für Bot ${botId} gedrückt`);
     } catch (error) {
       const errorMessage = `Fehler beim Drücken der Taste M für Bot ${botId}: ${error.message}`;
       console.error(`[FEHLER] ${errorMessage}`);
+      
+      // Zusätzliche Debug-Informationen
+      try {
+        const url = await bot.page.url();
+        const title = await bot.page.title();
+        this.debug(`Bot ${botId} - URL: ${url}, Titel: ${title}`);
+      } catch (debugError) {
+        this.debug(`Bot ${botId} - Konnte Debug-Informationen nicht abrufen: ${debugError.message}`);
+      }
+      
       throw new Error(errorMessage);
     }
   }

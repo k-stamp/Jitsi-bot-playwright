@@ -2,10 +2,11 @@ Feature: Lokalisierung Stereo
 
   @l_stereo_4
   Scenario: Vier Bots joint
-    Given Bot 1 joint der Sitzung "raum1"
-    Given Bot 2 joint der Sitzung "raum1"
-    Given Bot 3 joint der Sitzung "raum1"
-    Given Bot 4 joint der Sitzung "raum1"
+    When I pause
+    Given Bot 1 joint der Sitzung "raum100"
+    Given Bot 2 joint der Sitzung "raum100"
+    Given Bot 3 joint der Sitzung "raum100"
+    Given Bot 4 joint der Sitzung "raum100"
     
     Given warte 5 Sekunden
 
@@ -48,14 +49,15 @@ Feature: Lokalisierung Stereo
 
   @l_stereo_8
   Scenario: Acht Bots joint
-    Given Bot 1 joint der Sitzung "raum2"
-    Given Bot 2 joint der Sitzung "raum2"
-    Given Bot 3 joint der Sitzung "raum2"
-    Given Bot 4 joint der Sitzung "raum2"
-    Given Bot 5 joint der Sitzung "raum2"
-    Given Bot 6 joint der Sitzung "raum2"
-    Given Bot 7 joint der Sitzung "raum2"
-    Given Bot 8 joint der Sitzung "raum2"
+    When I pause
+    Given Bot 1 joint der Sitzung "raum200"
+    Given Bot 2 joint der Sitzung "raum200"
+    Given Bot 3 joint der Sitzung "raum200"
+    Given Bot 4 joint der Sitzung "raum200"
+    Given Bot 5 joint der Sitzung "raum200"
+    Given Bot 6 joint der Sitzung "raum200"
+    Given Bot 7 joint der Sitzung "raum200"
+    Given Bot 8 joint der Sitzung "raum200"
 
     Given warte 5 Sekunden
 
@@ -101,18 +103,19 @@ Feature: Lokalisierung Stereo
 
   @l_stereo_12
   Scenario: Zwölf Bots joint
-    Given Bot 1 joint der Sitzung "raum3"
-    Given Bot 2 joint der Sitzung "raum3"
-    Given Bot 3 joint der Sitzung "raum3"
-    Given Bot 4 joint der Sitzung "raum3"
-    Given Bot 5 joint der Sitzung "raum3"
-    Given Bot 6 joint der Sitzung "raum3"
-    Given Bot 7 joint der Sitzung "raum3"
-    Given Bot 8 joint der Sitzung "raum3"
-    Given Bot 9 joint der Sitzung "raum3"
-    Given Bot 10 joint der Sitzung "raum3"
-    Given Bot 11 joint der Sitzung "raum3"
-    Given Bot 12 joint der Sitzung "raum3"
+    When I pause
+    Given Bot 1 joint der Sitzung "raum302"
+    Given Bot 2 joint der Sitzung "raum302"
+    Given Bot 3 joint der Sitzung "raum302"
+    Given Bot 4 joint der Sitzung "raum302"
+    Given Bot 5 joint der Sitzung "raum302"
+    Given Bot 6 joint der Sitzung "raum302"
+    Given Bot 7 joint der Sitzung "raum302"
+    Given Bot 8 joint der Sitzung "raum302"
+    Given Bot 9 joint der Sitzung "raum302"
+    Given Bot 10 joint der Sitzung "raum302"
+    Given Bot 11 joint der Sitzung "raum302"
+    Given Bot 12 joint der Sitzung "raum302"
 
     Given warte 5 Sekunden
 
@@ -122,6 +125,7 @@ Feature: Lokalisierung Stereo
     Given Bot 4 Taste M betätigt
     Given Bot 5 Taste M betätigt
     Given Bot 6 Taste M betätigt
+    Given warte 1 Sekunden
     Given Bot 7 Taste M betätigt
     Given Bot 8 Taste M betätigt
     Given Bot 9 Taste M betätigt
@@ -133,6 +137,8 @@ Feature: Lokalisierung Stereo
 
     ######################################
     # Reihenfolge G, C, J, A → 7, 3, 10, 1
+
+    When warte 1 Sekunden
 
     When Bot 7 Taste M betätigt
     When warte 3 Sekunden

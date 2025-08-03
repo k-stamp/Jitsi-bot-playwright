@@ -2,10 +2,11 @@ Feature: Lokalisierung HRTF
 
   @l_hrtf_4
   Scenario: Vier Bots joint
-    Given Bot 1 joint der Sitzung "raum7"
-    Given Bot 2 joint der Sitzung "raum7"
-    Given Bot 3 joint der Sitzung "raum7"
-    Given Bot 4 joint der Sitzung "raum7"
+    When I pause
+    Given Bot 1 joint der Sitzung "raum700"
+    Given Bot 2 joint der Sitzung "raum700"
+    Given Bot 3 joint der Sitzung "raum700"
+    Given Bot 4 joint der Sitzung "raum700"
 
     Given warte 5 Sekunden
 
@@ -41,14 +42,11 @@ Feature: Lokalisierung HRTF
     When warte 3 Sekunden
     When Bot 1 Taste M betätigt
 
-    When warte 10 Sekunden
-
-
-
 
 
   @l_hrtf_8
   Scenario: Acht Bots joint
+    When I pause
     Given Bot 1 joint der Sitzung "raum8"
     Given Bot 2 joint der Sitzung "raum8"
     Given Bot 3 joint der Sitzung "raum8"
@@ -96,13 +94,11 @@ Feature: Lokalisierung HRTF
     When warte 3 Sekunden
     When Bot 7 Taste M betätigt
 
-    When warte 10 Sekunden
-
-
 
 
   @l_hrtf_12
   Scenario: Zwölf Bots joint
+    When I pause
     Given Bot 1 joint der Sitzung "raum9"
     Given Bot 2 joint der Sitzung "raum9"
     Given Bot 3 joint der Sitzung "raum9"
@@ -157,5 +153,3 @@ Feature: Lokalisierung HRTF
     When Bot 9 Taste M betätigt
     When warte 3 Sekunden
     When Bot 9 Taste M betätigt
-
-    When warte 10 Sekunden
