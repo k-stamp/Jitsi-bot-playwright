@@ -103,6 +103,38 @@ class BotManager {
     }
   }
 
+  // Bot navigiert zu Sitzung (ohne zu joinen)
+  async navigateBotToRoom(botId, roomName) {
+    try {
+      const botConfig = this.config.bots.find(bot => bot.id === botId);
+      if (!botConfig) {
+        throw new Error(`Bot mit ID ${botId} nicht in Konfiguration gefunden`);
+      }
+
+      this.logWithTimestamp(`Bot ${botId} (${botConfig.name}) navigiert zu Raum "${roomName}"`);
+
+      // Erstelle Bot-Instanz (ohne Video)
+      const botInstance = await this.createBotInstance(botConfig, false);
+      
+      // Navigation zur Sitzung (ohne Join)
+      const url = `${this.baseUrl}/${roomName}`;
+      await this.navigateToRoom(botInstance, url, botConfig.name);
+
+      // Bot in Map speichern
+      this.bots.set(botId, {
+        ...botInstance,
+        config: botConfig,
+        roomName: roomName
+      });
+
+      this.logWithTimestamp(`Bot ${botId} erfolgreich zu Raum "${roomName}" navigiert (bereit zum Beitritt)`);
+      return true;
+    } catch (error) {
+      console.error(`Fehler bei der Navigation von Bot ${botId}:`, error.message);
+      throw error;
+    }
+  }
+
   // Einzelnen Bot erstellen
   async createBotInstance(botConfig, withVideo) {
     const videoFile = path.resolve(path.join(__dirname, 'media', botConfig.mediaFolder, botConfig.videoFile));
@@ -301,6 +333,69 @@ class BotManager {
       await page.screenshot({ path: screenshotPath });
       console.error(`[DEBUG] Screenshot wurde unter ${screenshotPath} gespeichert.`);
       throw new Error(`Fehler beim Quick Join für ${botName}: ${error.message}`);
+    }
+  }
+
+  // Bot navigiert zu Raum und bereitet Beitritt vor (ohne zu joinen)
+  async navigateToRoom(botInstance, url, botName) {
+    const { page } = botInstance;
+
+    try {
+      this.debug(`Navigiere zu: ${url}`);
+      await page.goto(url, { 
+        timeout: 60000,
+        waitUntil: 'domcontentloaded'
+      });
+      
+      // Warte auf Namensfeld
+      const nameField = 'div.premeeting-screen input';
+      this.debug(`Warte auf Namensfeld: ${nameField}`);
+      await page.waitForSelector(nameField, { timeout: 15000 });
+      await page.fill(nameField, botName);
+      this.debug(`Name "${botName}" wurde in das Feld eingegeben`);
+      
+      // Warte auf Join-Button (aber klicke noch nicht)
+      const joinButton = 'div[data-testid="prejoin.joinMeeting"]';
+      this.debug(`Warte auf Join-Button: ${joinButton}`);
+      await page.waitForSelector(joinButton, { timeout: 10000 });
+      
+      this.logWithTimestamp(`Bot ${botName} ist bereit zum Beitritt (Navigation abgeschlossen).`);
+    } catch (error) {
+      console.error(`[FEHLER] Bot ${botName} konnte nicht zum Raum navigieren: ${error.message}`);
+      // Screenshot bei Fehler für besseres Debugging
+      const screenshotPath = `reports/fehler-navigation-${botName}.png`;
+      await page.screenshot({ path: screenshotPath });
+      console.error(`[DEBUG] Screenshot wurde unter ${screenshotPath} gespeichert.`);
+      throw new Error(`Fehler bei der Navigation für ${botName}: ${error.message}`);
+    }
+  }
+
+  // Bot klickt auf Join-Button (nachdem Navigation bereits erfolgt ist)
+  async clickJoinButton(botId) {
+    try {
+      const bot = this.bots.get(botId);
+      if (!bot) {
+        throw new Error(`Bot ${botId} ist nicht aktiv oder wurde nicht gefunden`);
+      }
+
+      const { page, config } = bot;
+      const botName = config.name;
+      
+      // Join-Button klicken
+      const joinButton = 'div[data-testid="prejoin.joinMeeting"]';
+      this.debug(`Klicke auf Join-Button für Bot "${botName}"`);
+      await page.click(joinButton);
+      
+      // Zeitstempel nach erfolgreichem Beitritt
+      const now = new Date();
+      const timeString = now.toTimeString().split(' ')[0]; // HH:MM:SS Format
+      console.log(`${timeString} - Bot ${botName} ist der Konferenz beigetreten`);
+      
+      this.logWithTimestamp(`Bot ${botName} hat den Beitritt abgeschlossen.`);
+      return true;
+    } catch (error) {
+      console.error(`Fehler beim Klicken des Join-Buttons für Bot ${botId}:`, error.message);
+      throw error;
     }
   }
 
@@ -567,7 +662,7 @@ class BotManager {
 
       // Bringe die Seite in den Vordergrund
       await page.bringToFront();
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(100);
 
       // Mehrfache Fokussierung für bessere Zuverlässigkeit
       try {
@@ -585,7 +680,7 @@ class BotManager {
             const element = await page.$(selector);
             if (element) {
               await element.click();
-              await page.waitForTimeout(500);
+              await page.waitForTimeout(100);
               focusSet = true;
               this.debug(`Fokus für Bot ${botId} auf Element ${selector} gesetzt`);
               break;
@@ -599,7 +694,7 @@ class BotManager {
         if (!focusSet) {
           // Fallback: Klicke auf body
           await page.click('body');
-          await page.waitForTimeout(500);
+          await page.waitForTimeout(100);
         }
 
         // Zusätzlicher Fokus-Check: Versuche zu prüfen, ob die Seite fokussiert ist
@@ -611,12 +706,12 @@ class BotManager {
       }
 
       // Warte etwas länger für bessere Stabilität
-      await page.waitForTimeout(600);
+      await page.waitForTimeout(300);
       
       // Drücke die Taste M mit erweiterten Optionen
       this.debug(`Bot ${botId}: Versuche Taste M zu drücken`);
       await page.keyboard.press('m');
-      await page.waitForTimeout(1000);
+      await page.waitForTimeout(500);
       
       // Zusätzliche Verifikation: Versuche nochmal, falls der erste Versuch fehlgeschlagen sein könnte
       try {

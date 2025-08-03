@@ -112,3 +112,13 @@ When('ich den Text {string} mit Timestamp logge', async function(text) {
 When('I pause', async function() {
   console.log('######################## Pause ########################');
 }); 
+
+Given('Bot {int} navigiert zur Sitzung {string}', async function(botId, roomName) {
+  await waitForUserInput(`Bot ${botId} navigiert zur Sitzung "${roomName}"`);
+  await this.navigateBotToRoom(botId, roomName);
+});
+
+Given('Bot {int} klickt auf den Join-Button', async function(botId) {
+  await waitForUserInput(`Bot ${botId} klickt auf den Join-Button`);
+  await this.clickJoinButtonForBot(botId);
+});

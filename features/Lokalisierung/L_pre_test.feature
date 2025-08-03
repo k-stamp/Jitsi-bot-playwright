@@ -3,10 +3,20 @@ Feature: Lokalisierung Pre Test
 @l_pretest
 Scenario: Vier Bots joint
   When I pause
-  Given Bot 1 joint der Sitzung "test"
-  Given Bot 2 joint der Sitzung "test"
-  Given Bot 3 joint der Sitzung "test"
-  Given Bot 4 joint der Sitzung "test"
+  Given Bot 1 navigiert zur Sitzung "test"
+  Given Bot 2 navigiert zur Sitzung "test"
+  Given Bot 3 navigiert zur Sitzung "test"
+  Given Bot 4 navigiert zur Sitzung "test"
+
+  When I pause
+
+  Given Bot 1 klickt auf den Join-Button
+  Given warte 1 Sekunden
+  Given Bot 2 klickt auf den Join-Button
+  Given warte 1 Sekunden
+  Given Bot 3 klickt auf den Join-Button
+  Given warte 1 Sekunden
+  Given Bot 4 klickt auf den Join-Button
   
   Given warte 5 Sekunden
 

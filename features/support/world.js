@@ -37,6 +37,31 @@ class JitsiBotWorld {
     }
   }
 
+  // Bot zu Raum navigieren lassen (ohne zu joinen)
+  async navigateBotToRoom(botId, roomName) {
+    try {
+      await this.botManager.navigateBotToRoom(botId, roomName);
+      console.log(`✓ Bot ${botId} erfolgreich zu Raum "${roomName}" navigiert (bereit zum Beitritt)`);
+    } catch (error) {
+      console.error(`✗ Fehler bei der Navigation von Bot ${botId}:`, error.message);
+      this.testResults.errors.push(`Bot ${botId}: ${error.message}`);
+      throw error;
+    }
+  }
+
+  // Bot Join-Button klicken lassen
+  async clickJoinButtonForBot(botId) {
+    try {
+      await this.botManager.clickJoinButton(botId);
+      console.log(`✓ Bot ${botId} hat erfolgreich den Join-Button geklickt`);
+    } catch (error) {
+      console.error(`✗ Fehler beim Klicken des Join-Buttons für Bot ${botId}:`, error.message);
+      this.testResults.errors.push(`Bot ${botId}: ${error.message}`);
+      throw error;
+    }
+  }
+
+
   // Audio für einen Bot starten
   async startAudioForBot(botId) {
     try {
