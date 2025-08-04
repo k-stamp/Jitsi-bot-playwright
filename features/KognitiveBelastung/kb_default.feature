@@ -59,8 +59,6 @@ Feature: Fokussierung Default
     When Bot 1101 toggles audio
     When Bot 1103 toggles audio
 
-    When warte 10 Sekunden
-
     When ich pausiere mit Text "Trial 2 - Ziel: Mercedes"
     When Bot 1103 toggles audio
     When Bot 1105 toggles audio
@@ -68,16 +66,12 @@ Feature: Fokussierung Default
     When Bot 1103 toggles audio
     When Bot 1105 toggles audio
 
-    When warte 10 Sekunden
-
     When ich pausiere mit Text "Trial 3 - Ziel: BMW"
     When Bot 1102 toggles audio
     When Bot 1108 toggles audio
     When warte 30 Sekunden
     When Bot 1102 toggles audio
     When Bot 1108 toggles audio
-
-    When warte 10 Sekunden
 
     When ich pausiere mit Text "Trial 4 - Ziel: Porsche"
     When Bot 1104 toggles audio

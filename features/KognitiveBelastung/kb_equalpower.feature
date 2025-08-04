@@ -55,33 +55,27 @@ Feature: Fokussierung Equalpower
     When ich pausiere mit Text "Trial 9 - Ziel: Audi"
     When Bot 1301 toggles audio
     When Bot 1303 toggles audio
-    When warte 40 Sekunden
+    When warte 30 Sekunden
     When Bot 1301 toggles audio
     When Bot 1303 toggles audio
-
-    When warte 10 Sekunden
 
     When ich pausiere mit Text "Trial 10 - Ziel: Mercedes"
     When Bot 1303 toggles audio
     When Bot 1305 toggles audio
-    When warte 40 Sekunden
+    When warte 30 Sekunden
     When Bot 1303 toggles audio
     When Bot 1305 toggles audio
-
-    When warte 10 Sekunden
 
     When ich pausiere mit Text "Trial 11 - Ziel: BMW"
     When Bot 1302 toggles audio
     When Bot 1308 toggles audio
-    When warte 40 Sekunden
+    When warte 30 Sekunden
     When Bot 1302 toggles audio
     When Bot 1308 toggles audio
-
-    When warte 10 Sekunden
 
     When ich pausiere mit Text "Trial 12 - Ziel: Porsche"
     When Bot 1304 toggles audio
     When Bot 1306 toggles audio
-    When warte 40 Sekunden
+    When warte 30 Sekunden
     When Bot 1304 toggles audio
     When Bot 1306 toggles audio
