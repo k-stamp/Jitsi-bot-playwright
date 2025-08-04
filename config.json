@@ -331,6 +331,262 @@
       "videoFile": "bot20pic.y4m",
       "audioFile": "m1-vw-golf-weiss.wav",
       "enableAudio": true
+    },
+    {
+      "id": 1101,
+      "name": "APerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-audi-q5-schwarz.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1102,
+      "name": "BPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-bmw-x3-grau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1103,
+      "name": "CPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-benz-aklasse-rot.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1104,
+      "name": "DPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-porsche-911-gelb.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1105,
+      "name": "EPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-bmw-x5-weiss.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1106,
+      "name": "FPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-vw-passat-schwarz.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1107,
+      "name": "GPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "A.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1108,
+      "name": "HPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-porsche-panamera-gelb.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1201,
+      "name": "APerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-vw-golf-weiss.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1202,
+      "name": "BPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-opel-corsa-silber.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1203,
+      "name": "CPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-ford-focus-blau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1204,
+      "name": "DPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-tesla-m3-gruen.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1205,
+      "name": "EPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-opel-mokka-rot.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1206,
+      "name": "FPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-porsche-panamera-gelb.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1207,
+      "name": "GPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "A.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1208,
+      "name": "HPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-ford-fiesta-gruen.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1301,
+      "name": "APerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-audi-q3-blau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1302,
+      "name": "BPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-bmw-x5-weiss.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1303,
+      "name": "CPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-benz-bklasse-rot.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1304,
+      "name": "DPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-porsche-panamera-gelb.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1305,
+      "name": "EPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-opel-mokka-rot.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1306,
+      "name": "FPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-bmw-x3-grau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1307,
+      "name": "GPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "A.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1308,
+      "name": "HPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-porsche-911-gelb.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1401,
+      "name": "APerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-vw-passat-schwarz.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1402,
+      "name": "BPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-opel-mokka-rot.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1403,
+      "name": "CPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-ford-fiesta-gruen.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1404,
+      "name": "DPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-tesla-models-lila.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1405,
+      "name": "EPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-audi-q3-blau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1406,
+      "name": "FPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-opel-corsa-silber.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1407,
+      "name": "GPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "A.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 1408,
+      "name": "HPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-tesla-m3-gruen.wav",
+      "enableAudio": true
     }
   ]
 }
