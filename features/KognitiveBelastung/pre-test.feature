@@ -1,12 +1,12 @@
-Feature: Lokalisierung HRTF
+Feature: Fokussierung Test
 
-  @kb
+  @kb_pretest
   Scenario: Vier Bots joint
     When I pause
-    Given Bot 13 navigiert zur Sitzung "kb3"
-    Given Bot 14 navigiert zur Sitzung "kb3"
-    Given Bot 15 navigiert zur Sitzung "kb3"
-    Given Bot 16 navigiert zur Sitzung "kb3"
+    Given Bot 13 navigiert zur Sitzung "kb001"
+    Given Bot 14 navigiert zur Sitzung "kb001"
+    Given Bot 15 navigiert zur Sitzung "kb001"
+    Given Bot 16 navigiert zur Sitzung "kb001"
 
     When I pause
 
