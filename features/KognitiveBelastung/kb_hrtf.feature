@@ -3,14 +3,14 @@ Feature: Fokussierung HRTF
   @kb_hrtf
   Scenario: Acht Bots kognitive Belastung HRTF Audio
     When ich pausiere mit Text "Bot-Browser bereit"
-    Given Bot 1401 navigiert zur Sitzung "kevin10"
-    Given Bot 1402 navigiert zur Sitzung "kevin10"
-    Given Bot 1403 navigiert zur Sitzung "kevin10"
-    Given Bot 1404 navigiert zur Sitzung "kevin10"
-    Given Bot 1405 navigiert zur Sitzung "kevin10"
-    Given Bot 1406 navigiert zur Sitzung "kevin10"
-    Given Bot 1407 navigiert zur Sitzung "kevin10"
-    Given Bot 1408 navigiert zur Sitzung "kevin10"
+    Given Bot 1401 navigiert zur Sitzung "kevin11"
+    Given Bot 1402 navigiert zur Sitzung "kevin11"
+    Given Bot 1403 navigiert zur Sitzung "kevin11"
+    Given Bot 1404 navigiert zur Sitzung "kevin11"
+    Given Bot 1405 navigiert zur Sitzung "kevin11"
+    Given Bot 1406 navigiert zur Sitzung "kevin11"
+    Given Bot 1407 navigiert zur Sitzung "kevin11"
+    Given Bot 1408 navigiert zur Sitzung "kevin11"
 
     When ich pausiere mit Text "Sitzungen geladen, bereit für Beitritt"
 
@@ -59,7 +59,6 @@ Feature: Fokussierung HRTF
     When Bot 1401 toggles audio
     When Bot 1403 toggles audio
 
-    When warte 10 Sekunden
 
     When ich pausiere mit Text "Trial 14 - Ziel: Ford"
     When Bot 1403 toggles audio
@@ -68,7 +67,6 @@ Feature: Fokussierung HRTF
     When Bot 1403 toggles audio
     When Bot 1405 toggles audio
 
-    When warte 10 Sekunden
 
     When ich pausiere mit Text "Trial 15 - Ziel: Opel"
     When Bot 1402 toggles audio
@@ -77,7 +75,6 @@ Feature: Fokussierung HRTF
     When Bot 1402 toggles audio
     When Bot 1408 toggles audio
 
-    When warte 10 Sekunden
 
     When ich pausiere mit Text "Trial 16 - Ziel: Tesla"
     When Bot 1404 toggles audio
