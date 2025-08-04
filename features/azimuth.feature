@@ -1,7 +1,7 @@
 Feature: Azimuth  Test
 
-  @azi
-  Scenario: Vier Bots joint
+  @azi2
+  Scenario: Acht Bots joint
 
     Given Bot 1 navigiert zur Sitzung "x55"
     Given Bot 2 navigiert zur Sitzung "x55"
@@ -96,196 +96,46 @@ Feature: Azimuth  Test
     When warte 3 Sekunden
     When Bot 8 Taste M betätigt
 
+  When warte 10 Sekunden
+
+  
+  
+  @azi
+  Scenario: Acht Bots joint
     When I pause
-    ######################################
+    Given Bot 1 navigiert zur Sitzung "test2x5"
+    Given Bot 2 navigiert zur Sitzung "test2x5"
 
-    When Bot 1 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 1 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 2 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 2 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 3 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 3 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 4 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 4 Taste M betätigt
-    When warte 1 Sekunden
-
-    When Bot 5 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 5 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 6 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 6 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 7 Taste M betätigt   
-    When warte 3 Sekunden
-    When Bot 7 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 8 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 8 Taste M betätigt
 
     When I pause
-    ######################################
 
-    When Bot 1 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 1 Taste M betätigt
+    Given Bot 1 klickt auf den Join-Button
+    Given warte 1 Sekunden
+    Given Bot 2 klickt auf den Join-Button    
 
-    When warte 1 Sekunden
+    Given Bot 1 toggles video
+    Given Bot 1 toggles audio
+    Given Bot 2 toggles video
+    Given Bot 2 toggles audio
 
-    When Bot 2 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 2 Taste M betätigt
 
-    When warte 1 Sekunden
-
-    When Bot 3 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 3 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 4 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 4 Taste M betätigt
-    When warte 1 Sekunden
-
-    When Bot 5 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 5 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 6 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 6 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 7 Taste M betätigt   
-    When warte 3 Sekunden
-    When Bot 7 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 8 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 8 Taste M betätigt
 
 
     When I pause
     ######################################
 
-    When Bot 1 Taste M betätigt
+
+
+    Given Bot 1 toggles audio
     When warte 3 Sekunden
-    When Bot 1 Taste M betätigt
+    Given Bot 1 toggles audio
 
     When warte 1 Sekunden
 
-    When Bot 2 Taste M betätigt
+    Given Bot 2 toggles audio
     When warte 3 Sekunden
-    When Bot 2 Taste M betätigt
+    Given Bot 2 toggles audio
 
     When warte 1 Sekunden
 
-    When Bot 3 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 3 Taste M betätigt
 
-    When warte 1 Sekunden
-
-    When Bot 4 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 4 Taste M betätigt
-    When warte 1 Sekunden
-
-    When Bot 5 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 5 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 6 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 6 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 7 Taste M betätigt   
-    When warte 3 Sekunden
-    When Bot 7 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 8 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 8 Taste M betätigt
-
-
-    When I pause
-    ######################################
-
-    When Bot 1 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 1 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 2 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 2 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 3 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 3 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 4 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 4 Taste M betätigt
-    When warte 1 Sekunden
-
-    When Bot 5 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 5 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 6 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 6 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 7 Taste M betätigt   
-    When warte 3 Sekunden
-    When Bot 7 Taste M betätigt
-
-    When warte 1 Sekunden
-
-    When Bot 8 Taste M betätigt
-    When warte 3 Sekunden
-    When Bot 8 Taste M betätigt

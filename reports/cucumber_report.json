@@ -20,8 +20,8 @@
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 5,
-            "name": "ich pausiere mit Text \"Bot-Browser bereit\"",
+            "line": 105,
+            "name": "I pause",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:116"
             },
@@ -137,8 +137,8 @@
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 15,
-            "name": "ich pausiere mit Text \"Sitzungen geladen, bereit für Beitritt\"",
+            "line": 110,
+            "name": "I pause",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:116"
             },
@@ -163,7 +163,7 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 18,
+            "line": 113,
             "name": "warte 1 Sekunden",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
@@ -189,8 +189,8 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 20,
-            "name": "warte 1 Sekunden",
+            "line": 116,
+            "name": "Bot 1 toggles video",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
             },
@@ -215,8 +215,8 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 22,
-            "name": "warte 1 Sekunden",
+            "line": 118,
+            "name": "Bot 2 toggles video",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
             },
@@ -240,9 +240,9 @@
           },
           {
             "arguments": [],
-            "keyword": "Given ",
-            "line": 24,
-            "name": "warte 1 Sekunden",
+            "keyword": "When ",
+            "line": 124,
+            "name": "I pause",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
             },
@@ -266,9 +266,9 @@
           },
           {
             "arguments": [],
-            "keyword": "Given ",
-            "line": 26,
-            "name": "warte 1 Sekunden",
+            "keyword": "When ",
+            "line": 130,
+            "name": "warte 3 Sekunden",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
             },
@@ -292,8 +292,8 @@
           },
           {
             "arguments": [],
-            "keyword": "Given ",
-            "line": 28,
+            "keyword": "When ",
+            "line": 133,
             "name": "warte 1 Sekunden",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
@@ -318,9 +318,9 @@
           },
           {
             "arguments": [],
-            "keyword": "Given ",
-            "line": 30,
-            "name": "warte 1 Sekunden",
+            "keyword": "When ",
+            "line": 136,
+            "name": "warte 3 Sekunden",
             "match": {
               "location": "features\\step_definitions\\jitsi-bot-steps.js:78"
             },
