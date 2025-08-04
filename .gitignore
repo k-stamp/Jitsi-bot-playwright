@@ -2,3 +2,5 @@
 
 # Node.js dependencies
 node_modules/
+
+reports/cucumber_report.json
