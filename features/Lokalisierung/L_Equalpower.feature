@@ -30,7 +30,6 @@ Feature: Lokalisierung Equalpower
     Given Bot 3 toggles video
     Given Bot 4 toggles video
 
-    Given ich pausiere mit Text "Ton 1"
     ######################################
     # Reihenfolge B, D, A, C → 2, 4, 1, 3
 
