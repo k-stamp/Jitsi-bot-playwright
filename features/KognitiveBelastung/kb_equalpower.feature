@@ -3,14 +3,14 @@ Feature: Fokussierung Equalpower
   @kb_equalpower
   Scenario: Acht Bots kognitive Belastung Equalpower Audio
     When ich pausiere mit Text "Bot-Browser bereit"
-    Given Bot 1301 navigiert zur Sitzung "kb103"
-    Given Bot 1302 navigiert zur Sitzung "kb103"
-    Given Bot 1303 navigiert zur Sitzung "kb103"
-    Given Bot 1304 navigiert zur Sitzung "kb103"
-    Given Bot 1305 navigiert zur Sitzung "kb103"
-    Given Bot 1306 navigiert zur Sitzung "kb103"
-    Given Bot 1307 navigiert zur Sitzung "kb103"
-    Given Bot 1308 navigiert zur Sitzung "kb103"
+    Given Bot 1301 navigiert zur Sitzung "kb104"
+    Given Bot 1302 navigiert zur Sitzung "kb104"
+    Given Bot 1303 navigiert zur Sitzung "kb104"
+    Given Bot 1304 navigiert zur Sitzung "kb104"
+    Given Bot 1305 navigiert zur Sitzung "kb104"
+    Given Bot 1306 navigiert zur Sitzung "kb104"
+    Given Bot 1307 navigiert zur Sitzung "kb104"
+    Given Bot 1308 navigiert zur Sitzung "kb104"
 
     When ich pausiere mit Text "Sitzungen geladen, bereit für Beitritt"
 
@@ -33,12 +33,19 @@ Feature: Fokussierung Equalpower
     Given warte 5 Sekunden
 
     Given Bot 1301 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 1302 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 1303 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 1304 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 1305 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 1306 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 1307 Taste M betätigt
+    Given warte 2 Sekunden
     Given Bot 1308 Taste M betätigt
 
     ######################################
