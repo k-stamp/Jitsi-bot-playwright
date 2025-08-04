@@ -267,6 +267,70 @@
       "videoFile": "bot20pic.y4m",
       "audioFile": "m1-tesla-m3-gruen.wav",
       "enableAudio": true
+    },
+    {
+      "id": 201,
+      "name": "APerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-benz-aklasse-rot.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 202,
+      "name": "BPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-bmw-x3-grau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 203,
+      "name": "CPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-ford-focus-blau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 204,
+      "name": "DPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-porsche-911-gelb.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 205,
+      "name": "EPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w1-audi-q5-schwarz.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 206,
+      "name": "FPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m2-ford-focus-blau.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 207,
+      "name": "GPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "w2-tesla-m3-gruen.wav",
+      "enableAudio": true
+    },
+    {
+      "id": 208,
+      "name": "HPerson - kb stereo",
+      "mediaFolder": "bot20",
+      "videoFile": "bot20pic.y4m",
+      "audioFile": "m1-vw-golf-weiss.wav",
+      "enableAudio": true
     }
   ]
 }

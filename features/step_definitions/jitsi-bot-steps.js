@@ -113,6 +113,10 @@ When('I pause', async function() {
   console.log('######################## Pause ########################');
 }); 
 
+When('ich pausiere mit Text {string}', async function(text) {
+  console.log(`###### ${text} ######`);
+});
+
 Given('Bot {int} navigiert zur Sitzung {string}', async function(botId, roomName) {
   await waitForUserInput(`Bot ${botId} navigiert zur Sitzung "${roomName}"`);
   await this.navigateBotToRoom(botId, roomName);

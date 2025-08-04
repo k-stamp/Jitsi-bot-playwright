@@ -6,7 +6,7 @@
         "description": "",
         "id": "lokalisierung-hrtf;acht-bots-kognitive-belastung",
         "keyword": "Scenario",
-        "line": 11,
+        "line": 4,
         "name": "Acht Bots kognitive Belastung",
         "steps": [
           {
@@ -14,462 +14,462 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 246292
+              "duration": 286625
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 12,
-            "name": "I pause",
+            "line": 5,
+            "name": "ich pausiere mit Text \"Bot-Browser bereit\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:112"
+              "location": "features/step_definitions/jitsi-bot-steps.js:116"
             },
             "result": {
               "status": "passed",
-              "duration": 2937631625
+              "duration": 2389684666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "Bot 101 navigiert zur Sitzung \"kb13\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3762850207
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "Bot 102 navigiert zur Sitzung \"kb13\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3595185082
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "Bot 103 navigiert zur Sitzung \"kb13\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3379728041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "Bot 104 navigiert zur Sitzung \"kb13\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3527057792
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "Bot 105 navigiert zur Sitzung \"kb13\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3674995332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "Bot 106 navigiert zur Sitzung \"kb13\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3791020915
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "Bot 107 navigiert zur Sitzung \"kb13\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3957148792
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 13,
-            "name": "Bot 101 navigiert zur Sitzung \"kb10\"",
+            "name": "Bot 108 navigiert zur Sitzung \"kb13\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:116"
+              "location": "features/step_definitions/jitsi-bot-steps.js:120"
             },
             "result": {
               "status": "passed",
-              "duration": 3395200499
+              "duration": 3870394499
             }
           },
           {
             "arguments": [],
-            "keyword": "Given ",
-            "line": 14,
-            "name": "Bot 102 navigiert zur Sitzung \"kb10\"",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:116"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3744496917
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
+            "keyword": "When ",
             "line": 15,
-            "name": "Bot 103 navigiert zur Sitzung \"kb10\"",
+            "name": "ich pausiere mit Text \"Sitzungen geladen, bereit für Beitritt\"",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:116"
             },
             "result": {
               "status": "passed",
-              "duration": 3457685166
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 16,
-            "name": "Bot 104 navigiert zur Sitzung \"kb10\"",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:116"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3586017917
+              "duration": 29679008041
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 17,
-            "name": "Bot 105 navigiert zur Sitzung \"kb10\"",
+            "name": "Bot 101 klickt auf den Join-Button",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:116"
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 4012066707
+              "duration": 133224000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 18,
-            "name": "Bot 106 navigiert zur Sitzung \"kb10\"",
+            "name": "warte 1 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:116"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 4392976749
+              "duration": 1001965917
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 19,
-            "name": "Bot 107 navigiert zur Sitzung \"kb10\"",
+            "name": "Bot 102 klickt auf den Join-Button",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:116"
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 4392164416
+              "duration": 106205125
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 20,
-            "name": "Bot 108 navigiert zur Sitzung \"kb10\"",
+            "name": "warte 1 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:116"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 4687115166
+              "duration": 1000949749
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
-            "line": 22,
-            "name": "I pause",
+            "keyword": "Given ",
+            "line": 21,
+            "name": "Bot 103 klickt auf den Join-Button",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:112"
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 52470498749
+              "duration": 87730959
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 22,
+            "name": "warte 1 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1001521292
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 23,
+            "name": "Bot 104 klickt auf den Join-Button",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 119771542
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 24,
-            "name": "Bot 101 klickt auf den Join-Button",
+            "name": "warte 1 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 220892374
+              "duration": 1000987124
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 25,
-            "name": "warte 1 Sekunden",
+            "name": "Bot 105 klickt auf den Join-Button",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 1001263833
+              "duration": 142131791
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 26,
-            "name": "Bot 102 klickt auf den Join-Button",
+            "name": "warte 1 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 123040332
+              "duration": 1001568417
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 27,
-            "name": "warte 1 Sekunden",
+            "name": "Bot 106 klickt auf den Join-Button",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 1001906625
+              "duration": 638303124
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 28,
-            "name": "Bot 103 klickt auf den Join-Button",
+            "name": "warte 1 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 104316999
+              "duration": 1002367457
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 29,
-            "name": "warte 1 Sekunden",
+            "name": "Bot 107 klickt auf den Join-Button",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 1000907667
+              "duration": 113484624
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 30,
-            "name": "Bot 104 klickt auf den Join-Button",
+            "name": "warte 1 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 142755791
+              "duration": 1008460542
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 31,
-            "name": "warte 1 Sekunden",
+            "name": "Bot 108 klickt auf den Join-Button",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+              "location": "features/step_definitions/jitsi-bot-steps.js:125"
             },
             "result": {
               "status": "passed",
-              "duration": 1001565082
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 32,
-            "name": "Bot 105 klickt auf den Join-Button",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 152301249
+              "duration": 480969125
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 33,
-            "name": "warte 1 Sekunden",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1001188290
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 34,
-            "name": "Bot 106 klickt auf den Join-Button",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 164626499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 35,
-            "name": "warte 1 Sekunden",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000888290
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 36,
-            "name": "Bot 107 klickt auf den Join-Button",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 179990833
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 37,
-            "name": "warte 1 Sekunden",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1001254041
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 38,
-            "name": "Bot 108 klickt auf den Join-Button",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:121"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 242455249
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 40,
             "name": "warte 5 Sekunden",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 5001643750
+              "duration": 5000111875
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 42,
+            "line": 35,
             "name": "Bot 101 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1077990333
+              "duration": 1087697625
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 43,
+            "line": 36,
             "name": "Bot 102 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1067896582
+              "duration": 1061477375
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 44,
+            "line": 37,
             "name": "Bot 103 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1047475082
+              "duration": 1059612458
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 45,
+            "line": 38,
             "name": "Bot 104 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1059112332
+              "duration": 1071397000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 46,
+            "line": 39,
             "name": "Bot 105 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1062041459
+              "duration": 1060367540
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 47,
+            "line": 40,
             "name": "Bot 106 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1157399916
+              "duration": 1075754417
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 48,
+            "line": 41,
             "name": "Bot 107 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1107061833
+              "duration": 1084007333
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 49,
+            "line": 42,
             "name": "Bot 108 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1098189207
+              "duration": 1055892792
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 51,
-            "name": "I pause",
+            "line": 53,
+            "name": "ich pausiere mit Text \"Trial 1 - Ziel: Audi\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:112"
+              "location": "features/step_definitions/jitsi-bot-steps.js:116"
             },
             "result": {
               "status": "passed",
-              "duration": 55002758667
+              "duration": 10377919290
             }
           },
           {
@@ -482,7 +482,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1105608124
+              "duration": 1081867874
             }
           },
           {
@@ -495,7 +495,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1079664042
+              "duration": 1071574125
             }
           },
           {
@@ -508,7 +508,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 40001566041
+              "duration": 40002455707
             }
           },
           {
@@ -521,7 +521,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1066402208
+              "duration": 1056088583
             }
           },
           {
@@ -534,176 +534,215 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1052759374
+              "duration": 1054800000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 60,
-            "name": "I pause",
+            "name": "ich pausiere mit Text \"Trial 2 - Ziel: Mercedes\"",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:112"
+              "location": "features/step_definitions/jitsi-bot-steps.js:116"
             },
             "result": {
               "status": "passed",
-              "duration": 3935779167
+              "duration": 17976696999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 61,
+            "name": "Bot 102 Taste M betätigt",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1063843166
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 62,
-            "name": "Bot 102 Taste M betätigt",
+            "name": "Bot 107 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1066692291
+              "duration": 1061779000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 63,
-            "name": "Bot 107 Taste M betätigt",
+            "name": "warte 40 Sekunden",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 1071674499
+              "duration": 40001740499
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 64,
-            "name": "warte 40 Sekunden",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 40001712082
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 65,
             "name": "Bot 102 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1074589584
+              "duration": 1076429957
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 66,
+            "line": 65,
             "name": "Bot 107 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1058792666
+              "duration": 1063684584
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 67,
+            "name": "ich pausiere mit Text \"Trial 3 - Ziel: VW\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:116"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5316776875
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 68,
-            "name": "I pause",
+            "name": "Bot 103 Taste M betätigt",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:112"
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 2539995874
+              "duration": 1072389458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 69,
+            "name": "Bot 108 Taste M betätigt",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1069080291
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 70,
-            "name": "Bot 103 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:73"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1075544833
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 71,
-            "name": "Bot 108 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:73"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1075433625
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 72,
             "name": "warte 40 Sekunden",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:78"
             },
             "result": {
               "status": "passed",
-              "duration": 40001690583
+              "duration": 40003340750
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 73,
+            "line": 71,
             "name": "Bot 103 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1087282958
+              "duration": 1065825832
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 74,
+            "line": 72,
             "name": "Bot 108 Taste M betätigt",
             "match": {
               "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 1170651458
+              "duration": 1064043333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 74,
+            "name": "ich pausiere mit Text \"Trial 4 - Ziel: BMW\"",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:116"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7106269166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 75,
+            "name": "Bot 104 Taste M betätigt",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1099243832
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 76,
-            "name": "I pause",
+            "name": "Bot 105 Taste M betätigt",
             "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:112"
+              "location": "features/step_definitions/jitsi-bot-steps.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 54038178332
+              "duration": 1079895582
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 77,
+            "name": "warte 40 Sekunden",
+            "match": {
+              "location": "features/step_definitions/jitsi-bot-steps.js:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40001129583
             }
           },
           {
@@ -716,7 +755,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1146929375
+              "duration": 1077570999
             }
           },
           {
@@ -729,59 +768,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1062289500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 80,
-            "name": "warte 40 Sekunden",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 40002456833
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 81,
-            "name": "Bot 104 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:73"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1095571166
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 82,
-            "name": "Bot 105 Taste M betätigt",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:73"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1108862791
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 84,
-            "name": "warte 60 Sekunden",
-            "match": {
-              "location": "features/step_definitions/jitsi-bot-steps.js:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 60003012624
+              "duration": 1061292541
             }
           },
           {
@@ -789,14 +776,14 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 351710375
+              "duration": 374924166
             }
           }
         ],
         "tags": [
           {
             "name": "@kb_default",
-            "line": 10
+            "line": 3
           }
         ],
         "type": "scenario"
