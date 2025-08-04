@@ -3,12 +3,12 @@ Feature: Lokalisierung HRTF
   @l_hrtf_4
   Scenario: Vier Bots joint
     When I pause
-    Given Bot 1 navigiert zur Sitzung "raum311"
-    Given Bot 2 navigiert zur Sitzung "raum311"
-    Given Bot 3 navigiert zur Sitzung "raum311"
-    Given Bot 4 navigiert zur Sitzung "raum311"
+    Given Bot 1 navigiert zur Sitzung "kevin5"
+    Given Bot 2 navigiert zur Sitzung "kevin5"
+    Given Bot 3 navigiert zur Sitzung "kevin5"
+    Given Bot 4 navigiert zur Sitzung "kevin5"
 
-    When I pause
+    Given ich pausiere mit Text "Bots bereit zum Zutritt"
 
     Given Bot 1 klickt auf den Join-Button
     Given warte 1 Sekunden
@@ -18,54 +18,59 @@ Feature: Lokalisierung HRTF
     Given warte 1 Sekunden
     Given Bot 4 klickt auf den Join-Button
     
-    Given warte 5 Sekunden
+    Given warte 1 Sekunden
 
-    Given Bot 1 Taste M betätigt
-    Given Bot 2 Taste M betätigt
-    Given Bot 3 Taste M betätigt
-    Given Bot 4 Taste M betätigt
+    Given Bot 1 toggles video
+    Given Bot 2 toggles video
+    Given Bot 3 toggles video
+    Given Bot 4 toggles video
 
-    When I pause
+    Given Bot 1 toggles audio
+    Given Bot 2 toggles audio
+    Given Bot 3 toggles audio
+    Given Bot 4 toggles audio
+
+    Given ich pausiere mit Text "Ton 1"
     ######################################
     # Reihenfolge D, C, B, A → 4, 3, 2, 1
 
-    When Bot 4 Taste M betätigt
+    When Bot 4 toggles audio
     When warte 3 Sekunden
-    When Bot 4 Taste M betätigt
+    When Bot 4 toggles audio
 
-    When I pause
+    Given ich pausiere mit Text "Ton 2"
 
-    When Bot 3 Taste M betätigt
+    When Bot 3 toggles audio
     When warte 3 Sekunden
-    When Bot 3 Taste M betätigt
+    When Bot 3 toggles audio
 
-    When I pause
+    Given ich pausiere mit Text "Ton 3"
 
-    When Bot 2 Taste M betätigt
+    When Bot 2 toggles audio
     When warte 3 Sekunden
-    When Bot 2 Taste M betätigt
+    When Bot 2 toggles audio
 
-    When I pause
+    Given ich pausiere mit Text "Ton 4"
 
-    When Bot 1 Taste M betätigt
+    When Bot 1 toggles audio
     When warte 3 Sekunden
-    When Bot 1 Taste M betätigt
+    When Bot 1 toggles audio
 
 
 
   @l_hrtf_8
   Scenario: Acht Bots joint
     When I pause
-    Given Bot 1 navigiert zur Sitzung "raum312"
-    Given Bot 2 navigiert zur Sitzung "raum312"
-    Given Bot 3 navigiert zur Sitzung "raum312"
-    Given Bot 4 navigiert zur Sitzung "raum312"
-    Given Bot 5 navigiert zur Sitzung "raum312"
-    Given Bot 6 navigiert zur Sitzung "raum312"
-    Given Bot 7 navigiert zur Sitzung "raum312"
-    Given Bot 8 navigiert zur Sitzung "raum312"
+    Given Bot 1 navigiert zur Sitzung "kevin6"
+    Given Bot 2 navigiert zur Sitzung "kevin6"
+    Given Bot 3 navigiert zur Sitzung "kevin6"
+    Given Bot 4 navigiert zur Sitzung "kevin6"
+    Given Bot 5 navigiert zur Sitzung "kevin6"
+    Given Bot 6 navigiert zur Sitzung "kevin6"
+    Given Bot 7 navigiert zur Sitzung "kevin6"
+    Given Bot 8 navigiert zur Sitzung "kevin6"
 
-    When I pause
+    Given ich pausiere mit Text "Bots bereit zum Zutritt"
 
     Given Bot 1 klickt auf den Join-Button
     Given warte 1 Sekunden
@@ -83,40 +88,49 @@ Feature: Lokalisierung HRTF
     Given warte 1 Sekunden
     Given Bot 8 klickt auf den Join-Button
 
-    Given warte 5 Sekunden
+    Given warte 1 Sekunden
 
-    Given Bot 1 Taste M betätigt
-    Given Bot 2 Taste M betätigt
-    Given Bot 3 Taste M betätigt
-    Given Bot 4 Taste M betätigt
-    Given Bot 5 Taste M betätigt
-    Given Bot 6 Taste M betätigt
-    Given Bot 7 Taste M betätigt
-    Given Bot 8 Taste M betätigt
+    Given Bot 1 toggles video
+    Given Bot 2 toggles video
+    Given Bot 3 toggles video
+    Given Bot 4 toggles video
+    Given Bot 5 toggles video
+    Given Bot 6 toggles video
+    Given Bot 7 toggles video
+    Given Bot 8 toggles video
 
-    When I pause
+    Given Bot 1 toggles audio
+    Given Bot 2 toggles audio
+    Given Bot 3 toggles audio
+    Given Bot 4 toggles audio
+    Given Bot 5 toggles audio
+    Given Bot 6 toggles audio
+    Given Bot 7 toggles audio
+    Given Bot 8 toggles audio
+
+    Given ich pausiere mit Text "Ton 1"
     ######################################
     # Reihenfolge H, E, A, G → 8, 5, 1, 7
 
-    When Bot 8 Taste M betätigt
+    When Bot 8 toggles audio
     When warte 3 Sekunden
-    When Bot 8 Taste M betätigt
+    When Bot 8 toggles audio
 
-    When I pause
+    Given ich pausiere mit Text "Ton 2"
 
-    When Bot 5 Taste M betätigt
+    When Bot 5 toggles audio
     When warte 3 Sekunden
-    When Bot 5 Taste M betätigt
+    When Bot 5 toggles audio
 
-    When I pause
+    Given ich pausiere mit Text "Ton 3"
 
-    When Bot 1 Taste M betätigt
+    When Bot 1 toggles audio
     When warte 3 Sekunden
-    When Bot 1 Taste M betätigt
+    When Bot 1 toggles audio
 
-    When I pause
+    Given ich pausiere mit Text "Ton 4"
 
-    When Bot 7 Taste M betätigt
+    When Bot 7 toggles audio
     When warte 3 Sekunden
-    When Bot 7 Taste M betätigt
+    When Bot 7 toggles audio
 
