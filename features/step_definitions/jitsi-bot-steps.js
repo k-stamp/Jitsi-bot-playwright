@@ -126,3 +126,13 @@ Given('Bot {int} klickt auf den Join-Button', async function(botId) {
   await waitForUserInput(`Bot ${botId} klickt auf den Join-Button`);
   await this.clickJoinButtonForBot(botId);
 });
+
+Given('Bot {int} toggles video', async function(botId) {
+  await waitForUserInput(`Bot ${botId} schaltet Video um`);
+  await this.toggleVideoForBot(botId);
+});
+
+Given('Bot {int} toggles audio', async function(botId) {
+  await waitForUserInput(`Bot ${botId} schaltet Audio um`);
+  await this.toggleAudioForBot(botId);
+});

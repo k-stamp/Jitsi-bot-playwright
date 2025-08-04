@@ -894,6 +894,108 @@ class BotManager {
     };
   }
 
+  // Video für einen Bot umschalten
+  async toggleVideoForBot(botId) {
+    const bot = this.bots.get(botId);
+    if (!bot) {
+      throw new Error(`Bot ${botId} nicht gefunden oder nicht aktiv.`);
+    }
+
+    const { page, config } = bot;
+    this.logWithTimestamp(`Bot ${botId} (${config.name}) schaltet Video um`);
+
+    try {
+      // Prüfe zunächst, ob die Seite noch existiert und aktiv ist
+      if (page.isClosed()) {
+        throw new Error(`Seite für Bot ${botId} ist geschlossen`);
+      }
+
+      // Bringe die Seite in den Vordergrund
+      await page.bringToFront();
+      await page.waitForTimeout(100);
+
+      // Führe den JavaScript-Befehl in der Browser-Konsole aus
+      await page.evaluate(() => {
+        if (typeof APP !== 'undefined' && APP.conference && typeof APP.conference.toggleVideoMuted === 'function') {
+          APP.conference.toggleVideoMuted();
+          return true;
+        } else {
+          throw new Error('APP.conference.toggleVideoMuted() ist nicht verfügbar');
+        }
+      });
+
+      await page.waitForTimeout(500);
+      
+      this.debug(`Video erfolgreich für Bot ${botId} (${config.name}) umgeschaltet`);
+      this.logWithTimestamp(`Video erfolgreich für Bot ${botId} umgeschaltet`);
+    } catch (error) {
+      const errorMessage = `Fehler beim Umschalten des Videos für Bot ${botId}: ${error.message}`;
+      console.error(`[FEHLER] ${errorMessage}`);
+      
+      // Zusätzliche Debug-Informationen
+      try {
+        const url = await bot.page.url();
+        const title = await bot.page.title();
+        this.debug(`Bot ${botId} - URL: ${url}, Titel: ${title}`);
+      } catch (debugError) {
+        this.debug(`Bot ${botId} - Konnte Debug-Informationen nicht abrufen: ${debugError.message}`);
+      }
+      
+      throw new Error(errorMessage);
+    }
+  }
+
+  // Audio für einen Bot umschalten
+  async toggleAudioForBot(botId) {
+    const bot = this.bots.get(botId);
+    if (!bot) {
+      throw new Error(`Bot ${botId} nicht gefunden oder nicht aktiv.`);
+    }
+
+    const { page, config } = bot;
+    this.logWithTimestamp(`Bot ${botId} (${config.name}) schaltet Audio um`);
+
+    try {
+      // Prüfe zunächst, ob die Seite noch existiert und aktiv ist
+      if (page.isClosed()) {
+        throw new Error(`Seite für Bot ${botId} ist geschlossen`);
+      }
+
+      // Bringe die Seite in den Vordergrund
+      await page.bringToFront();
+      await page.waitForTimeout(100);
+
+      // Führe den JavaScript-Befehl in der Browser-Konsole aus
+      await page.evaluate(() => {
+        if (typeof APP !== 'undefined' && APP.conference && typeof APP.conference.toggleAudioMuted === 'function') {
+          APP.conference.toggleAudioMuted();
+          return true;
+        } else {
+          throw new Error('APP.conference.toggleAudioMuted() ist nicht verfügbar');
+        }
+      });
+
+      await page.waitForTimeout(500);
+      
+      this.debug(`Audio erfolgreich für Bot ${botId} (${config.name}) umgeschaltet`);
+      this.logWithTimestamp(`Audio erfolgreich für Bot ${botId} umgeschaltet`);
+    } catch (error) {
+      const errorMessage = `Fehler beim Umschalten des Audios für Bot ${botId}: ${error.message}`;
+      console.error(`[FEHLER] ${errorMessage}`);
+      
+      // Zusätzliche Debug-Informationen
+      try {
+        const url = await bot.page.url();
+        const title = await bot.page.title();
+        this.debug(`Bot ${botId} - URL: ${url}, Titel: ${title}`);
+      } catch (debugError) {
+        this.debug(`Bot ${botId} - Konnte Debug-Informationen nicht abrufen: ${debugError.message}`);
+      }
+      
+      throw new Error(errorMessage);
+    }
+  }
+
   // Alle Bot-Informationen für Debugging
   getAllBotsDebugInfo() {
     const activeBots = this.getActiveBots();

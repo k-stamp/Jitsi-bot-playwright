@@ -169,6 +169,30 @@ class JitsiBotWorld {
     }
   }
 
+  // Video für Bot umschalten
+  async toggleVideoForBot(botId) {
+    try {
+      await this.botManager.toggleVideoForBot(botId);
+      console.log(`✓ Bot ${botId} hat Video umgeschaltet`);
+    } catch (error) {
+      console.error(`✗ Fehler beim Umschalten des Videos für Bot ${botId}:`, error.message);
+      this.testResults.errors.push(`Bot ${botId} Video Toggle: ${error.message}`);
+      throw error;
+    }
+  }
+
+  // Audio für Bot umschalten
+  async toggleAudioForBot(botId) {
+    try {
+      await this.botManager.toggleAudioForBot(botId);
+      console.log(`✓ Bot ${botId} hat Audio umgeschaltet`);
+    } catch (error) {
+      console.error(`✗ Fehler beim Umschalten des Audios für Bot ${botId}:`, error.message);
+      this.testResults.errors.push(`Bot ${botId} Audio Toggle: ${error.message}`);
+      throw error;
+    }
+  }
+
   // Debug-Breakpoint setzen
   async setDebugBreakpoint(message) {
     try {
