@@ -35,7 +35,7 @@
       ]
     },
     {
-      "name": "Debug Stereo 4 Bots (@l_stereo_4) (Windows)",
+      "name": "Lokalisierung Stereo 4 Bots (@l_stereo_4) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "name": "Debug Stereo 8 Bots (@l_stereo_8) (Windows)",
+      "name": "Lokalisierung Stereo 8 Bots (@l_stereo_8) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "name": "Debug Equalpower 4 Bots (@l_equalpower_4) (Windows)",
+      "name": "Lokalisierung Equalpower 4 Bots (@l_equalpower_4) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "name": "Debug Equalpower 8 Bots (@l_equalpower_8) (Windows)",
+      "name": "Lokalisierung Equalpower 8 Bots (@l_equalpower_8) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
@@ -99,7 +99,7 @@
       ]
     },
     {
-      "name": "Debug HRTF 4 Bots (@l_hrtf_4) (Windows)",
+      "name": "Lokalisierung HRTF 4 Bots (@l_hrtf_4) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "name": "Debug HRTF 8 Bots (@l_hrtf_8) (Windows)",
+      "name": "Lokalisierung HRTF 8 Bots (@l_hrtf_8) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
@@ -131,7 +131,7 @@
       ]
     },
     {
-      "name": "Debug Lokalisierung Pre-Test (@l_pretest) (Windows)",
+      "name": "Lokalisierung 1 Pre-Test (@l_pretest) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",

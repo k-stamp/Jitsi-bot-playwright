@@ -2,11 +2,10 @@ Feature: Lokalisierung HRTF
 
   @l_hrtf_4
   Scenario: Vier Bots joint
-    When I pause
-    Given Bot 1 navigiert zur Sitzung "kevin5"
-    Given Bot 2 navigiert zur Sitzung "kevin5"
-    Given Bot 3 navigiert zur Sitzung "kevin5"
-    Given Bot 4 navigiert zur Sitzung "kevin5"
+    Given Bot 1 navigiert zur Sitzung "kevin11"
+    Given Bot 2 navigiert zur Sitzung "kevin11"
+    Given Bot 3 navigiert zur Sitzung "kevin11"
+    Given Bot 4 navigiert zur Sitzung "kevin11"
 
     Given ich pausiere mit Text "Bots bereit zum Zutritt"
 
@@ -60,15 +59,14 @@ Feature: Lokalisierung HRTF
 
   @l_hrtf_8
   Scenario: Acht Bots joint
-    When I pause
-    Given Bot 1 navigiert zur Sitzung "kevin6"
-    Given Bot 2 navigiert zur Sitzung "kevin6"
-    Given Bot 3 navigiert zur Sitzung "kevin6"
-    Given Bot 4 navigiert zur Sitzung "kevin6"
-    Given Bot 5 navigiert zur Sitzung "kevin6"
-    Given Bot 6 navigiert zur Sitzung "kevin6"
-    Given Bot 7 navigiert zur Sitzung "kevin6"
-    Given Bot 8 navigiert zur Sitzung "kevin6"
+    Given Bot 1 navigiert zur Sitzung "kevin11"
+    Given Bot 2 navigiert zur Sitzung "kevin11"
+    Given Bot 3 navigiert zur Sitzung "kevin11"
+    Given Bot 4 navigiert zur Sitzung "kevin11"
+    Given Bot 5 navigiert zur Sitzung "kevin11"
+    Given Bot 6 navigiert zur Sitzung "kevin11"
+    Given Bot 7 navigiert zur Sitzung "kevin11"
+    Given Bot 8 navigiert zur Sitzung "kevin11"
 
     Given ich pausiere mit Text "Bots bereit zum Zutritt"
 
