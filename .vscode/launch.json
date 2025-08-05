@@ -35,6 +35,22 @@
       ]
     },
     {
+      "name": "Lokalisierung 1 Pre-Test (@l_pretest) (Windows)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@l_pretest", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
       "name": "Lokalisierung Stereo 4 Bots (@l_stereo_4) (Windows)",
       "type": "node",
       "request": "launch", 
@@ -131,11 +147,11 @@
       ]
     },
     {
-      "name": "Lokalisierung 1 Pre-Test (@l_pretest) (Windows)",
+      "name": "Fokussieren 1 Pre-Test (@kb_pretest) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
-      "args": ["--tags", "@l_pretest", "--format", "@cucumber/pretty-formatter"],
+      "args": ["--tags", "@kb_pretest", "--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "env": {
@@ -147,11 +163,59 @@
       ]
     },
     {
-      "name": "Debug Kognitive Belastung (@kb_pretest) (Windows)",
+      "name": "Fokussieren Default (@kb_default) (Windows)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
-      "args": ["--tags", "@kb_pretest", "--format", "@cucumber/pretty-formatter"],
+      "args": ["--tags", "@kb_default", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Fokussieren Stereo (@kb_stereo) (Windows)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@kb_stereo", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Fokussieren Equalpower (@kb_equalpower) (Windows)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@kb_equalpower", "--format", "@cucumber/pretty-formatter"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "DEBUG_STEP_BY_STEP": "false"
+      },
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Fokussieren HRTF (@kb_hrtf) (Windows)",
+      "type": "node",
+      "request": "launch", 
+      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "args": ["--tags", "@kb_hrtf", "--format", "@cucumber/pretty-formatter"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "env": {
@@ -336,7 +400,7 @@
       }
     },
     {
-      "name": "Debug Kognitive Belastung (@kb_pretest) (Mac)",
+      "name": "Fokussieren (@kb_pretest) (Mac)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
@@ -355,23 +419,7 @@
       }
     },
     {
-      "name": "Debug Kognitive Belastung Default (@kb_default) (Windows)",
-      "type": "node",
-      "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
-      "args": ["--tags", "@kb_default", "--format", "@cucumber/pretty-formatter"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "DEBUG_STEP_BY_STEP": "false"
-      },
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**"
-      ]
-    },
-    {
-      "name": "Debug Kognitive Belastung Default (@kb_default) (Mac)",
+      "name": "Fokussieren Default (@kb_default) (Mac)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
@@ -389,24 +437,9 @@
         "program": "${workspaceFolder}/node_modules/.bin/cucumber-js"
       }
     },
+    
     {
-      "name": "Debug Kognitive Belastung Stereo (@kb_stereo) (Windows)",
-      "type": "node",
-      "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
-      "args": ["--tags", "@kb_stereo", "--format", "@cucumber/pretty-formatter"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "DEBUG_STEP_BY_STEP": "false"
-      },
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**"
-      ]
-    },
-    {
-      "name": "Debug Kognitive Belastung Stereo (@kb_stereo) (Mac)",
+      "name": "Fokussieren Stereo (@kb_stereo) (Mac)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
@@ -425,23 +458,7 @@
       }
     },
     {
-      "name": "Debug Kognitive Belastung Equalpower (@kb_equalpower) (Windows)",
-      "type": "node",
-      "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
-      "args": ["--tags", "@kb_equalpower", "--format", "@cucumber/pretty-formatter"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "DEBUG_STEP_BY_STEP": "false"
-      },
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**"
-      ]
-    },
-    {
-      "name": "Debug Kognitive Belastung Equalpower (@kb_equalpower) (Mac)",
+      "name": "Fokussieren Equalpower (@kb_equalpower) (Mac)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
@@ -460,23 +477,7 @@
       }
     },
     {
-      "name": "Debug Kognitive Belastung HRTF (@kb_hrtf) (Windows)",
-      "type": "node",
-      "request": "launch", 
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
-      "args": ["--tags", "@kb_hrtf", "--format", "@cucumber/pretty-formatter"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "DEBUG_STEP_BY_STEP": "false"
-      },
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**"
-      ]
-    },
-    {
-      "name": "Debug Kognitive Belastung HRTF (@kb_hrtf) (Mac)",
+      "name": "Fokussieren HRTF (@kb_hrtf) (Mac)",
       "type": "node",
       "request": "launch", 
       "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
