@@ -2,14 +2,14 @@ Feature: Fokussierung Equalpower
 
   @kb_equalpower
   Scenario: Acht Bots kognitive Belastung Equalpower Audio
-    Given Bot 1301 navigiert zur Sitzung "kevin16"
-    Given Bot 1302 navigiert zur Sitzung "kevin16"
-    Given Bot 1303 navigiert zur Sitzung "kevin16"
-    Given Bot 1304 navigiert zur Sitzung "kevin16"
-    Given Bot 1305 navigiert zur Sitzung "kevin16"
-    Given Bot 1306 navigiert zur Sitzung "kevin16"
-    Given Bot 1307 navigiert zur Sitzung "kevin16"
-    Given Bot 1308 navigiert zur Sitzung "kevin16"
+    Given Bot 1301 navigiert zur Sitzung "rebecca6"
+    Given Bot 1302 navigiert zur Sitzung "rebecca6"
+    Given Bot 1303 navigiert zur Sitzung "rebecca6"
+    Given Bot 1304 navigiert zur Sitzung "rebecca6"
+    Given Bot 1305 navigiert zur Sitzung "rebecca6"
+    Given Bot 1306 navigiert zur Sitzung "rebecca6"
+    Given Bot 1307 navigiert zur Sitzung "rebecca6"
+    Given Bot 1308 navigiert zur Sitzung "rebecca6"
 
     When ich pausiere mit Text "Sitzungen geladen, bereit für Beitritt"
 
@@ -54,27 +54,35 @@ Feature: Fokussierung Equalpower
     When ich pausiere mit Text "Trial 9 - Ziel: Audi"
     When Bot 1301 toggles audio
     When Bot 1303 toggles audio
+    When Bot 1307 toggles audio
     When warte 25 Sekunden
     When Bot 1301 toggles audio
     When Bot 1303 toggles audio
+    When Bot 1307 toggles audio
 
     When ich pausiere mit Text "Trial 10 - Ziel: Mercedes"
     When Bot 1303 toggles audio
     When Bot 1305 toggles audio
+    When Bot 1307 toggles audio
     When warte 25 Sekunden
     When Bot 1303 toggles audio
     When Bot 1305 toggles audio
+    When Bot 1307 toggles audio
 
     When ich pausiere mit Text "Trial 11 - Ziel: BMW"
     When Bot 1302 toggles audio
     When Bot 1308 toggles audio
+    When Bot 1307 toggles audio
     When warte 25 Sekunden
     When Bot 1302 toggles audio
     When Bot 1308 toggles audio
+    When Bot 1307 toggles audio
 
     When ich pausiere mit Text "Trial 12 - Ziel: Porsche"
     When Bot 1304 toggles audio
     When Bot 1306 toggles audio
+    When Bot 1307 toggles audio
     When warte 25 Sekunden
     When Bot 1304 toggles audio
     When Bot 1306 toggles audio
+    When Bot 1307 toggles audio

@@ -2,14 +2,14 @@ Feature: Fokussierung Default
 
   @kb_default
   Scenario: Acht Bots kognitive Belastung Default Audio
-    Given Bot 1101 navigiert zur Sitzung "kevin13"
-    Given Bot 1102 navigiert zur Sitzung "kevin13"
-    Given Bot 1103 navigiert zur Sitzung "kevin13"
-    Given Bot 1104 navigiert zur Sitzung "kevin13"
-    Given Bot 1105 navigiert zur Sitzung "kevin13"
-    Given Bot 1106 navigiert zur Sitzung "kevin13"
-    Given Bot 1107 navigiert zur Sitzung "kevin13"
-    Given Bot 1108 navigiert zur Sitzung "kevin13"
+    Given Bot 1101 navigiert zur Sitzung "rebecca4"
+    Given Bot 1102 navigiert zur Sitzung "rebecca4"
+    Given Bot 1103 navigiert zur Sitzung "rebecca4"
+    Given Bot 1104 navigiert zur Sitzung "rebecca4"
+    Given Bot 1105 navigiert zur Sitzung "rebecca4"
+    Given Bot 1106 navigiert zur Sitzung "rebecca4"
+    Given Bot 1107 navigiert zur Sitzung "rebecca4"
+    Given Bot 1108 navigiert zur Sitzung "rebecca4"
 
     When ich pausiere mit Text "Sitzungen geladen, bereit für Beitritt"
 
@@ -54,27 +54,35 @@ Feature: Fokussierung Default
     When ich pausiere mit Text "Trial 1 - Ziel: Audi"
     When Bot 1101 toggles audio
     When Bot 1103 toggles audio
+    When Bot 1107 toggles audio
     When warte 25 Sekunden
     When Bot 1101 toggles audio
     When Bot 1103 toggles audio
+    When Bot 1107 toggles audio
 
     When ich pausiere mit Text "Trial 2 - Ziel: Mercedes"
     When Bot 1103 toggles audio
     When Bot 1105 toggles audio
+    When Bot 1107 toggles audio
     When warte 25 Sekunden
     When Bot 1103 toggles audio
     When Bot 1105 toggles audio
+    When Bot 1107 toggles audio
 
     When ich pausiere mit Text "Trial 3 - Ziel: BMW"
     When Bot 1102 toggles audio
     When Bot 1108 toggles audio
+    When Bot 1107 toggles audio
     When warte 25 Sekunden
     When Bot 1102 toggles audio
     When Bot 1108 toggles audio
+    When Bot 1107 toggles audio
 
     When ich pausiere mit Text "Trial 4 - Ziel: Porsche"
     When Bot 1104 toggles audio
-    When Bot 1106 toggles audio
+    When Bot 1106 toggles audio 
+    When Bot 1107 toggles audio
     When warte 25 Sekunden
     When Bot 1104 toggles audio
     When Bot 1106 toggles audio
+    When Bot 1107 toggles audio

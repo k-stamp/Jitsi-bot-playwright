@@ -1,6 +1,6 @@
 {
   "url_offline": "https://kvnstp-jitsi.online/test1",
-  "url": "https://192.168.178.64:8080/test4",
+  "url": "https://192.168.178.161:8080/test4",
   "numberofbots": 8,
   "headless": true,
   "delayBetweenBots": 100,
@@ -334,7 +334,7 @@
     },
     {
       "id": 1101,
-      "name": "APerson - kb stereo",
+      "name": "APerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m1-audi-q5-schwarz.wav",
@@ -342,7 +342,7 @@
     },
     {
       "id": 1102,
-      "name": "BPerson - kb stereo",
+      "name": "BPerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w1-bmw-x3-grau.wav",
@@ -350,7 +350,7 @@
     },
     {
       "id": 1103,
-      "name": "CPerson - kb stereo",
+      "name": "CPerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m2-benz-aklasse-rot.wav",
@@ -358,7 +358,7 @@
     },
     {
       "id": 1104,
-      "name": "DPerson - kb stereo",
+      "name": "DPerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w2-porsche-911-gelb.wav",
@@ -366,7 +366,7 @@
     },
     {
       "id": 1105,
-      "name": "EPerson - kb stereo",
+      "name": "EPerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m1-bmw-x5-weiss.wav",
@@ -374,7 +374,7 @@
     },
     {
       "id": 1106,
-      "name": "FPerson - kb stereo",
+      "name": "FPerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w1-vw-passat-schwarz.wav",
@@ -382,15 +382,15 @@
     },
     {
       "id": 1107,
-      "name": "GPerson - kb stereo",
+      "name": "GPerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
-      "audioFile": "A.wav",
+      "audioFile": "m1-ford-focus-blau.wav",
       "enableAudio": true
     },
     {
       "id": 1108,
-      "name": "HPerson - kb stereo",
+      "name": "HPerson - kb default",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w2-porsche-panamera-gelb.wav",
@@ -449,7 +449,7 @@
       "name": "GPerson - kb stereo",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
-      "audioFile": "A.wav",
+      "audioFile": "m1-audi-q5-schwarz.wav",
       "enableAudio": true
     },
     {
@@ -462,7 +462,7 @@
     },
     {
       "id": 1301,
-      "name": "APerson - kb stereo",
+      "name": "APerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m1-audi-q3-blau.wav",
@@ -470,7 +470,7 @@
     },
     {
       "id": 1302,
-      "name": "BPerson - kb stereo",
+      "name": "BPerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w1-bmw-x5-weiss.wav",
@@ -478,7 +478,7 @@
     },
     {
       "id": 1303,
-      "name": "CPerson - kb stereo",
+      "name": "CPerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m2-benz-bklasse-rot.wav",
@@ -486,7 +486,7 @@
     },
     {
       "id": 1304,
-      "name": "DPerson - kb stereo",
+      "name": "DPerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w2-porsche-panamera-gelb.wav",
@@ -494,7 +494,7 @@
     },
     {
       "id": 1305,
-      "name": "EPerson - kb stereo",
+      "name": "EPerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m1-opel-mokka-rot.wav",
@@ -502,7 +502,7 @@
     },
     {
       "id": 1306,
-      "name": "FPerson - kb stereo",
+      "name": "FPerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w1-bmw-x3-grau.wav",
@@ -510,15 +510,15 @@
     },
     {
       "id": 1307,
-      "name": "GPerson - kb stereo",
+      "name": "GPerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
-      "audioFile": "A.wav",
+      "audioFile": "m1-ford-focus-blau.wav",
       "enableAudio": true
     },
     {
       "id": 1308,
-      "name": "HPerson - kb stereo",
+      "name": "HPerson - kb Equalpower",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w2-porsche-911-gelb.wav",
@@ -526,7 +526,7 @@
     },
     {
       "id": 1401,
-      "name": "APerson - kb stereo",
+      "name": "APerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m2-vw-passat-schwarz.wav",
@@ -534,7 +534,7 @@
     },
     {
       "id": 1402,
-      "name": "BPerson - kb stereo",
+      "name": "BPerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w2-opel-mokka-rot.wav",
@@ -542,7 +542,7 @@
     },
     {
       "id": 1403,
-      "name": "CPerson - kb stereo",
+      "name": "CPerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m1-ford-fiesta-gruen.wav",
@@ -550,7 +550,7 @@
     },
     {
       "id": 1404,
-      "name": "DPerson - kb stereo",
+      "name": "DPerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w1-tesla-models-lila.wav",
@@ -558,7 +558,7 @@
     },
     {
       "id": 1405,
-      "name": "EPerson - kb stereo",
+      "name": "EPerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "m2-audi-q3-blau.wav",
@@ -566,7 +566,7 @@
     },
     {
       "id": 1406,
-      "name": "FPerson - kb stereo",
+      "name": "FPerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w2-opel-corsa-silber.wav",
@@ -574,15 +574,15 @@
     },
     {
       "id": 1407,
-      "name": "GPerson - kb stereo",
+      "name": "GPerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
-      "audioFile": "A.wav",
+      "audioFile": "w1-vw-golf-weiss.wav",
       "enableAudio": true
     },
     {
       "id": 1408,
-      "name": "HPerson - kb stereo",
+      "name": "HPerson - kb HRTF",
       "mediaFolder": "bot20",
       "videoFile": "bot20pic.y4m",
       "audioFile": "w1-tesla-m3-gruen.wav",
